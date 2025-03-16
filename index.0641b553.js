@@ -26162,7 +26162,7 @@ parcelHelpers.export(exports, "MENU_URL", ()=>MENU_URL);
 const LOGO_URL = "https://img.freepik.com/premium-vector/food-logo-vector-silhouette-black-color-illustration-3_554682-6453.jpg";
 const CDN_URL = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/";
 const ERROR_URL = "https://c8.alamy.com/comp/2B9F3YX/404-error-cat-logo-and-icon-vector-isolated-image-2B9F3YX.jpg";
-const MENU_URL = "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9124323&lng=77.57087229999999&restaurantId=";
+const MENU_URL = "https://proxyserver-amcq.onrender.com/api/swiggy/details/";
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"181Ji":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$a38f = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
@@ -26407,12 +26407,12 @@ const Body = ()=>{
         children: "Looks like you are offline!!! Check the internet connectivity"
     }, void 0, false, {
         fileName: "src/components/Body.js",
-        lineNumber: 40,
+        lineNumber: 41,
         columnNumber: 7
     }, undefined);
     if (listOfResto.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _shimmerDefault.default), {}, void 0, false, {
         fileName: "src/components/Body.js",
-        lineNumber: 44,
+        lineNumber: 45,
         columnNumber: 12
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -26432,7 +26432,7 @@ const Body = ()=>{
                                 onChange: (e)=>setSearchButton(e.target.value)
                             }, void 0, false, {
                                 fileName: "src/components/Body.js",
-                                lineNumber: 54,
+                                lineNumber: 55,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -26446,13 +26446,13 @@ const Body = ()=>{
                                 children: "Search"
                             }, void 0, false, {
                                 fileName: "src/components/Body.js",
-                                lineNumber: 62,
+                                lineNumber: 63,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/Body.js",
-                        lineNumber: 53,
+                        lineNumber: 54,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -26461,7 +26461,7 @@ const Body = ()=>{
                                 children: "UserName"
                             }, void 0, false, {
                                 fileName: "src/components/Body.js",
-                                lineNumber: 81,
+                                lineNumber: 82,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
@@ -26471,13 +26471,13 @@ const Body = ()=>{
                                 onChange: (e)=>setUserName(e.target.value)
                             }, void 0, false, {
                                 fileName: "src/components/Body.js",
-                                lineNumber: 82,
+                                lineNumber: 83,
                                 columnNumber: 8
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/Body.js",
-                        lineNumber: 80,
+                        lineNumber: 81,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -26489,13 +26489,13 @@ const Body = ()=>{
                         children: "Top rated Resto"
                     }, void 0, false, {
                         fileName: "src/components/Body.js",
-                        lineNumber: 91,
+                        lineNumber: 92,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/Body.js",
-                lineNumber: 52,
+                lineNumber: 53,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -26506,29 +26506,29 @@ const Body = ()=>{
                             resData: resto
                         }, void 0, false, {
                             fileName: "src/components/Body.js",
-                            lineNumber: 111,
+                            lineNumber: 112,
                             columnNumber: 15
                         }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _restaurantCardDefault.default), {
                             resData: resto
                         }, void 0, false, {
                             fileName: "src/components/Body.js",
-                            lineNumber: 113,
+                            lineNumber: 114,
                             columnNumber: 15
                         }, undefined)
                     }, resto.card.card.info.id, false, {
                         fileName: "src/components/Body.js",
-                        lineNumber: 106,
+                        lineNumber: 107,
                         columnNumber: 11
                     }, undefined))
             }, void 0, false, {
                 fileName: "src/components/Body.js",
-                lineNumber: 104,
+                lineNumber: 105,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/Body.js",
-        lineNumber: 51,
+        lineNumber: 52,
         columnNumber: 5
     }, undefined);
 };
