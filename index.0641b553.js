@@ -2975,6 +2975,8 @@ var _cart = require("./components/Cart");
 var _cartDefault = parcelHelpers.interopDefault(_cart);
 var _reactToastify = require("react-toastify");
 var _reactToastifyCss = require("react-toastify/dist/ReactToastify.css");
+var _login = require("./components/Login");
+var _loginDefault = parcelHelpers.interopDefault(_login);
 var _s = $RefreshSig$();
 // header
 //   -logo
@@ -2992,71 +2994,84 @@ const Grocery = /*#__PURE__*/ (0, _react.lazy)(()=>require("b9adce3e16aaa7b2"));
 _c = Grocery;
 const AppLayout = ()=>{
     _s();
-    const [userName, setUserName] = (0, _react.useState)("");
-    (0, _react.useEffect)(()=>{
-        const data = {
-            diffName: "Pooja"
-        };
-        setUserName(data.diffName);
-    }, []);
+    const navigate = (0, _reactRouterDom.useNavigate)();
+    const location = (0, _reactRouterDom.useLocation)();
+    const [isLoggedIn, setIsLoggedIn] = (0, _react.useState)(()=>{
+        return localStorage.getItem("isLoggedIn") === "true";
+    });
+    const handleLogin = ()=>{
+        localStorage.setItem("isLoggedIn", "true");
+        setIsLoggedIn(true);
+        navigate("/");
+    };
+    const handleLogout = ()=>{
+        localStorage.removeItem("isLoggedIn");
+        setIsLoggedIn(false);
+        navigate("/login");
+    };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRedux.Provider), {
         store: (0, _appStoreDefault.default),
-        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _userContextDefault.default).Provider, {
-            value: {
-                LoggedInUser: userName,
-                setUserName
-            },
-            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "app",
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _headerDefault.default), {}, void 0, false, {
-                        fileName: "src/app.js",
-                        lineNumber: 50,
-                        columnNumber: 7
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Outlet), {}, void 0, false, {
-                        fileName: "src/app.js",
-                        lineNumber: 51,
-                        columnNumber: 7
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactToastify.ToastContainer), {
-                        position: "top-left",
-                        autoClose: 2000
-                    }, void 0, false, {
-                        fileName: "src/app.js",
-                        lineNumber: 52,
-                        columnNumber: 8
-                    }, undefined)
-                ]
-            }, void 0, true, {
-                fileName: "src/app.js",
-                lineNumber: 49,
-                columnNumber: 5
-            }, undefined)
-        }, void 0, false, {
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+            className: "w-full max-w-8xl",
+            children: [
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _headerDefault.default), {
+                    isLoggedIn: isLoggedIn,
+                    onLogin: handleLogin,
+                    onLogout: handleLogout
+                }, void 0, false, {
+                    fileName: "src/app.js",
+                    lineNumber: 64,
+                    columnNumber: 7
+                }, undefined),
+                location.pathname === "/login" ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginDefault.default), {
+                    onLogin: handleLogin
+                }, void 0, false, {
+                    fileName: "src/app.js",
+                    lineNumber: 66,
+                    columnNumber: 11
+                }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Outlet), {}, void 0, false, {
+                    fileName: "src/app.js",
+                    lineNumber: 68,
+                    columnNumber: 11
+                }, undefined),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactToastify.ToastContainer), {
+                    position: "top-left",
+                    autoClose: 2000
+                }, void 0, false, {
+                    fileName: "src/app.js",
+                    lineNumber: 71,
+                    columnNumber: 8
+                }, undefined)
+            ]
+        }, void 0, true, {
             fileName: "src/app.js",
-            lineNumber: 48,
+            lineNumber: 63,
             columnNumber: 5
         }, undefined)
     }, void 0, false, {
         fileName: "src/app.js",
-        lineNumber: 47,
+        lineNumber: 61,
         columnNumber: 5
     }, undefined);
 };
-_s(AppLayout, "44LKlU78vZ9BFk/y7Qwv9VRVy+Y=");
+_s(AppLayout, "rmGTNIDhKa8JFCwPn+hWjotf7qA=", false, function() {
+    return [
+        (0, _reactRouterDom.useNavigate),
+        (0, _reactRouterDom.useLocation)
+    ];
+});
 _c1 = AppLayout;
 const appRouter = (0, _reactRouterDom.createBrowserRouter)([
     {
         path: "/",
         element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(AppLayout, {}, void 0, false, {
             fileName: "src/app.js",
-            lineNumber: 63,
+            lineNumber: 82,
             columnNumber: 9
         }, undefined),
         errorElement: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _errorDefault.default), {}, void 0, false, {
             fileName: "src/app.js",
-            lineNumber: 64,
+            lineNumber: 83,
             columnNumber: 14
         }, undefined),
         children: [
@@ -3064,7 +3079,7 @@ const appRouter = (0, _reactRouterDom.createBrowserRouter)([
                 path: "/",
                 element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _bodyDefault.default), {}, void 0, false, {
                     fileName: "src/app.js",
-                    lineNumber: 68,
+                    lineNumber: 87,
                     columnNumber: 11
                 }, undefined)
             },
@@ -3072,7 +3087,7 @@ const appRouter = (0, _reactRouterDom.createBrowserRouter)([
                 path: "/about",
                 element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _aboutDefault.default), {}, void 0, false, {
                     fileName: "src/app.js",
-                    lineNumber: 72,
+                    lineNumber: 91,
                     columnNumber: 13
                 }, undefined)
             },
@@ -3080,7 +3095,7 @@ const appRouter = (0, _reactRouterDom.createBrowserRouter)([
                 path: "/contact",
                 element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _contactDefault.default), {}, void 0, false, {
                     fileName: "src/app.js",
-                    lineNumber: 76,
+                    lineNumber: 95,
                     columnNumber: 13
                 }, undefined)
             },
@@ -3088,7 +3103,7 @@ const appRouter = (0, _reactRouterDom.createBrowserRouter)([
                 path: "/restaurant/:resId",
                 element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _restaurantMenuDefault.default), {}, void 0, false, {
                     fileName: "src/app.js",
-                    lineNumber: 80,
+                    lineNumber: 99,
                     columnNumber: 13
                 }, undefined)
             },
@@ -3097,17 +3112,17 @@ const appRouter = (0, _reactRouterDom.createBrowserRouter)([
                 element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _react.Suspense), {
                     fallback: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _shimmerDefault.default), {}, void 0, false, {
                         fileName: "src/app.js",
-                        lineNumber: 84,
+                        lineNumber: 103,
                         columnNumber: 33
                     }, void 0),
                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(Grocery, {}, void 0, false, {
                         fileName: "src/app.js",
-                        lineNumber: 84,
+                        lineNumber: 103,
                         columnNumber: 45
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/app.js",
-                    lineNumber: 84,
+                    lineNumber: 103,
                     columnNumber: 13
                 }, undefined)
             },
@@ -3115,7 +3130,15 @@ const appRouter = (0, _reactRouterDom.createBrowserRouter)([
                 path: "/cart",
                 element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cartDefault.default), {}, void 0, false, {
                     fileName: "src/app.js",
-                    lineNumber: 88,
+                    lineNumber: 107,
+                    columnNumber: 13
+                }, undefined)
+            },
+            {
+                path: "/login",
+                element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginDefault.default), {}, void 0, false, {
+                    fileName: "src/app.js",
+                    lineNumber: 111,
                     columnNumber: 13
                 }, undefined)
             }
@@ -3130,7 +3153,7 @@ root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.RouterP
     router: appRouter
 }, void 0, false, {
     fileName: "src/app.js",
-    lineNumber: 98,
+    lineNumber: 121,
     columnNumber: 13
 }, undefined));
 var _c, _c1;
@@ -3142,7 +3165,7 @@ $RefreshReg$(_c1, "AppLayout");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-dom/client":"lOjBx","react-router-dom":"9xmpe","./components/Header":"hsJbF","./components/Body":"8yaV8","./components/About":"9R1Eu","./components/Contact":"cgAOG","./components/Error":"kvula","./components/RestaurantMenu":"8PuJ6","./components/Shimmer":"g6ZGj","./utils/UserContext":"c5vgB","b9adce3e16aaa7b2":"cPWnh","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react-redux":"62sf7","./utils/appStore":"6A5Ux","./components/Cart":"h8J3U","react-toastify":"lV1rO","react-toastify/dist/ReactToastify.css":"gJP2Y"}],"iTorj":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-dom/client":"lOjBx","react-router-dom":"9xmpe","./components/Header":"hsJbF","./components/Body":"8yaV8","./components/About":"9R1Eu","./components/Contact":"cgAOG","./components/Error":"kvula","./components/RestaurantMenu":"8PuJ6","./components/Shimmer":"g6ZGj","./utils/UserContext":"c5vgB","b9adce3e16aaa7b2":"cPWnh","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react-redux":"62sf7","./utils/appStore":"6A5Ux","./components/Cart":"h8J3U","react-toastify":"lV1rO","react-toastify/dist/ReactToastify.css":"gJP2Y","./components/Login":"hsmcH"}],"iTorj":[function(require,module,exports,__globalThis) {
 'use strict';
 module.exports = require("ee51401569654d91");
 
@@ -26016,8 +26039,10 @@ var _userContext = require("../utils/UserContext");
 var _userContextDefault = parcelHelpers.interopDefault(_userContext);
 var _lucideReact = require("lucide-react");
 var _reactRedux = require("react-redux");
+var _login = require("./Login");
+var _loginDefault = parcelHelpers.interopDefault(_login);
 var _s = $RefreshSig$();
-const Header = ()=>{
+const Header = ({ isLoggedIn, onLogin, onLogout })=>{
     _s();
     const [btnName, setBtnName] = (0, _react.useState)("Login");
     const onlineStatus = (0, _useOnlineStatusDefault.default)();
@@ -26035,173 +26060,183 @@ const Header = ()=>{
                     src: (0, _constants.LOGO_URL)
                 }, void 0, false, {
                     fileName: "src/components/Header.js",
-                    lineNumber: 24,
+                    lineNumber: 26,
                     columnNumber: 9
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/Header.js",
-                lineNumber: 23,
+                lineNumber: 25,
                 columnNumber: 7
             }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "flex items-center",
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
-                    className: "flex",
-                    children: [
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                            className: "px-4",
-                            children: [
-                                "Online Status: ",
-                                display
-                            ]
-                        }, void 0, true, {
-                            fileName: "src/components/Header.js",
-                            lineNumber: 28,
-                            columnNumber: 11
-                        }, undefined),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                            className: "px-4",
-                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
-                                to: "/grocery",
-                                children: "Grocery"
-                            }, void 0, false, {
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("nav", {
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                    className: "flex items-center py-12",
+                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
+                        className: "flex",
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                                className: "px-4",
+                                children: [
+                                    "Online Status: ",
+                                    display
+                                ]
+                            }, void 0, true, {
                                 fileName: "src/components/Header.js",
-                                lineNumber: 30,
-                                columnNumber: 13
-                            }, undefined)
-                        }, void 0, false, {
-                            fileName: "src/components/Header.js",
-                            lineNumber: 29,
-                            columnNumber: 11
-                        }, undefined),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                            className: "px-4",
-                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
-                                to: "/",
-                                children: "Home"
-                            }, void 0, false, {
-                                fileName: "src/components/Header.js",
-                                lineNumber: 33,
-                                columnNumber: 13
-                            }, undefined)
-                        }, void 0, false, {
-                            fileName: "src/components/Header.js",
-                            lineNumber: 32,
-                            columnNumber: 11
-                        }, undefined),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                            className: "px-4",
-                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
-                                to: "/about",
-                                children: "About Us"
-                            }, void 0, false, {
-                                fileName: "src/components/Header.js",
-                                lineNumber: 36,
-                                columnNumber: 13
-                            }, undefined)
-                        }, void 0, false, {
-                            fileName: "src/components/Header.js",
-                            lineNumber: 35,
-                            columnNumber: 11
-                        }, undefined),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                            className: "px-4",
-                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
-                                to: "/contact",
-                                children: "Contact Us"
-                            }, void 0, false, {
-                                fileName: "src/components/Header.js",
-                                lineNumber: 39,
-                                columnNumber: 13
-                            }, undefined)
-                        }, void 0, false, {
-                            fileName: "src/components/Header.js",
-                            lineNumber: 38,
-                            columnNumber: 11
-                        }, undefined),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                            className: "px-4",
-                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
-                                to: "/cart",
-                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                    className: "flex flex-wrap",
-                                    children: [
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _lucideReact.ShoppingCart), {
-                                            className: "w-6 h-6 text-white"
-                                        }, void 0, false, {
-                                            fileName: "src/components/Header.js",
-                                            lineNumber: 44,
-                                            columnNumber: 13
-                                        }, undefined),
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                            className: "text-white",
-                                            children: [
-                                                " [",
-                                                " " + cartItems.length + " ",
-                                                "]"
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "src/components/Header.js",
-                                            lineNumber: 45,
-                                            columnNumber: 13
-                                        }, undefined)
-                                    ]
-                                }, void 0, true, {
+                                lineNumber: 31,
+                                columnNumber: 11
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                                className: "px-4",
+                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
+                                    to: "/grocery",
+                                    children: "Grocery"
+                                }, void 0, false, {
                                     fileName: "src/components/Header.js",
-                                    lineNumber: 43,
-                                    columnNumber: 31
+                                    lineNumber: 33,
+                                    columnNumber: 13
                                 }, undefined)
                             }, void 0, false, {
                                 fileName: "src/components/Header.js",
-                                lineNumber: 43,
-                                columnNumber: 13
-                            }, undefined)
-                        }, void 0, false, {
-                            fileName: "src/components/Header.js",
-                            lineNumber: 42,
-                            columnNumber: 11
-                        }, undefined),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                            className: "px-4",
-                            onClick: ()=>{
-                                btnName === "Login" ? setBtnName("Logout") : setBtnName("Login");
-                            },
-                            children: btnName
-                        }, void 0, false, {
-                            fileName: "src/components/Header.js",
-                            lineNumber: 48,
-                            columnNumber: 11
-                        }, undefined),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                            className: "px-4",
-                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
-                                to: "/",
-                                children: LoggedInUser
+                                lineNumber: 32,
+                                columnNumber: 11
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                                className: "px-4",
+                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
+                                    to: "/",
+                                    children: "Home"
+                                }, void 0, false, {
+                                    fileName: "src/components/Header.js",
+                                    lineNumber: 36,
+                                    columnNumber: 13
+                                }, undefined)
                             }, void 0, false, {
                                 fileName: "src/components/Header.js",
-                                lineNumber: 57,
-                                columnNumber: 13
+                                lineNumber: 35,
+                                columnNumber: 11
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                                className: "px-4",
+                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
+                                    to: "/about",
+                                    children: "About Us"
+                                }, void 0, false, {
+                                    fileName: "src/components/Header.js",
+                                    lineNumber: 39,
+                                    columnNumber: 13
+                                }, undefined)
+                            }, void 0, false, {
+                                fileName: "src/components/Header.js",
+                                lineNumber: 38,
+                                columnNumber: 11
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                                className: "px-4",
+                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
+                                    to: "/contact",
+                                    children: "Contact Us"
+                                }, void 0, false, {
+                                    fileName: "src/components/Header.js",
+                                    lineNumber: 42,
+                                    columnNumber: 13
+                                }, undefined)
+                            }, void 0, false, {
+                                fileName: "src/components/Header.js",
+                                lineNumber: 41,
+                                columnNumber: 11
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                                className: "px-4",
+                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
+                                    to: "/cart",
+                                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                        className: "flex flex-wrap",
+                                        children: [
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _lucideReact.ShoppingCart), {
+                                                className: "w-6 h-6 text-white"
+                                            }, void 0, false, {
+                                                fileName: "src/components/Header.js",
+                                                lineNumber: 47,
+                                                columnNumber: 13
+                                            }, undefined),
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                                className: "text-white",
+                                                children: [
+                                                    " [",
+                                                    " " + cartItems.length + " ",
+                                                    "]"
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "src/components/Header.js",
+                                                lineNumber: 48,
+                                                columnNumber: 13
+                                            }, undefined)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "src/components/Header.js",
+                                        lineNumber: 46,
+                                        columnNumber: 31
+                                    }, undefined)
+                                }, void 0, false, {
+                                    fileName: "src/components/Header.js",
+                                    lineNumber: 46,
+                                    columnNumber: 13
+                                }, undefined)
+                            }, void 0, false, {
+                                fileName: "src/components/Header.js",
+                                lineNumber: 45,
+                                columnNumber: 11
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                                className: "px-4 cursor-pointer",
+                                children: isLoggedIn ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                    className: "bg-red-500 px-4 py-1 rounded-xl",
+                                    onClick: onLogout,
+                                    children: "Logout"
+                                }, void 0, false, {
+                                    fileName: "src/components/Header.js",
+                                    lineNumber: 53,
+                                    columnNumber: 15
+                                }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
+                                    to: "/login",
+                                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                        className: "bg-green-500 px-4 py-1 rounded-xl",
+                                        children: "Login"
+                                    }, void 0, false, {
+                                        fileName: "src/components/Header.js",
+                                        lineNumber: 58,
+                                        columnNumber: 17
+                                    }, undefined)
+                                }, void 0, false, {
+                                    fileName: "src/components/Header.js",
+                                    lineNumber: 57,
+                                    columnNumber: 15
+                                }, undefined)
+                            }, void 0, false, {
+                                fileName: "src/components/Header.js",
+                                lineNumber: 51,
+                                columnNumber: 10
                             }, undefined)
-                        }, void 0, false, {
-                            fileName: "src/components/Header.js",
-                            lineNumber: 56,
-                            columnNumber: 11
-                        }, undefined)
-                    ]
-                }, void 0, true, {
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/components/Header.js",
+                        lineNumber: 30,
+                        columnNumber: 9
+                    }, undefined)
+                }, void 0, false, {
                     fileName: "src/components/Header.js",
-                    lineNumber: 27,
-                    columnNumber: 9
+                    lineNumber: 29,
+                    columnNumber: 7
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/Header.js",
-                lineNumber: 26,
+                lineNumber: 28,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/Header.js",
-        lineNumber: 19,
+        lineNumber: 21,
         columnNumber: 5
     }, undefined);
 };
@@ -26221,7 +26256,7 @@ $RefreshReg$(_c, "Header");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","../utils/constants":"hB8jg","react":"21dqq","react-router-dom":"9xmpe","../utils/useOnlineStatus":"181Ji","../utils/UserContext":"c5vgB","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","lucide-react":"8oTgY","react-redux":"62sf7"}],"hB8jg":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"iTorj","../utils/constants":"hB8jg","react":"21dqq","react-router-dom":"9xmpe","../utils/useOnlineStatus":"181Ji","../utils/UserContext":"c5vgB","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","lucide-react":"8oTgY","react-redux":"62sf7","./Login":"hsmcH"}],"hB8jg":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "LOGO_URL", ()=>LOGO_URL);
@@ -34851,7 +34886,7 @@ var _createLucideIconJsDefault = parcelHelpers.interopDefault(_createLucideIconJ
 var _iconJs = require("./Icon.js");
 var _iconJsDefault = parcelHelpers.interopDefault(_iconJs);
 
-},{"./icons/index.js":false,"./icons/alarm-clock-check.js":false,"./icons/alarm-clock-minus.js":false,"./icons/alarm-clock-plus.js":false,"./icons/arrow-down-a-z.js":false,"./icons/arrow-down-wide-narrow.js":false,"./icons/arrow-down-z-a.js":false,"./icons/arrow-up-a-z.js":false,"./icons/arrow-up-narrow-wide.js":false,"./icons/arrow-up-z-a.js":false,"./icons/axis-3d.js":false,"./icons/badge-check.js":false,"./icons/between-horizontal-end.js":false,"./icons/between-horizontal-start.js":false,"./icons/book-dashed.js":false,"./icons/braces.js":false,"./icons/captions.js":false,"./icons/chart-area.js":false,"./icons/chart-bar-big.js":false,"./icons/chart-candlestick.js":false,"./icons/chart-bar.js":false,"./icons/chart-column-big.js":false,"./icons/chart-column-increasing.js":false,"./icons/chart-column.js":false,"./icons/chart-line.js":false,"./icons/chart-no-axes-column-increasing.js":false,"./icons/chart-no-axes-column.js":false,"./icons/chart-no-axes-gantt.js":false,"./icons/chart-pie.js":false,"./icons/chart-scatter.js":false,"./icons/circle-alert.js":false,"./icons/circle-arrow-down.js":false,"./icons/circle-arrow-left.js":false,"./icons/circle-arrow-out-down-left.js":false,"./icons/circle-arrow-out-down-right.js":false,"./icons/circle-arrow-out-up-right.js":false,"./icons/circle-arrow-out-up-left.js":false,"./icons/circle-arrow-right.js":false,"./icons/circle-arrow-up.js":false,"./icons/circle-check.js":false,"./icons/circle-check-big.js":false,"./icons/circle-chevron-down.js":false,"./icons/circle-chevron-right.js":false,"./icons/circle-chevron-left.js":false,"./icons/circle-chevron-up.js":false,"./icons/circle-divide.js":false,"./icons/circle-help.js":false,"./icons/circle-gauge.js":false,"./icons/circle-minus.js":false,"./icons/circle-parking.js":false,"./icons/circle-parking-off.js":false,"./icons/circle-pause.js":false,"./icons/circle-percent.js":false,"./icons/circle-plus.js":false,"./icons/circle-play.js":false,"./icons/circle-power.js":false,"./icons/circle-stop.js":false,"./icons/circle-slash-2.js":false,"./icons/circle-user-round.js":false,"./icons/circle-user.js":false,"./icons/circle-x.js":false,"./icons/clipboard-pen-line.js":false,"./icons/clipboard-pen.js":false,"./icons/cloud-download.js":false,"./icons/cloud-upload.js":false,"./icons/code-xml.js":false,"./icons/columns-2.js":false,"./icons/columns-3.js":false,"./icons/contact-round.js":false,"./icons/diamond-percent.js":false,"./icons/earth.js":false,"./icons/ellipsis-vertical.js":false,"./icons/ellipsis.js":false,"./icons/file-axis-3d.js":false,"./icons/file-chart-column-increasing.js":false,"./icons/file-chart-column.js":false,"./icons/file-chart-line.js":false,"./icons/file-chart-pie.js":false,"./icons/file-cog.js":false,"./icons/file-pen-line.js":false,"./icons/file-pen.js":false,"./icons/folder-cog.js":false,"./icons/folder-pen.js":false,"./icons/git-commit-horizontal.js":false,"./icons/grid-2x2-check.js":false,"./icons/grid-2x2-plus.js":false,"./icons/grid-2x2-x.js":false,"./icons/grid-2x2.js":false,"./icons/grid-3x3.js":false,"./icons/hand-helping.js":false,"./icons/house.js":false,"./icons/ice-cream-bowl.js":false,"./icons/ice-cream-cone.js":false,"./icons/indent-decrease.js":false,"./icons/indent-increase.js":false,"./icons/laptop-minimal.js":false,"./icons/layers.js":false,"./icons/loader-circle.js":false,"./icons/lock-keyhole-open.js":false,"./icons/lock-open.js":false,"./icons/mic-vocal.js":false,"./icons/move-3d.js":false,"./icons/octagon-alert.js":false,"./icons/octagon-pause.js":false,"./icons/octagon-x.js":false,"./icons/paintbrush-vertical.js":false,"./icons/panel-bottom-dashed.js":false,"./icons/panel-left-close.js":false,"./icons/panel-left-dashed.js":false,"./icons/panel-left-open.js":false,"./icons/panel-left.js":false,"./icons/panel-right-dashed.js":false,"./icons/panel-top-dashed.js":false,"./icons/panels-top-left.js":false,"./icons/pen-line.js":false,"./icons/pen.js":false,"./icons/plug-zap.js":false,"./icons/rectangle-ellipsis.js":false,"./icons/rotate-3d.js":false,"./icons/rows-2.js":false,"./icons/rows-3.js":false,"./icons/scale-3d.js":false,"./icons/send-horizontal.js":false,"./icons/shield-x.js":false,"./icons/sliders-vertical.js":false,"./icons/sparkles.js":false,"./icons/square-activity.js":false,"./icons/square-arrow-down-left.js":false,"./icons/square-arrow-down-right.js":false,"./icons/square-arrow-down.js":false,"./icons/square-arrow-left.js":false,"./icons/square-arrow-out-down-left.js":false,"./icons/square-arrow-out-down-right.js":false,"./icons/square-arrow-out-up-left.js":false,"./icons/square-arrow-out-up-right.js":false,"./icons/square-arrow-right.js":false,"./icons/square-arrow-up-right.js":false,"./icons/square-arrow-up.js":false,"./icons/square-arrow-up-left.js":false,"./icons/square-asterisk.js":false,"./icons/square-bottom-dashed-scissors.js":false,"./icons/square-chart-gantt.js":false,"./icons/square-check.js":false,"./icons/square-check-big.js":false,"./icons/square-chevron-down.js":false,"./icons/square-chevron-left.js":false,"./icons/square-chevron-right.js":false,"./icons/square-chevron-up.js":false,"./icons/square-code.js":false,"./icons/square-dashed-kanban.js":false,"./icons/square-dashed-mouse-pointer.js":false,"./icons/square-dashed.js":false,"./icons/square-divide.js":false,"./icons/square-dot.js":false,"./icons/square-equal.js":false,"./icons/square-function.js":false,"./icons/square-kanban.js":false,"./icons/square-library.js":false,"./icons/square-m.js":false,"./icons/square-menu.js":false,"./icons/square-minus.js":false,"./icons/square-mouse-pointer.js":false,"./icons/square-parking-off.js":false,"./icons/square-parking.js":false,"./icons/square-pen.js":false,"./icons/square-percent.js":false,"./icons/square-pi.js":false,"./icons/square-pilcrow.js":false,"./icons/square-play.js":false,"./icons/square-plus.js":false,"./icons/square-power.js":false,"./icons/square-scissors.js":false,"./icons/square-sigma.js":false,"./icons/square-slash.js":false,"./icons/square-split-horizontal.js":false,"./icons/square-split-vertical.js":false,"./icons/square-terminal.js":false,"./icons/square-user-round.js":false,"./icons/square-user.js":false,"./icons/square-x.js":false,"./icons/test-tube-diagonal.js":false,"./icons/text-select.js":false,"./icons/tram-front.js":false,"./icons/tree-palm.js":false,"./icons/triangle-alert.js":false,"./icons/tv-minimal.js":false,"./icons/university.js":false,"./icons/user-round-check.js":false,"./icons/user-round-cog.js":false,"./icons/user-round-minus.js":false,"./icons/user-round-plus.js":false,"./icons/user-round-x.js":false,"./icons/user-round.js":false,"./icons/users-round.js":false,"./icons/utensils-crossed.js":false,"./icons/utensils.js":false,"./icons/wallet-minimal.js":false,"./icons/wand-sparkles.js":false,"./icons/a-arrow-down.js":false,"./icons/a-arrow-up.js":false,"./icons/a-large-small.js":false,"./icons/accessibility.js":false,"./icons/activity.js":false,"./icons/air-vent.js":false,"./icons/airplay.js":false,"./icons/alarm-clock-off.js":false,"./icons/alarm-clock.js":false,"./icons/alarm-smoke.js":false,"./icons/album.js":false,"./icons/align-center-horizontal.js":false,"./icons/align-center-vertical.js":false,"./icons/align-center.js":false,"./icons/align-end-horizontal.js":false,"./icons/align-end-vertical.js":false,"./icons/align-horizontal-distribute-center.js":false,"./icons/align-horizontal-distribute-end.js":false,"./icons/align-horizontal-distribute-start.js":false,"./icons/align-horizontal-justify-center.js":false,"./icons/align-horizontal-justify-end.js":false,"./icons/align-horizontal-justify-start.js":false,"./icons/align-horizontal-space-around.js":false,"./icons/align-horizontal-space-between.js":false,"./icons/align-justify.js":false,"./icons/align-left.js":false,"./icons/align-right.js":false,"./icons/align-start-horizontal.js":false,"./icons/align-start-vertical.js":false,"./icons/align-vertical-distribute-center.js":false,"./icons/align-vertical-distribute-end.js":false,"./icons/align-vertical-distribute-start.js":false,"./icons/align-vertical-justify-center.js":false,"./icons/align-vertical-justify-start.js":false,"./icons/align-vertical-justify-end.js":false,"./icons/align-vertical-space-around.js":false,"./icons/align-vertical-space-between.js":false,"./icons/ambulance.js":false,"./icons/ampersand.js":false,"./icons/ampersands.js":false,"./icons/anchor.js":false,"./icons/amphora.js":false,"./icons/angry.js":false,"./icons/annoyed.js":false,"./icons/antenna.js":false,"./icons/anvil.js":false,"./icons/aperture.js":false,"./icons/app-window-mac.js":false,"./icons/app-window.js":false,"./icons/apple.js":false,"./icons/archive-restore.js":false,"./icons/archive-x.js":false,"./icons/archive.js":false,"./icons/armchair.js":false,"./icons/arrow-big-down-dash.js":false,"./icons/arrow-big-down.js":false,"./icons/arrow-big-left-dash.js":false,"./icons/arrow-big-left.js":false,"./icons/arrow-big-right.js":false,"./icons/arrow-big-right-dash.js":false,"./icons/arrow-big-up-dash.js":false,"./icons/arrow-big-up.js":false,"./icons/arrow-down-from-line.js":false,"./icons/arrow-down-left.js":false,"./icons/arrow-down-narrow-wide.js":false,"./icons/arrow-down-right.js":false,"./icons/arrow-down-to-dot.js":false,"./icons/arrow-down-to-line.js":false,"./icons/arrow-down-up.js":false,"./icons/arrow-down.js":false,"./icons/arrow-left-from-line.js":false,"./icons/arrow-left-right.js":false,"./icons/arrow-left-to-line.js":false,"./icons/arrow-left.js":false,"./icons/arrow-right-from-line.js":false,"./icons/arrow-right-left.js":false,"./icons/arrow-right-to-line.js":false,"./icons/arrow-right.js":false,"./icons/arrow-up-down.js":false,"./icons/arrow-up-from-dot.js":false,"./icons/arrow-up-left.js":false,"./icons/arrow-up-from-line.js":false,"./icons/arrow-up-right.js":false,"./icons/arrow-up-to-line.js":false,"./icons/arrow-up-wide-narrow.js":false,"./icons/arrow-up.js":false,"./icons/arrows-up-from-line.js":false,"./icons/asterisk.js":false,"./icons/at-sign.js":false,"./icons/atom.js":false,"./icons/audio-lines.js":false,"./icons/audio-waveform.js":false,"./icons/award.js":false,"./icons/axe.js":false,"./icons/backpack.js":false,"./icons/baby.js":false,"./icons/badge-alert.js":false,"./icons/badge-cent.js":false,"./icons/badge-dollar-sign.js":false,"./icons/badge-euro.js":false,"./icons/badge-help.js":false,"./icons/badge-indian-rupee.js":false,"./icons/badge-info.js":false,"./icons/badge-japanese-yen.js":false,"./icons/badge-percent.js":false,"./icons/badge-plus.js":false,"./icons/badge-minus.js":false,"./icons/badge-pound-sterling.js":false,"./icons/badge-russian-ruble.js":false,"./icons/badge-swiss-franc.js":false,"./icons/badge-x.js":false,"./icons/badge.js":false,"./icons/baggage-claim.js":false,"./icons/ban.js":false,"./icons/banana.js":false,"./icons/bandage.js":false,"./icons/banknote.js":false,"./icons/baseline.js":false,"./icons/barcode.js":false,"./icons/bath.js":false,"./icons/battery-charging.js":false,"./icons/battery-full.js":false,"./icons/battery-low.js":false,"./icons/battery-medium.js":false,"./icons/battery-plus.js":false,"./icons/battery-warning.js":false,"./icons/battery.js":false,"./icons/beaker.js":false,"./icons/bean-off.js":false,"./icons/bean.js":false,"./icons/bed-double.js":false,"./icons/bed-single.js":false,"./icons/bed.js":false,"./icons/beer.js":false,"./icons/beef.js":false,"./icons/beer-off.js":false,"./icons/bell-dot.js":false,"./icons/bell-electric.js":false,"./icons/bell-minus.js":false,"./icons/bell-off.js":false,"./icons/bell-plus.js":false,"./icons/bell-ring.js":false,"./icons/bell.js":false,"./icons/between-vertical-end.js":false,"./icons/between-vertical-start.js":false,"./icons/biceps-flexed.js":false,"./icons/bike.js":false,"./icons/binary.js":false,"./icons/binoculars.js":false,"./icons/biohazard.js":false,"./icons/bird.js":false,"./icons/bitcoin.js":false,"./icons/blend.js":false,"./icons/blocks.js":false,"./icons/blinds.js":false,"./icons/bluetooth-connected.js":false,"./icons/bluetooth-off.js":false,"./icons/bluetooth-searching.js":false,"./icons/bluetooth.js":false,"./icons/bold.js":false,"./icons/bolt.js":false,"./icons/bomb.js":false,"./icons/bone.js":false,"./icons/book-a.js":false,"./icons/book-audio.js":false,"./icons/book-check.js":false,"./icons/book-copy.js":false,"./icons/book-down.js":false,"./icons/book-headphones.js":false,"./icons/book-heart.js":false,"./icons/book-image.js":false,"./icons/book-key.js":false,"./icons/book-marked.js":false,"./icons/book-lock.js":false,"./icons/book-minus.js":false,"./icons/book-open-check.js":false,"./icons/book-open-text.js":false,"./icons/book-open.js":false,"./icons/book-plus.js":false,"./icons/book-text.js":false,"./icons/book-type.js":false,"./icons/book-up-2.js":false,"./icons/book-up.js":false,"./icons/book-user.js":false,"./icons/book-x.js":false,"./icons/book.js":false,"./icons/bookmark-check.js":false,"./icons/bookmark-minus.js":false,"./icons/bookmark-plus.js":false,"./icons/bookmark-x.js":false,"./icons/bookmark.js":false,"./icons/boom-box.js":false,"./icons/bot-message-square.js":false,"./icons/bot-off.js":false,"./icons/bot.js":false,"./icons/box.js":false,"./icons/boxes.js":false,"./icons/brackets.js":false,"./icons/brain-circuit.js":false,"./icons/brain-cog.js":false,"./icons/brain.js":false,"./icons/brick-wall.js":false,"./icons/briefcase-business.js":false,"./icons/briefcase-conveyor-belt.js":false,"./icons/briefcase-medical.js":false,"./icons/briefcase.js":false,"./icons/bring-to-front.js":false,"./icons/brush.js":false,"./icons/bug-off.js":false,"./icons/bug-play.js":false,"./icons/bug.js":false,"./icons/building-2.js":false,"./icons/building.js":false,"./icons/bus-front.js":false,"./icons/bus.js":false,"./icons/cable-car.js":false,"./icons/cable.js":false,"./icons/cake-slice.js":false,"./icons/cake.js":false,"./icons/calculator.js":false,"./icons/calendar-1.js":false,"./icons/calendar-arrow-up.js":false,"./icons/calendar-arrow-down.js":false,"./icons/calendar-check-2.js":false,"./icons/calendar-check.js":false,"./icons/calendar-clock.js":false,"./icons/calendar-cog.js":false,"./icons/calendar-days.js":false,"./icons/calendar-fold.js":false,"./icons/calendar-heart.js":false,"./icons/calendar-minus-2.js":false,"./icons/calendar-minus.js":false,"./icons/calendar-plus-2.js":false,"./icons/calendar-off.js":false,"./icons/calendar-range.js":false,"./icons/calendar-plus.js":false,"./icons/calendar-search.js":false,"./icons/calendar-sync.js":false,"./icons/calendar-x-2.js":false,"./icons/calendar-x.js":false,"./icons/calendar.js":false,"./icons/camera-off.js":false,"./icons/camera.js":false,"./icons/candy-cane.js":false,"./icons/candy-off.js":false,"./icons/candy.js":false,"./icons/cannabis.js":false,"./icons/captions-off.js":false,"./icons/car-front.js":false,"./icons/car-taxi-front.js":false,"./icons/car.js":false,"./icons/caravan.js":false,"./icons/carrot.js":false,"./icons/case-lower.js":false,"./icons/case-sensitive.js":false,"./icons/case-upper.js":false,"./icons/cassette-tape.js":false,"./icons/cast.js":false,"./icons/castle.js":false,"./icons/cat.js":false,"./icons/cctv.js":false,"./icons/chart-bar-decreasing.js":false,"./icons/chart-bar-increasing.js":false,"./icons/chart-bar-stacked.js":false,"./icons/chart-column-decreasing.js":false,"./icons/chart-column-stacked.js":false,"./icons/chart-gantt.js":false,"./icons/chart-network.js":false,"./icons/chart-no-axes-column-decreasing.js":false,"./icons/chart-no-axes-combined.js":false,"./icons/chart-spline.js":false,"./icons/check-check.js":false,"./icons/check.js":false,"./icons/chef-hat.js":false,"./icons/cherry.js":false,"./icons/chevron-down.js":false,"./icons/chevron-last.js":false,"./icons/chevron-first.js":false,"./icons/chevron-left.js":false,"./icons/chevron-right.js":false,"./icons/chevron-up.js":false,"./icons/chevrons-down-up.js":false,"./icons/chevrons-down.js":false,"./icons/chevrons-left-right.js":false,"./icons/chevrons-left-right-ellipsis.js":false,"./icons/chevrons-right-left.js":false,"./icons/chevrons-right.js":false,"./icons/chevrons-left.js":false,"./icons/chevrons-up-down.js":false,"./icons/chevrons-up.js":false,"./icons/chrome.js":false,"./icons/church.js":false,"./icons/cigarette-off.js":false,"./icons/cigarette.js":false,"./icons/circle-dashed.js":false,"./icons/circle-dollar-sign.js":false,"./icons/circle-dot-dashed.js":false,"./icons/circle-dot.js":false,"./icons/circle-ellipsis.js":false,"./icons/circle-fading-arrow-up.js":false,"./icons/circle-equal.js":false,"./icons/circle-fading-plus.js":false,"./icons/circle-off.js":false,"./icons/circle-slash.js":false,"./icons/circle-small.js":false,"./icons/circle.js":false,"./icons/circuit-board.js":false,"./icons/citrus.js":false,"./icons/clapperboard.js":false,"./icons/clipboard-check.js":false,"./icons/clipboard-copy.js":false,"./icons/clipboard-list.js":false,"./icons/clipboard-minus.js":false,"./icons/clipboard-paste.js":false,"./icons/clipboard-plus.js":false,"./icons/clipboard-type.js":false,"./icons/clipboard-x.js":false,"./icons/clipboard.js":false,"./icons/clock-1.js":false,"./icons/clock-10.js":false,"./icons/clock-11.js":false,"./icons/clock-12.js":false,"./icons/clock-2.js":false,"./icons/clock-3.js":false,"./icons/clock-4.js":false,"./icons/clock-5.js":false,"./icons/clock-6.js":false,"./icons/clock-8.js":false,"./icons/clock-7.js":false,"./icons/clock-9.js":false,"./icons/clock-alert.js":false,"./icons/clock-arrow-down.js":false,"./icons/clock-arrow-up.js":false,"./icons/clock-fading.js":false,"./icons/cloud-alert.js":false,"./icons/clock.js":false,"./icons/cloud-cog.js":false,"./icons/cloud-fog.js":false,"./icons/cloud-drizzle.js":false,"./icons/cloud-hail.js":false,"./icons/cloud-moon-rain.js":false,"./icons/cloud-lightning.js":false,"./icons/cloud-moon.js":false,"./icons/cloud-off.js":false,"./icons/cloud-rain.js":false,"./icons/cloud-rain-wind.js":false,"./icons/cloud-snow.js":false,"./icons/cloud-sun-rain.js":false,"./icons/cloud-sun.js":false,"./icons/cloud.js":false,"./icons/cloudy.js":false,"./icons/clover.js":false,"./icons/club.js":false,"./icons/codepen.js":false,"./icons/code.js":false,"./icons/coffee.js":false,"./icons/codesandbox.js":false,"./icons/cog.js":false,"./icons/coins.js":false,"./icons/columns-4.js":false,"./icons/combine.js":false,"./icons/command.js":false,"./icons/compass.js":false,"./icons/component.js":false,"./icons/computer.js":false,"./icons/concierge-bell.js":false,"./icons/cone.js":false,"./icons/construction.js":false,"./icons/contact.js":false,"./icons/container.js":false,"./icons/contrast.js":false,"./icons/cookie.js":false,"./icons/cooking-pot.js":false,"./icons/copy-check.js":false,"./icons/copy-minus.js":false,"./icons/copy-plus.js":false,"./icons/copy-slash.js":false,"./icons/copy.js":false,"./icons/copy-x.js":false,"./icons/copyleft.js":false,"./icons/copyright.js":false,"./icons/corner-down-left.js":false,"./icons/corner-down-right.js":false,"./icons/corner-left-down.js":false,"./icons/corner-left-up.js":false,"./icons/corner-right-down.js":false,"./icons/corner-right-up.js":false,"./icons/corner-up-left.js":false,"./icons/corner-up-right.js":false,"./icons/cpu.js":false,"./icons/creative-commons.js":false,"./icons/credit-card.js":false,"./icons/croissant.js":false,"./icons/crop.js":false,"./icons/cross.js":false,"./icons/crosshair.js":false,"./icons/crown.js":false,"./icons/cuboid.js":false,"./icons/cup-soda.js":false,"./icons/currency.js":false,"./icons/cylinder.js":false,"./icons/dam.js":false,"./icons/database-backup.js":false,"./icons/database-zap.js":false,"./icons/database.js":false,"./icons/delete.js":false,"./icons/dessert.js":false,"./icons/diameter.js":false,"./icons/diamond-minus.js":false,"./icons/diamond-plus.js":false,"./icons/diamond.js":false,"./icons/dice-1.js":false,"./icons/dice-2.js":false,"./icons/dice-3.js":false,"./icons/dice-4.js":false,"./icons/dice-5.js":false,"./icons/dice-6.js":false,"./icons/dices.js":false,"./icons/diff.js":false,"./icons/disc-2.js":false,"./icons/disc-3.js":false,"./icons/disc-album.js":false,"./icons/disc.js":false,"./icons/divide.js":false,"./icons/dna-off.js":false,"./icons/dna.js":false,"./icons/dock.js":false,"./icons/dog.js":false,"./icons/dollar-sign.js":false,"./icons/donut.js":false,"./icons/door-closed.js":false,"./icons/door-open.js":false,"./icons/dot.js":false,"./icons/download.js":false,"./icons/drafting-compass.js":false,"./icons/drama.js":false,"./icons/dribbble.js":false,"./icons/drill.js":false,"./icons/droplet-off.js":false,"./icons/droplet.js":false,"./icons/droplets.js":false,"./icons/drum.js":false,"./icons/drumstick.js":false,"./icons/dumbbell.js":false,"./icons/ear-off.js":false,"./icons/ear.js":false,"./icons/earth-lock.js":false,"./icons/eclipse.js":false,"./icons/egg-fried.js":false,"./icons/egg-off.js":false,"./icons/egg.js":false,"./icons/equal-approximately.js":false,"./icons/equal-not.js":false,"./icons/equal.js":false,"./icons/eraser.js":false,"./icons/ethernet-port.js":false,"./icons/euro.js":false,"./icons/expand.js":false,"./icons/external-link.js":false,"./icons/eye-closed.js":false,"./icons/eye-off.js":false,"./icons/eye.js":false,"./icons/facebook.js":false,"./icons/factory.js":false,"./icons/fan.js":false,"./icons/fast-forward.js":false,"./icons/feather.js":false,"./icons/fence.js":false,"./icons/ferris-wheel.js":false,"./icons/figma.js":false,"./icons/file-archive.js":false,"./icons/file-audio-2.js":false,"./icons/file-audio.js":false,"./icons/file-badge-2.js":false,"./icons/file-badge.js":false,"./icons/file-box.js":false,"./icons/file-check-2.js":false,"./icons/file-check.js":false,"./icons/file-clock.js":false,"./icons/file-code-2.js":false,"./icons/file-code.js":false,"./icons/file-diff.js":false,"./icons/file-digit.js":false,"./icons/file-down.js":false,"./icons/file-heart.js":false,"./icons/file-image.js":false,"./icons/file-input.js":false,"./icons/file-json-2.js":false,"./icons/file-json.js":false,"./icons/file-key-2.js":false,"./icons/file-key.js":false,"./icons/file-lock-2.js":false,"./icons/file-lock.js":false,"./icons/file-minus-2.js":false,"./icons/file-minus.js":false,"./icons/file-music.js":false,"./icons/file-output.js":false,"./icons/file-plus-2.js":false,"./icons/file-plus.js":false,"./icons/file-question.js":false,"./icons/file-scan.js":false,"./icons/file-search-2.js":false,"./icons/file-search.js":false,"./icons/file-sliders.js":false,"./icons/file-spreadsheet.js":false,"./icons/file-stack.js":false,"./icons/file-symlink.js":false,"./icons/file-terminal.js":false,"./icons/file-text.js":false,"./icons/file-type-2.js":false,"./icons/file-type.js":false,"./icons/file-up.js":false,"./icons/file-user.js":false,"./icons/file-video-2.js":false,"./icons/file-video.js":false,"./icons/file-volume-2.js":false,"./icons/file-volume.js":false,"./icons/file-warning.js":false,"./icons/file-x-2.js":false,"./icons/file-x.js":false,"./icons/file.js":false,"./icons/files.js":false,"./icons/film.js":false,"./icons/filter-x.js":false,"./icons/filter.js":false,"./icons/fingerprint.js":false,"./icons/fire-extinguisher.js":false,"./icons/fish-off.js":false,"./icons/fish-symbol.js":false,"./icons/fish.js":false,"./icons/flag-off.js":false,"./icons/flag-triangle-left.js":false,"./icons/flag.js":false,"./icons/flag-triangle-right.js":false,"./icons/flame-kindling.js":false,"./icons/flame.js":false,"./icons/flashlight-off.js":false,"./icons/flashlight.js":false,"./icons/flask-conical-off.js":false,"./icons/flask-conical.js":false,"./icons/flip-horizontal-2.js":false,"./icons/flask-round.js":false,"./icons/flip-horizontal.js":false,"./icons/flip-vertical-2.js":false,"./icons/flip-vertical.js":false,"./icons/flower-2.js":false,"./icons/flower.js":false,"./icons/focus.js":false,"./icons/fold-horizontal.js":false,"./icons/fold-vertical.js":false,"./icons/folder-archive.js":false,"./icons/folder-check.js":false,"./icons/folder-clock.js":false,"./icons/folder-closed.js":false,"./icons/folder-code.js":false,"./icons/folder-dot.js":false,"./icons/folder-down.js":false,"./icons/folder-git-2.js":false,"./icons/folder-git.js":false,"./icons/folder-heart.js":false,"./icons/folder-input.js":false,"./icons/folder-kanban.js":false,"./icons/folder-key.js":false,"./icons/folder-lock.js":false,"./icons/folder-minus.js":false,"./icons/folder-open-dot.js":false,"./icons/folder-open.js":false,"./icons/folder-output.js":false,"./icons/folder-plus.js":false,"./icons/folder-root.js":false,"./icons/folder-search-2.js":false,"./icons/folder-search.js":false,"./icons/folder-symlink.js":false,"./icons/folder-sync.js":false,"./icons/folder-tree.js":false,"./icons/folder-up.js":false,"./icons/folder-x.js":false,"./icons/folder.js":false,"./icons/folders.js":false,"./icons/footprints.js":false,"./icons/forklift.js":false,"./icons/forward.js":false,"./icons/frame.js":false,"./icons/framer.js":false,"./icons/frown.js":false,"./icons/fuel.js":false,"./icons/fullscreen.js":false,"./icons/gallery-horizontal-end.js":false,"./icons/gallery-horizontal.js":false,"./icons/gallery-thumbnails.js":false,"./icons/gallery-vertical-end.js":false,"./icons/gallery-vertical.js":false,"./icons/gamepad-2.js":false,"./icons/gamepad.js":false,"./icons/gauge.js":false,"./icons/gavel.js":false,"./icons/gem.js":false,"./icons/ghost.js":false,"./icons/gift.js":false,"./icons/git-branch-plus.js":false,"./icons/git-branch.js":false,"./icons/git-commit-vertical.js":false,"./icons/git-compare-arrows.js":false,"./icons/git-compare.js":false,"./icons/git-fork.js":false,"./icons/git-graph.js":false,"./icons/git-merge.js":false,"./icons/git-pull-request-arrow.js":false,"./icons/git-pull-request-closed.js":false,"./icons/git-pull-request-create-arrow.js":false,"./icons/git-pull-request-create.js":false,"./icons/git-pull-request-draft.js":false,"./icons/git-pull-request.js":false,"./icons/github.js":false,"./icons/glass-water.js":false,"./icons/gitlab.js":false,"./icons/glasses.js":false,"./icons/globe-lock.js":false,"./icons/globe.js":false,"./icons/goal.js":false,"./icons/grab.js":false,"./icons/graduation-cap.js":false,"./icons/grape.js":false,"./icons/grip-horizontal.js":false,"./icons/grip-vertical.js":false,"./icons/grip.js":false,"./icons/group.js":false,"./icons/guitar.js":false,"./icons/ham.js":false,"./icons/hammer.js":false,"./icons/hand-heart.js":false,"./icons/hand-coins.js":false,"./icons/hand-metal.js":false,"./icons/hand-platter.js":false,"./icons/hand.js":false,"./icons/handshake.js":false,"./icons/hard-drive-download.js":false,"./icons/hard-drive-upload.js":false,"./icons/hard-drive.js":false,"./icons/hard-hat.js":false,"./icons/hash.js":false,"./icons/hdmi-port.js":false,"./icons/haze.js":false,"./icons/heading-1.js":false,"./icons/heading-2.js":false,"./icons/heading-3.js":false,"./icons/heading-4.js":false,"./icons/heading-5.js":false,"./icons/heading-6.js":false,"./icons/heading.js":false,"./icons/headphone-off.js":false,"./icons/headphones.js":false,"./icons/headset.js":false,"./icons/heart-crack.js":false,"./icons/heart-handshake.js":false,"./icons/heart-off.js":false,"./icons/heart-pulse.js":false,"./icons/heart.js":false,"./icons/heater.js":false,"./icons/hexagon.js":false,"./icons/highlighter.js":false,"./icons/history.js":false,"./icons/hop-off.js":false,"./icons/hop.js":false,"./icons/hospital.js":false,"./icons/hotel.js":false,"./icons/hourglass.js":false,"./icons/house-plug.js":false,"./icons/house-plus.js":false,"./icons/house-wifi.js":false,"./icons/id-card.js":false,"./icons/image-down.js":false,"./icons/image-minus.js":false,"./icons/image-off.js":false,"./icons/image-play.js":false,"./icons/image-up.js":false,"./icons/image-plus.js":false,"./icons/image-upscale.js":false,"./icons/image.js":false,"./icons/images.js":false,"./icons/import.js":false,"./icons/inbox.js":false,"./icons/indian-rupee.js":false,"./icons/infinity.js":false,"./icons/info.js":false,"./icons/inspection-panel.js":false,"./icons/instagram.js":false,"./icons/italic.js":false,"./icons/iteration-ccw.js":false,"./icons/japanese-yen.js":false,"./icons/iteration-cw.js":false,"./icons/kanban.js":false,"./icons/joystick.js":false,"./icons/key-round.js":false,"./icons/key-square.js":false,"./icons/key.js":false,"./icons/keyboard-off.js":false,"./icons/keyboard.js":false,"./icons/keyboard-music.js":false,"./icons/lamp-ceiling.js":false,"./icons/lamp-desk.js":false,"./icons/lamp-floor.js":false,"./icons/lamp-wall-down.js":false,"./icons/lamp-wall-up.js":false,"./icons/lamp.js":false,"./icons/land-plot.js":false,"./icons/landmark.js":false,"./icons/laptop-minimal-check.js":false,"./icons/languages.js":false,"./icons/laptop.js":false,"./icons/lasso-select.js":false,"./icons/lasso.js":false,"./icons/laugh.js":false,"./icons/layers-2.js":false,"./icons/layout-dashboard.js":false,"./icons/layout-grid.js":false,"./icons/layout-list.js":false,"./icons/layout-panel-left.js":false,"./icons/layout-panel-top.js":false,"./icons/layout-template.js":false,"./icons/leaf.js":false,"./icons/leafy-green.js":false,"./icons/lectern.js":false,"./icons/letter-text.js":false,"./icons/library-big.js":false,"./icons/library.js":false,"./icons/ligature.js":false,"./icons/life-buoy.js":false,"./icons/lightbulb-off.js":false,"./icons/link-2-off.js":false,"./icons/lightbulb.js":false,"./icons/link-2.js":false,"./icons/link.js":false,"./icons/linkedin.js":false,"./icons/list-check.js":false,"./icons/list-checks.js":false,"./icons/list-collapse.js":false,"./icons/list-filter-plus.js":false,"./icons/list-end.js":false,"./icons/list-filter.js":false,"./icons/list-minus.js":false,"./icons/list-music.js":false,"./icons/list-ordered.js":false,"./icons/list-plus.js":false,"./icons/list-restart.js":false,"./icons/list-start.js":false,"./icons/list-todo.js":false,"./icons/list-tree.js":false,"./icons/list-video.js":false,"./icons/list-x.js":false,"./icons/list.js":false,"./icons/loader-pinwheel.js":false,"./icons/loader.js":false,"./icons/locate-fixed.js":false,"./icons/locate-off.js":false,"./icons/locate.js":false,"./icons/lock-keyhole.js":false,"./icons/lock.js":false,"./icons/log-in.js":false,"./icons/log-out.js":false,"./icons/logs.js":false,"./icons/lollipop.js":false,"./icons/luggage.js":false,"./icons/magnet.js":false,"./icons/mail-check.js":false,"./icons/mail-minus.js":false,"./icons/mail-open.js":false,"./icons/mail-plus.js":false,"./icons/mail-question.js":false,"./icons/mail-search.js":false,"./icons/mail-warning.js":false,"./icons/mail-x.js":false,"./icons/mail.js":false,"./icons/mailbox.js":false,"./icons/mails.js":false,"./icons/map-pin-check-inside.js":false,"./icons/map-pin-check.js":false,"./icons/map-pin-house.js":false,"./icons/map-pin-minus-inside.js":false,"./icons/map-pin-minus.js":false,"./icons/map-pin-off.js":false,"./icons/map-pin-plus-inside.js":false,"./icons/map-pin-plus.js":false,"./icons/map-pin-x-inside.js":false,"./icons/map-pin-x.js":false,"./icons/map-pin.js":false,"./icons/map-pinned.js":false,"./icons/map-plus.js":false,"./icons/map.js":false,"./icons/mars-stroke.js":false,"./icons/mars.js":false,"./icons/martini.js":false,"./icons/maximize.js":false,"./icons/maximize-2.js":false,"./icons/medal.js":false,"./icons/megaphone-off.js":false,"./icons/megaphone.js":false,"./icons/meh.js":false,"./icons/memory-stick.js":false,"./icons/menu.js":false,"./icons/merge.js":false,"./icons/message-circle-code.js":false,"./icons/message-circle-dashed.js":false,"./icons/message-circle-heart.js":false,"./icons/message-circle-more.js":false,"./icons/message-circle-off.js":false,"./icons/message-circle-plus.js":false,"./icons/message-circle-question.js":false,"./icons/message-circle-reply.js":false,"./icons/message-circle-warning.js":false,"./icons/message-circle-x.js":false,"./icons/message-circle.js":false,"./icons/message-square-code.js":false,"./icons/message-square-dashed.js":false,"./icons/message-square-diff.js":false,"./icons/message-square-heart.js":false,"./icons/message-square-dot.js":false,"./icons/message-square-lock.js":false,"./icons/message-square-more.js":false,"./icons/message-square-off.js":false,"./icons/message-square-plus.js":false,"./icons/message-square-quote.js":false,"./icons/message-square-reply.js":false,"./icons/message-square-text.js":false,"./icons/message-square-share.js":false,"./icons/message-square-warning.js":false,"./icons/message-square-x.js":false,"./icons/message-square.js":false,"./icons/messages-square.js":false,"./icons/mic-off.js":false,"./icons/mic.js":false,"./icons/microchip.js":false,"./icons/microscope.js":false,"./icons/microwave.js":false,"./icons/milestone.js":false,"./icons/milk-off.js":false,"./icons/milk.js":false,"./icons/minimize-2.js":false,"./icons/minimize.js":false,"./icons/minus.js":false,"./icons/monitor-check.js":false,"./icons/monitor-cog.js":false,"./icons/monitor-dot.js":false,"./icons/monitor-down.js":false,"./icons/monitor-off.js":false,"./icons/monitor-pause.js":false,"./icons/monitor-play.js":false,"./icons/monitor-smartphone.js":false,"./icons/monitor-speaker.js":false,"./icons/monitor-stop.js":false,"./icons/monitor-up.js":false,"./icons/monitor-x.js":false,"./icons/monitor.js":false,"./icons/moon-star.js":false,"./icons/moon.js":false,"./icons/mountain-snow.js":false,"./icons/mountain.js":false,"./icons/mouse-pointer-2.js":false,"./icons/mouse-off.js":false,"./icons/mouse-pointer-ban.js":false,"./icons/mouse-pointer-click.js":false,"./icons/mouse-pointer.js":false,"./icons/mouse.js":false,"./icons/move-diagonal-2.js":false,"./icons/move-diagonal.js":false,"./icons/move-down-left.js":false,"./icons/move-down-right.js":false,"./icons/move-horizontal.js":false,"./icons/move-down.js":false,"./icons/move-left.js":false,"./icons/move-right.js":false,"./icons/move-up-left.js":false,"./icons/move-up-right.js":false,"./icons/move-up.js":false,"./icons/move-vertical.js":false,"./icons/move.js":false,"./icons/music-2.js":false,"./icons/music-3.js":false,"./icons/music-4.js":false,"./icons/music.js":false,"./icons/navigation-2-off.js":false,"./icons/navigation-2.js":false,"./icons/navigation-off.js":false,"./icons/navigation.js":false,"./icons/network.js":false,"./icons/newspaper.js":false,"./icons/nfc.js":false,"./icons/non-binary.js":false,"./icons/notebook-pen.js":false,"./icons/notebook-tabs.js":false,"./icons/notebook-text.js":false,"./icons/notebook.js":false,"./icons/notepad-text-dashed.js":false,"./icons/notepad-text.js":false,"./icons/nut-off.js":false,"./icons/nut.js":false,"./icons/octagon-minus.js":false,"./icons/octagon.js":false,"./icons/omega.js":false,"./icons/option.js":false,"./icons/orbit.js":false,"./icons/origami.js":false,"./icons/package-2.js":false,"./icons/package-check.js":false,"./icons/package-minus.js":false,"./icons/package-open.js":false,"./icons/package-search.js":false,"./icons/package-plus.js":false,"./icons/package-x.js":false,"./icons/package.js":false,"./icons/paint-bucket.js":false,"./icons/paint-roller.js":false,"./icons/paintbrush.js":false,"./icons/palette.js":false,"./icons/panel-bottom-close.js":false,"./icons/panel-bottom-open.js":false,"./icons/panel-bottom.js":false,"./icons/panel-right-close.js":false,"./icons/panel-right-open.js":false,"./icons/panel-right.js":false,"./icons/panel-top-close.js":false,"./icons/panel-top-open.js":false,"./icons/panel-top.js":false,"./icons/panels-left-bottom.js":false,"./icons/panels-right-bottom.js":false,"./icons/paperclip.js":false,"./icons/parentheses.js":false,"./icons/parking-meter.js":false,"./icons/party-popper.js":false,"./icons/pause.js":false,"./icons/paw-print.js":false,"./icons/pc-case.js":false,"./icons/pen-off.js":false,"./icons/pen-tool.js":false,"./icons/pencil-line.js":false,"./icons/pencil-off.js":false,"./icons/pencil-ruler.js":false,"./icons/pencil.js":false,"./icons/pentagon.js":false,"./icons/percent.js":false,"./icons/person-standing.js":false,"./icons/philippine-peso.js":false,"./icons/phone-call.js":false,"./icons/phone-forwarded.js":false,"./icons/phone-incoming.js":false,"./icons/phone-missed.js":false,"./icons/phone-off.js":false,"./icons/phone-outgoing.js":false,"./icons/phone.js":false,"./icons/pi.js":false,"./icons/piano.js":false,"./icons/pickaxe.js":false,"./icons/picture-in-picture-2.js":false,"./icons/picture-in-picture.js":false,"./icons/piggy-bank.js":false,"./icons/pilcrow-left.js":false,"./icons/pilcrow-right.js":false,"./icons/pilcrow.js":false,"./icons/pill-bottle.js":false,"./icons/pin-off.js":false,"./icons/pill.js":false,"./icons/pin.js":false,"./icons/pipette.js":false,"./icons/plane-landing.js":false,"./icons/pizza.js":false,"./icons/plane-takeoff.js":false,"./icons/plane.js":false,"./icons/play.js":false,"./icons/plug-2.js":false,"./icons/plug.js":false,"./icons/plus.js":false,"./icons/pocket-knife.js":false,"./icons/pocket.js":false,"./icons/podcast.js":false,"./icons/pointer-off.js":false,"./icons/pointer.js":false,"./icons/popcorn.js":false,"./icons/popsicle.js":false,"./icons/pound-sterling.js":false,"./icons/power-off.js":false,"./icons/power.js":false,"./icons/presentation.js":false,"./icons/printer-check.js":false,"./icons/printer.js":false,"./icons/projector.js":false,"./icons/proportions.js":false,"./icons/puzzle.js":false,"./icons/pyramid.js":false,"./icons/qr-code.js":false,"./icons/quote.js":false,"./icons/rabbit.js":false,"./icons/radar.js":false,"./icons/radical.js":false,"./icons/radiation.js":false,"./icons/radio-receiver.js":false,"./icons/radio-tower.js":false,"./icons/radio.js":false,"./icons/radius.js":false,"./icons/rail-symbol.js":false,"./icons/rat.js":false,"./icons/rainbow.js":false,"./icons/ratio.js":false,"./icons/receipt-cent.js":false,"./icons/receipt-euro.js":false,"./icons/receipt-indian-rupee.js":false,"./icons/receipt-japanese-yen.js":false,"./icons/receipt-pound-sterling.js":false,"./icons/receipt-russian-ruble.js":false,"./icons/receipt-swiss-franc.js":false,"./icons/receipt-text.js":false,"./icons/receipt.js":false,"./icons/rectangle-horizontal.js":false,"./icons/rectangle-vertical.js":false,"./icons/recycle.js":false,"./icons/redo-2.js":false,"./icons/redo-dot.js":false,"./icons/redo.js":false,"./icons/refresh-ccw-dot.js":false,"./icons/refresh-ccw.js":false,"./icons/refresh-cw-off.js":false,"./icons/refresh-cw.js":false,"./icons/refrigerator.js":false,"./icons/regex.js":false,"./icons/remove-formatting.js":false,"./icons/repeat-1.js":false,"./icons/repeat-2.js":false,"./icons/repeat.js":false,"./icons/replace-all.js":false,"./icons/replace.js":false,"./icons/reply-all.js":false,"./icons/reply.js":false,"./icons/rewind.js":false,"./icons/ribbon.js":false,"./icons/rocket.js":false,"./icons/rocking-chair.js":false,"./icons/roller-coaster.js":false,"./icons/rotate-ccw-square.js":false,"./icons/rotate-ccw.js":false,"./icons/rotate-cw-square.js":false,"./icons/rotate-cw.js":false,"./icons/route-off.js":false,"./icons/route.js":false,"./icons/router.js":false,"./icons/rss.js":false,"./icons/rows-4.js":false,"./icons/ruler.js":false,"./icons/russian-ruble.js":false,"./icons/salad.js":false,"./icons/sandwich.js":false,"./icons/sailboat.js":false,"./icons/satellite-dish.js":false,"./icons/satellite.js":false,"./icons/saudi-riyal.js":false,"./icons/save.js":false,"./icons/save-off.js":false,"./icons/save-all.js":false,"./icons/scale.js":false,"./icons/scaling.js":false,"./icons/scan-barcode.js":false,"./icons/scan-eye.js":false,"./icons/scan-face.js":false,"./icons/scan-line.js":false,"./icons/scan-heart.js":false,"./icons/scan-qr-code.js":false,"./icons/scan-search.js":false,"./icons/scan-text.js":false,"./icons/scan.js":false,"./icons/scissors-line-dashed.js":false,"./icons/school.js":false,"./icons/scissors.js":false,"./icons/screen-share.js":false,"./icons/scroll-text.js":false,"./icons/screen-share-off.js":false,"./icons/scroll.js":false,"./icons/search-check.js":false,"./icons/search-code.js":false,"./icons/search-slash.js":false,"./icons/search-x.js":false,"./icons/search.js":"2VB0i","./icons/section.js":false,"./icons/send-to-back.js":false,"./icons/send.js":false,"./icons/separator-vertical.js":false,"./icons/separator-horizontal.js":false,"./icons/server-cog.js":false,"./icons/server-crash.js":false,"./icons/server-off.js":false,"./icons/server.js":false,"./icons/settings-2.js":false,"./icons/settings.js":false,"./icons/share-2.js":false,"./icons/shapes.js":false,"./icons/share.js":false,"./icons/sheet.js":false,"./icons/shell.js":false,"./icons/shield-alert.js":false,"./icons/shield-check.js":false,"./icons/shield-ban.js":false,"./icons/shield-half.js":false,"./icons/shield-minus.js":false,"./icons/shield-ellipsis.js":false,"./icons/shield-off.js":false,"./icons/shield-plus.js":false,"./icons/shield-question.js":false,"./icons/shield-user.js":false,"./icons/shield.js":false,"./icons/ship-wheel.js":false,"./icons/ship.js":false,"./icons/shirt.js":false,"./icons/shopping-bag.js":false,"./icons/shopping-basket.js":false,"./icons/shopping-cart.js":"f4pJ7","./icons/shovel.js":false,"./icons/shrimp.js":false,"./icons/shower-head.js":false,"./icons/shrink.js":false,"./icons/shrub.js":false,"./icons/shuffle.js":false,"./icons/sigma.js":false,"./icons/signal-low.js":false,"./icons/signal-high.js":false,"./icons/signal-medium.js":false,"./icons/signal-zero.js":false,"./icons/signal.js":false,"./icons/signature.js":false,"./icons/signpost-big.js":false,"./icons/signpost.js":false,"./icons/siren.js":false,"./icons/skip-back.js":false,"./icons/skip-forward.js":false,"./icons/skull.js":false,"./icons/slack.js":false,"./icons/slash.js":false,"./icons/slice.js":false,"./icons/sliders-horizontal.js":false,"./icons/smartphone-charging.js":false,"./icons/smartphone-nfc.js":false,"./icons/smartphone.js":false,"./icons/smile-plus.js":false,"./icons/smile.js":false,"./icons/snail.js":false,"./icons/snowflake.js":false,"./icons/sofa.js":false,"./icons/soup.js":false,"./icons/space.js":false,"./icons/spade.js":false,"./icons/sparkle.js":false,"./icons/speaker.js":false,"./icons/speech.js":false,"./icons/spell-check-2.js":false,"./icons/spell-check.js":false,"./icons/spline.js":false,"./icons/split.js":false,"./icons/spray-can.js":false,"./icons/sprout.js":false,"./icons/square-dashed-bottom-code.js":false,"./icons/square-dashed-bottom.js":false,"./icons/square-radical.js":false,"./icons/square-round-corner.js":false,"./icons/square-square.js":false,"./icons/square-stack.js":false,"./icons/square.js":false,"./icons/squircle.js":false,"./icons/squirrel.js":false,"./icons/stamp.js":false,"./icons/star-half.js":false,"./icons/star-off.js":false,"./icons/step-back.js":false,"./icons/star.js":false,"./icons/stethoscope.js":false,"./icons/step-forward.js":false,"./icons/sticker.js":false,"./icons/sticky-note.js":false,"./icons/stretch-horizontal.js":false,"./icons/store.js":false,"./icons/stretch-vertical.js":false,"./icons/strikethrough.js":false,"./icons/subscript.js":false,"./icons/sun-medium.js":false,"./icons/sun-dim.js":false,"./icons/sun-snow.js":false,"./icons/sun-moon.js":false,"./icons/sun.js":false,"./icons/sunset.js":false,"./icons/superscript.js":false,"./icons/sunrise.js":false,"./icons/swiss-franc.js":false,"./icons/swatch-book.js":false,"./icons/switch-camera.js":false,"./icons/sword.js":false,"./icons/swords.js":false,"./icons/table-2.js":false,"./icons/syringe.js":false,"./icons/table-cells-merge.js":false,"./icons/table-cells-split.js":false,"./icons/table-columns-split.js":false,"./icons/table-properties.js":false,"./icons/table-of-contents.js":false,"./icons/table.js":false,"./icons/table-rows-split.js":false,"./icons/tablet-smartphone.js":false,"./icons/tablets.js":false,"./icons/tablet.js":false,"./icons/tags.js":false,"./icons/tag.js":false,"./icons/tally-1.js":false,"./icons/tally-2.js":false,"./icons/tally-3.js":false,"./icons/tally-5.js":false,"./icons/tangent.js":false,"./icons/tally-4.js":false,"./icons/target.js":false,"./icons/telescope.js":false,"./icons/terminal.js":false,"./icons/tent-tree.js":false,"./icons/tent.js":false,"./icons/test-tube.js":false,"./icons/text-cursor-input.js":false,"./icons/test-tubes.js":false,"./icons/text-search.js":false,"./icons/text-cursor.js":false,"./icons/text-quote.js":false,"./icons/text.js":false,"./icons/theater.js":false,"./icons/thermometer-sun.js":false,"./icons/thermometer-snowflake.js":false,"./icons/thermometer.js":false,"./icons/thumbs-down.js":false,"./icons/thumbs-up.js":false,"./icons/ticket-check.js":false,"./icons/ticket-minus.js":false,"./icons/ticket-plus.js":false,"./icons/ticket-percent.js":false,"./icons/ticket-slash.js":false,"./icons/ticket-x.js":false,"./icons/ticket.js":false,"./icons/tickets-plane.js":false,"./icons/tickets.js":false,"./icons/timer-off.js":false,"./icons/timer-reset.js":false,"./icons/toggle-left.js":false,"./icons/timer.js":false,"./icons/toilet.js":false,"./icons/toggle-right.js":false,"./icons/tornado.js":false,"./icons/torus.js":false,"./icons/touchpad.js":false,"./icons/touchpad-off.js":false,"./icons/tower-control.js":false,"./icons/toy-brick.js":false,"./icons/tractor.js":false,"./icons/traffic-cone.js":false,"./icons/train-front-tunnel.js":false,"./icons/train-front.js":false,"./icons/train-track.js":false,"./icons/transgender.js":false,"./icons/trash-2.js":false,"./icons/trash.js":false,"./icons/tree-deciduous.js":false,"./icons/tree-pine.js":false,"./icons/trees.js":false,"./icons/trello.js":false,"./icons/trending-down.js":false,"./icons/trending-up.js":false,"./icons/trending-up-down.js":false,"./icons/triangle-dashed.js":false,"./icons/triangle-right.js":false,"./icons/triangle.js":false,"./icons/trophy.js":false,"./icons/truck.js":false,"./icons/turtle.js":false,"./icons/tv-minimal-play.js":false,"./icons/tv.js":false,"./icons/twitch.js":false,"./icons/twitter.js":false,"./icons/type-outline.js":false,"./icons/type.js":false,"./icons/umbrella-off.js":false,"./icons/umbrella.js":false,"./icons/underline.js":false,"./icons/undo-2.js":false,"./icons/undo.js":false,"./icons/undo-dot.js":false,"./icons/unfold-vertical.js":false,"./icons/ungroup.js":false,"./icons/unfold-horizontal.js":false,"./icons/unlink-2.js":false,"./icons/unlink.js":false,"./icons/unplug.js":false,"./icons/upload.js":false,"./icons/usb.js":false,"./icons/user-check.js":false,"./icons/user-cog.js":false,"./icons/user-minus.js":false,"./icons/user-pen.js":false,"./icons/user-plus.js":false,"./icons/user-round-search.js":false,"./icons/user-round-pen.js":false,"./icons/user-search.js":false,"./icons/user-x.js":false,"./icons/user.js":false,"./icons/users.js":false,"./icons/utility-pole.js":false,"./icons/variable.js":false,"./icons/vault.js":false,"./icons/vegan.js":false,"./icons/venetian-mask.js":false,"./icons/venus-and-mars.js":false,"./icons/vibrate-off.js":false,"./icons/vibrate.js":false,"./icons/venus.js":false,"./icons/video-off.js":false,"./icons/video.js":false,"./icons/videotape.js":false,"./icons/view.js":false,"./icons/voicemail.js":false,"./icons/volume-1.js":false,"./icons/volleyball.js":false,"./icons/volume-2.js":false,"./icons/volume-off.js":false,"./icons/volume-x.js":false,"./icons/volume.js":false,"./icons/vote.js":false,"./icons/wallet-cards.js":false,"./icons/wallet.js":false,"./icons/wallpaper.js":false,"./icons/wand.js":false,"./icons/warehouse.js":false,"./icons/washing-machine.js":false,"./icons/watch.js":false,"./icons/waves-ladder.js":false,"./icons/waves.js":false,"./icons/waypoints.js":false,"./icons/webcam.js":false,"./icons/webhook-off.js":false,"./icons/webhook.js":false,"./icons/weight.js":false,"./icons/wheat-off.js":false,"./icons/wheat.js":false,"./icons/whole-word.js":false,"./icons/wifi-high.js":false,"./icons/wifi-low.js":false,"./icons/wifi-off.js":false,"./icons/wifi-zero.js":false,"./icons/wifi.js":false,"./icons/wind.js":false,"./icons/wind-arrow-down.js":false,"./icons/wine-off.js":false,"./icons/wine.js":false,"./icons/worm.js":false,"./icons/workflow.js":false,"./icons/wrap-text.js":false,"./icons/wrench.js":false,"./icons/x.js":false,"./icons/zap-off.js":false,"./icons/youtube.js":false,"./icons/zap.js":false,"./icons/zoom-in.js":false,"./icons/zoom-out.js":false,"./icons/arrow-down-0-1.js":false,"./icons/arrow-down-1-0.js":false,"./icons/arrow-up-0-1.js":false,"./icons/arrow-up-1-0.js":false,"./createLucideIcon.js":false,"./Icon.js":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"2VB0i":[function(require,module,exports,__globalThis) {
+},{"./icons/index.js":false,"./icons/alarm-clock-check.js":false,"./icons/alarm-clock-minus.js":false,"./icons/alarm-clock-plus.js":false,"./icons/arrow-down-a-z.js":false,"./icons/arrow-down-wide-narrow.js":false,"./icons/arrow-down-z-a.js":false,"./icons/arrow-up-a-z.js":false,"./icons/arrow-up-narrow-wide.js":false,"./icons/arrow-up-z-a.js":false,"./icons/axis-3d.js":false,"./icons/badge-check.js":false,"./icons/between-horizontal-end.js":false,"./icons/between-horizontal-start.js":false,"./icons/book-dashed.js":false,"./icons/braces.js":false,"./icons/captions.js":false,"./icons/chart-area.js":false,"./icons/chart-bar-big.js":false,"./icons/chart-candlestick.js":false,"./icons/chart-bar.js":false,"./icons/chart-column-big.js":false,"./icons/chart-column-increasing.js":false,"./icons/chart-column.js":false,"./icons/chart-line.js":false,"./icons/chart-no-axes-column-increasing.js":false,"./icons/chart-no-axes-column.js":false,"./icons/chart-no-axes-gantt.js":false,"./icons/chart-pie.js":false,"./icons/chart-scatter.js":false,"./icons/circle-alert.js":false,"./icons/circle-arrow-down.js":false,"./icons/circle-arrow-left.js":false,"./icons/circle-arrow-out-down-left.js":false,"./icons/circle-arrow-out-down-right.js":false,"./icons/circle-arrow-out-up-right.js":false,"./icons/circle-arrow-out-up-left.js":false,"./icons/circle-arrow-right.js":false,"./icons/circle-arrow-up.js":false,"./icons/circle-check.js":false,"./icons/circle-check-big.js":false,"./icons/circle-chevron-down.js":false,"./icons/circle-chevron-right.js":false,"./icons/circle-chevron-left.js":false,"./icons/circle-chevron-up.js":false,"./icons/circle-divide.js":false,"./icons/circle-help.js":false,"./icons/circle-gauge.js":false,"./icons/circle-minus.js":false,"./icons/circle-parking.js":false,"./icons/circle-parking-off.js":false,"./icons/circle-pause.js":false,"./icons/circle-percent.js":false,"./icons/circle-plus.js":false,"./icons/circle-play.js":false,"./icons/circle-power.js":false,"./icons/circle-stop.js":false,"./icons/circle-slash-2.js":false,"./icons/circle-user-round.js":false,"./icons/circle-user.js":false,"./icons/circle-x.js":false,"./icons/clipboard-pen-line.js":false,"./icons/clipboard-pen.js":false,"./icons/cloud-download.js":false,"./icons/cloud-upload.js":false,"./icons/code-xml.js":false,"./icons/columns-2.js":false,"./icons/columns-3.js":false,"./icons/contact-round.js":false,"./icons/diamond-percent.js":false,"./icons/earth.js":false,"./icons/ellipsis-vertical.js":false,"./icons/ellipsis.js":false,"./icons/file-axis-3d.js":false,"./icons/file-chart-column-increasing.js":false,"./icons/file-chart-column.js":false,"./icons/file-chart-line.js":false,"./icons/file-chart-pie.js":false,"./icons/file-cog.js":false,"./icons/file-pen-line.js":false,"./icons/file-pen.js":false,"./icons/folder-cog.js":false,"./icons/folder-pen.js":false,"./icons/git-commit-horizontal.js":false,"./icons/grid-2x2-check.js":false,"./icons/grid-2x2-plus.js":false,"./icons/grid-2x2-x.js":false,"./icons/grid-2x2.js":false,"./icons/grid-3x3.js":false,"./icons/hand-helping.js":false,"./icons/house.js":false,"./icons/ice-cream-bowl.js":false,"./icons/ice-cream-cone.js":false,"./icons/indent-decrease.js":false,"./icons/indent-increase.js":false,"./icons/laptop-minimal.js":false,"./icons/layers.js":false,"./icons/loader-circle.js":false,"./icons/lock-keyhole-open.js":false,"./icons/lock-open.js":false,"./icons/mic-vocal.js":false,"./icons/move-3d.js":false,"./icons/octagon-alert.js":false,"./icons/octagon-pause.js":false,"./icons/octagon-x.js":false,"./icons/paintbrush-vertical.js":false,"./icons/panel-bottom-dashed.js":false,"./icons/panel-left-close.js":false,"./icons/panel-left-dashed.js":false,"./icons/panel-left-open.js":false,"./icons/panel-left.js":false,"./icons/panel-right-dashed.js":false,"./icons/panel-top-dashed.js":false,"./icons/panels-top-left.js":false,"./icons/pen-line.js":false,"./icons/pen.js":false,"./icons/plug-zap.js":false,"./icons/rectangle-ellipsis.js":false,"./icons/rotate-3d.js":false,"./icons/rows-2.js":false,"./icons/rows-3.js":false,"./icons/scale-3d.js":false,"./icons/send-horizontal.js":false,"./icons/shield-x.js":false,"./icons/sliders-vertical.js":false,"./icons/sparkles.js":false,"./icons/square-activity.js":false,"./icons/square-arrow-down-left.js":false,"./icons/square-arrow-down-right.js":false,"./icons/square-arrow-down.js":false,"./icons/square-arrow-left.js":false,"./icons/square-arrow-out-down-left.js":false,"./icons/square-arrow-out-down-right.js":false,"./icons/square-arrow-out-up-left.js":false,"./icons/square-arrow-out-up-right.js":false,"./icons/square-arrow-right.js":false,"./icons/square-arrow-up-right.js":false,"./icons/square-arrow-up.js":false,"./icons/square-arrow-up-left.js":false,"./icons/square-asterisk.js":false,"./icons/square-bottom-dashed-scissors.js":false,"./icons/square-chart-gantt.js":false,"./icons/square-check.js":false,"./icons/square-check-big.js":false,"./icons/square-chevron-down.js":false,"./icons/square-chevron-left.js":false,"./icons/square-chevron-right.js":false,"./icons/square-chevron-up.js":false,"./icons/square-code.js":false,"./icons/square-dashed-kanban.js":false,"./icons/square-dashed-mouse-pointer.js":false,"./icons/square-dashed.js":false,"./icons/square-divide.js":false,"./icons/square-dot.js":false,"./icons/square-equal.js":false,"./icons/square-function.js":false,"./icons/square-kanban.js":false,"./icons/square-library.js":false,"./icons/square-m.js":false,"./icons/square-menu.js":false,"./icons/square-minus.js":false,"./icons/square-mouse-pointer.js":false,"./icons/square-parking-off.js":false,"./icons/square-parking.js":false,"./icons/square-pen.js":false,"./icons/square-percent.js":false,"./icons/square-pi.js":false,"./icons/square-pilcrow.js":false,"./icons/square-play.js":false,"./icons/square-plus.js":false,"./icons/square-power.js":false,"./icons/square-scissors.js":false,"./icons/square-sigma.js":false,"./icons/square-slash.js":false,"./icons/square-split-horizontal.js":false,"./icons/square-split-vertical.js":false,"./icons/square-terminal.js":false,"./icons/square-user-round.js":false,"./icons/square-user.js":false,"./icons/square-x.js":false,"./icons/test-tube-diagonal.js":false,"./icons/text-select.js":false,"./icons/tram-front.js":false,"./icons/tree-palm.js":false,"./icons/triangle-alert.js":false,"./icons/tv-minimal.js":false,"./icons/university.js":false,"./icons/user-round-check.js":false,"./icons/user-round-cog.js":false,"./icons/user-round-minus.js":false,"./icons/user-round-plus.js":false,"./icons/user-round-x.js":false,"./icons/user-round.js":false,"./icons/users-round.js":false,"./icons/utensils-crossed.js":false,"./icons/utensils.js":false,"./icons/wallet-minimal.js":false,"./icons/wand-sparkles.js":false,"./icons/a-arrow-down.js":false,"./icons/a-arrow-up.js":false,"./icons/a-large-small.js":false,"./icons/accessibility.js":false,"./icons/activity.js":false,"./icons/air-vent.js":false,"./icons/airplay.js":false,"./icons/alarm-clock-off.js":false,"./icons/alarm-clock.js":false,"./icons/alarm-smoke.js":false,"./icons/album.js":false,"./icons/align-center-horizontal.js":false,"./icons/align-center-vertical.js":false,"./icons/align-center.js":false,"./icons/align-end-horizontal.js":false,"./icons/align-end-vertical.js":false,"./icons/align-horizontal-distribute-center.js":false,"./icons/align-horizontal-distribute-end.js":false,"./icons/align-horizontal-distribute-start.js":false,"./icons/align-horizontal-justify-center.js":false,"./icons/align-horizontal-justify-end.js":false,"./icons/align-horizontal-justify-start.js":false,"./icons/align-horizontal-space-around.js":false,"./icons/align-horizontal-space-between.js":false,"./icons/align-justify.js":false,"./icons/align-left.js":false,"./icons/align-right.js":false,"./icons/align-start-horizontal.js":false,"./icons/align-start-vertical.js":false,"./icons/align-vertical-distribute-center.js":false,"./icons/align-vertical-distribute-end.js":false,"./icons/align-vertical-distribute-start.js":false,"./icons/align-vertical-justify-center.js":false,"./icons/align-vertical-justify-start.js":false,"./icons/align-vertical-justify-end.js":false,"./icons/align-vertical-space-around.js":false,"./icons/align-vertical-space-between.js":false,"./icons/ambulance.js":false,"./icons/ampersand.js":false,"./icons/ampersands.js":false,"./icons/anchor.js":false,"./icons/amphora.js":false,"./icons/angry.js":false,"./icons/annoyed.js":false,"./icons/antenna.js":false,"./icons/anvil.js":false,"./icons/aperture.js":false,"./icons/app-window-mac.js":false,"./icons/app-window.js":false,"./icons/apple.js":false,"./icons/archive-restore.js":false,"./icons/archive-x.js":false,"./icons/archive.js":false,"./icons/armchair.js":false,"./icons/arrow-big-down-dash.js":false,"./icons/arrow-big-down.js":false,"./icons/arrow-big-left-dash.js":false,"./icons/arrow-big-left.js":false,"./icons/arrow-big-right.js":false,"./icons/arrow-big-right-dash.js":false,"./icons/arrow-big-up-dash.js":false,"./icons/arrow-big-up.js":false,"./icons/arrow-down-from-line.js":false,"./icons/arrow-down-left.js":false,"./icons/arrow-down-narrow-wide.js":false,"./icons/arrow-down-right.js":false,"./icons/arrow-down-to-dot.js":false,"./icons/arrow-down-to-line.js":false,"./icons/arrow-down-up.js":false,"./icons/arrow-down.js":false,"./icons/arrow-left-from-line.js":false,"./icons/arrow-left-right.js":false,"./icons/arrow-left-to-line.js":false,"./icons/arrow-left.js":false,"./icons/arrow-right-from-line.js":false,"./icons/arrow-right-left.js":false,"./icons/arrow-right-to-line.js":false,"./icons/arrow-right.js":false,"./icons/arrow-up-down.js":false,"./icons/arrow-up-from-dot.js":false,"./icons/arrow-up-left.js":false,"./icons/arrow-up-from-line.js":false,"./icons/arrow-up-right.js":false,"./icons/arrow-up-to-line.js":false,"./icons/arrow-up-wide-narrow.js":false,"./icons/arrow-up.js":false,"./icons/arrows-up-from-line.js":false,"./icons/asterisk.js":false,"./icons/at-sign.js":false,"./icons/atom.js":false,"./icons/audio-lines.js":false,"./icons/audio-waveform.js":false,"./icons/award.js":false,"./icons/axe.js":false,"./icons/backpack.js":false,"./icons/baby.js":false,"./icons/badge-alert.js":false,"./icons/badge-cent.js":false,"./icons/badge-dollar-sign.js":false,"./icons/badge-euro.js":false,"./icons/badge-help.js":false,"./icons/badge-indian-rupee.js":false,"./icons/badge-info.js":false,"./icons/badge-japanese-yen.js":false,"./icons/badge-percent.js":false,"./icons/badge-plus.js":false,"./icons/badge-minus.js":false,"./icons/badge-pound-sterling.js":false,"./icons/badge-russian-ruble.js":false,"./icons/badge-swiss-franc.js":false,"./icons/badge-x.js":false,"./icons/badge.js":false,"./icons/baggage-claim.js":false,"./icons/ban.js":false,"./icons/banana.js":false,"./icons/bandage.js":false,"./icons/banknote.js":false,"./icons/baseline.js":false,"./icons/barcode.js":false,"./icons/bath.js":false,"./icons/battery-charging.js":false,"./icons/battery-full.js":false,"./icons/battery-low.js":false,"./icons/battery-medium.js":false,"./icons/battery-plus.js":false,"./icons/battery-warning.js":false,"./icons/battery.js":false,"./icons/beaker.js":false,"./icons/bean-off.js":false,"./icons/bean.js":false,"./icons/bed-double.js":false,"./icons/bed-single.js":false,"./icons/bed.js":false,"./icons/beer.js":false,"./icons/beef.js":false,"./icons/beer-off.js":false,"./icons/bell-dot.js":false,"./icons/bell-electric.js":false,"./icons/bell-minus.js":false,"./icons/bell-off.js":false,"./icons/bell-plus.js":false,"./icons/bell-ring.js":false,"./icons/bell.js":false,"./icons/between-vertical-end.js":false,"./icons/between-vertical-start.js":false,"./icons/biceps-flexed.js":false,"./icons/bike.js":false,"./icons/binary.js":false,"./icons/binoculars.js":false,"./icons/biohazard.js":false,"./icons/bird.js":false,"./icons/bitcoin.js":false,"./icons/blend.js":false,"./icons/blocks.js":false,"./icons/blinds.js":false,"./icons/bluetooth-connected.js":false,"./icons/bluetooth-off.js":false,"./icons/bluetooth-searching.js":false,"./icons/bluetooth.js":false,"./icons/bold.js":false,"./icons/bolt.js":false,"./icons/bomb.js":false,"./icons/bone.js":false,"./icons/book-a.js":false,"./icons/book-audio.js":false,"./icons/book-check.js":false,"./icons/book-copy.js":false,"./icons/book-down.js":false,"./icons/book-headphones.js":false,"./icons/book-heart.js":false,"./icons/book-image.js":false,"./icons/book-key.js":false,"./icons/book-marked.js":false,"./icons/book-lock.js":false,"./icons/book-minus.js":false,"./icons/book-open-check.js":false,"./icons/book-open-text.js":false,"./icons/book-open.js":false,"./icons/book-plus.js":false,"./icons/book-text.js":false,"./icons/book-type.js":false,"./icons/book-up-2.js":false,"./icons/book-up.js":false,"./icons/book-user.js":false,"./icons/book-x.js":false,"./icons/book.js":false,"./icons/bookmark-check.js":false,"./icons/bookmark-minus.js":false,"./icons/bookmark-plus.js":false,"./icons/bookmark-x.js":false,"./icons/bookmark.js":false,"./icons/boom-box.js":false,"./icons/bot-message-square.js":false,"./icons/bot-off.js":false,"./icons/bot.js":false,"./icons/box.js":false,"./icons/boxes.js":false,"./icons/brackets.js":false,"./icons/brain-circuit.js":false,"./icons/brain-cog.js":false,"./icons/brain.js":false,"./icons/brick-wall.js":false,"./icons/briefcase-business.js":false,"./icons/briefcase-conveyor-belt.js":false,"./icons/briefcase-medical.js":false,"./icons/briefcase.js":false,"./icons/bring-to-front.js":false,"./icons/brush.js":false,"./icons/bug-off.js":false,"./icons/bug-play.js":false,"./icons/bug.js":false,"./icons/building-2.js":false,"./icons/building.js":false,"./icons/bus-front.js":false,"./icons/bus.js":false,"./icons/cable-car.js":false,"./icons/cable.js":false,"./icons/cake-slice.js":false,"./icons/cake.js":false,"./icons/calculator.js":false,"./icons/calendar-1.js":false,"./icons/calendar-arrow-up.js":false,"./icons/calendar-arrow-down.js":false,"./icons/calendar-check-2.js":false,"./icons/calendar-check.js":false,"./icons/calendar-clock.js":false,"./icons/calendar-cog.js":false,"./icons/calendar-days.js":false,"./icons/calendar-fold.js":false,"./icons/calendar-heart.js":false,"./icons/calendar-minus-2.js":false,"./icons/calendar-minus.js":false,"./icons/calendar-plus-2.js":false,"./icons/calendar-off.js":false,"./icons/calendar-range.js":false,"./icons/calendar-plus.js":false,"./icons/calendar-search.js":false,"./icons/calendar-sync.js":false,"./icons/calendar-x-2.js":false,"./icons/calendar-x.js":false,"./icons/calendar.js":false,"./icons/camera-off.js":false,"./icons/camera.js":false,"./icons/candy-cane.js":false,"./icons/candy-off.js":false,"./icons/candy.js":false,"./icons/cannabis.js":false,"./icons/captions-off.js":false,"./icons/car-front.js":false,"./icons/car-taxi-front.js":false,"./icons/car.js":false,"./icons/caravan.js":false,"./icons/carrot.js":false,"./icons/case-lower.js":false,"./icons/case-sensitive.js":false,"./icons/case-upper.js":false,"./icons/cassette-tape.js":false,"./icons/cast.js":false,"./icons/castle.js":false,"./icons/cat.js":false,"./icons/cctv.js":false,"./icons/chart-bar-decreasing.js":false,"./icons/chart-bar-increasing.js":false,"./icons/chart-bar-stacked.js":false,"./icons/chart-column-decreasing.js":false,"./icons/chart-column-stacked.js":false,"./icons/chart-gantt.js":false,"./icons/chart-network.js":false,"./icons/chart-no-axes-column-decreasing.js":false,"./icons/chart-no-axes-combined.js":false,"./icons/chart-spline.js":false,"./icons/check-check.js":false,"./icons/check.js":false,"./icons/chef-hat.js":false,"./icons/cherry.js":false,"./icons/chevron-down.js":false,"./icons/chevron-last.js":false,"./icons/chevron-first.js":false,"./icons/chevron-left.js":false,"./icons/chevron-right.js":false,"./icons/chevron-up.js":false,"./icons/chevrons-down-up.js":false,"./icons/chevrons-down.js":false,"./icons/chevrons-left-right.js":false,"./icons/chevrons-left-right-ellipsis.js":false,"./icons/chevrons-right-left.js":false,"./icons/chevrons-right.js":false,"./icons/chevrons-left.js":false,"./icons/chevrons-up-down.js":false,"./icons/chevrons-up.js":false,"./icons/chrome.js":false,"./icons/church.js":false,"./icons/cigarette-off.js":false,"./icons/cigarette.js":false,"./icons/circle-dashed.js":false,"./icons/circle-dollar-sign.js":false,"./icons/circle-dot-dashed.js":false,"./icons/circle-dot.js":false,"./icons/circle-ellipsis.js":false,"./icons/circle-fading-arrow-up.js":false,"./icons/circle-equal.js":false,"./icons/circle-fading-plus.js":false,"./icons/circle-off.js":false,"./icons/circle-slash.js":false,"./icons/circle-small.js":false,"./icons/circle.js":false,"./icons/circuit-board.js":false,"./icons/citrus.js":false,"./icons/clapperboard.js":false,"./icons/clipboard-check.js":false,"./icons/clipboard-copy.js":false,"./icons/clipboard-list.js":false,"./icons/clipboard-minus.js":false,"./icons/clipboard-paste.js":false,"./icons/clipboard-plus.js":false,"./icons/clipboard-type.js":false,"./icons/clipboard-x.js":false,"./icons/clipboard.js":false,"./icons/clock-1.js":false,"./icons/clock-10.js":false,"./icons/clock-11.js":false,"./icons/clock-12.js":false,"./icons/clock-2.js":false,"./icons/clock-3.js":false,"./icons/clock-4.js":false,"./icons/clock-5.js":false,"./icons/clock-6.js":false,"./icons/clock-8.js":false,"./icons/clock-7.js":false,"./icons/clock-9.js":false,"./icons/clock-alert.js":false,"./icons/clock-arrow-down.js":false,"./icons/clock-arrow-up.js":false,"./icons/clock-fading.js":false,"./icons/cloud-alert.js":false,"./icons/clock.js":false,"./icons/cloud-cog.js":false,"./icons/cloud-fog.js":false,"./icons/cloud-drizzle.js":false,"./icons/cloud-hail.js":false,"./icons/cloud-moon-rain.js":false,"./icons/cloud-lightning.js":false,"./icons/cloud-moon.js":false,"./icons/cloud-off.js":false,"./icons/cloud-rain.js":false,"./icons/cloud-rain-wind.js":false,"./icons/cloud-snow.js":false,"./icons/cloud-sun-rain.js":false,"./icons/cloud-sun.js":false,"./icons/cloud.js":false,"./icons/cloudy.js":false,"./icons/clover.js":false,"./icons/club.js":false,"./icons/codepen.js":false,"./icons/code.js":false,"./icons/coffee.js":false,"./icons/codesandbox.js":false,"./icons/cog.js":false,"./icons/coins.js":false,"./icons/columns-4.js":false,"./icons/combine.js":false,"./icons/command.js":false,"./icons/compass.js":false,"./icons/component.js":false,"./icons/computer.js":false,"./icons/concierge-bell.js":false,"./icons/cone.js":false,"./icons/construction.js":false,"./icons/contact.js":false,"./icons/container.js":false,"./icons/contrast.js":false,"./icons/cookie.js":false,"./icons/cooking-pot.js":false,"./icons/copy-check.js":false,"./icons/copy-minus.js":false,"./icons/copy-plus.js":false,"./icons/copy-slash.js":false,"./icons/copy.js":false,"./icons/copy-x.js":false,"./icons/copyleft.js":false,"./icons/copyright.js":false,"./icons/corner-down-left.js":false,"./icons/corner-down-right.js":false,"./icons/corner-left-down.js":false,"./icons/corner-left-up.js":false,"./icons/corner-right-down.js":false,"./icons/corner-right-up.js":false,"./icons/corner-up-left.js":false,"./icons/corner-up-right.js":false,"./icons/cpu.js":false,"./icons/creative-commons.js":false,"./icons/credit-card.js":false,"./icons/croissant.js":false,"./icons/crop.js":false,"./icons/cross.js":false,"./icons/crosshair.js":false,"./icons/crown.js":false,"./icons/cuboid.js":false,"./icons/cup-soda.js":false,"./icons/currency.js":false,"./icons/cylinder.js":false,"./icons/dam.js":false,"./icons/database-backup.js":false,"./icons/database-zap.js":false,"./icons/database.js":false,"./icons/delete.js":false,"./icons/dessert.js":false,"./icons/diameter.js":false,"./icons/diamond-minus.js":false,"./icons/diamond-plus.js":false,"./icons/diamond.js":false,"./icons/dice-1.js":false,"./icons/dice-2.js":false,"./icons/dice-3.js":false,"./icons/dice-4.js":false,"./icons/dice-5.js":false,"./icons/dice-6.js":false,"./icons/dices.js":false,"./icons/diff.js":false,"./icons/disc-2.js":false,"./icons/disc-3.js":false,"./icons/disc-album.js":false,"./icons/disc.js":false,"./icons/divide.js":false,"./icons/dna-off.js":false,"./icons/dna.js":false,"./icons/dock.js":false,"./icons/dog.js":false,"./icons/dollar-sign.js":false,"./icons/donut.js":false,"./icons/door-closed.js":false,"./icons/door-open.js":false,"./icons/dot.js":false,"./icons/download.js":false,"./icons/drafting-compass.js":false,"./icons/drama.js":false,"./icons/dribbble.js":false,"./icons/drill.js":false,"./icons/droplet-off.js":false,"./icons/droplet.js":false,"./icons/droplets.js":false,"./icons/drum.js":false,"./icons/drumstick.js":false,"./icons/dumbbell.js":false,"./icons/ear-off.js":false,"./icons/ear.js":false,"./icons/earth-lock.js":false,"./icons/eclipse.js":false,"./icons/egg-fried.js":false,"./icons/egg-off.js":false,"./icons/egg.js":false,"./icons/equal-approximately.js":false,"./icons/equal-not.js":false,"./icons/equal.js":false,"./icons/eraser.js":false,"./icons/ethernet-port.js":false,"./icons/euro.js":false,"./icons/expand.js":false,"./icons/external-link.js":false,"./icons/eye-closed.js":false,"./icons/eye-off.js":false,"./icons/eye.js":false,"./icons/facebook.js":false,"./icons/factory.js":false,"./icons/fan.js":false,"./icons/fast-forward.js":false,"./icons/feather.js":false,"./icons/fence.js":false,"./icons/ferris-wheel.js":false,"./icons/figma.js":false,"./icons/file-archive.js":false,"./icons/file-audio-2.js":false,"./icons/file-audio.js":false,"./icons/file-badge-2.js":false,"./icons/file-badge.js":false,"./icons/file-box.js":false,"./icons/file-check-2.js":false,"./icons/file-check.js":false,"./icons/file-clock.js":false,"./icons/file-code-2.js":false,"./icons/file-code.js":false,"./icons/file-diff.js":false,"./icons/file-digit.js":false,"./icons/file-down.js":false,"./icons/file-heart.js":false,"./icons/file-image.js":false,"./icons/file-input.js":false,"./icons/file-json-2.js":false,"./icons/file-json.js":false,"./icons/file-key-2.js":false,"./icons/file-key.js":false,"./icons/file-lock-2.js":false,"./icons/file-lock.js":false,"./icons/file-minus-2.js":false,"./icons/file-minus.js":false,"./icons/file-music.js":false,"./icons/file-output.js":false,"./icons/file-plus-2.js":false,"./icons/file-plus.js":false,"./icons/file-question.js":false,"./icons/file-scan.js":false,"./icons/file-search-2.js":false,"./icons/file-search.js":false,"./icons/file-sliders.js":false,"./icons/file-spreadsheet.js":false,"./icons/file-stack.js":false,"./icons/file-symlink.js":false,"./icons/file-terminal.js":false,"./icons/file-text.js":false,"./icons/file-type-2.js":false,"./icons/file-type.js":false,"./icons/file-up.js":false,"./icons/file-user.js":false,"./icons/file-video-2.js":false,"./icons/file-video.js":false,"./icons/file-volume-2.js":false,"./icons/file-volume.js":false,"./icons/file-warning.js":false,"./icons/file-x-2.js":false,"./icons/file-x.js":false,"./icons/file.js":false,"./icons/files.js":false,"./icons/film.js":false,"./icons/filter-x.js":false,"./icons/filter.js":false,"./icons/fingerprint.js":false,"./icons/fire-extinguisher.js":false,"./icons/fish-off.js":false,"./icons/fish-symbol.js":false,"./icons/fish.js":false,"./icons/flag-off.js":false,"./icons/flag-triangle-left.js":false,"./icons/flag.js":false,"./icons/flag-triangle-right.js":false,"./icons/flame-kindling.js":false,"./icons/flame.js":false,"./icons/flashlight-off.js":false,"./icons/flashlight.js":false,"./icons/flask-conical-off.js":false,"./icons/flask-conical.js":false,"./icons/flip-horizontal-2.js":false,"./icons/flask-round.js":false,"./icons/flip-horizontal.js":false,"./icons/flip-vertical-2.js":false,"./icons/flip-vertical.js":false,"./icons/flower-2.js":false,"./icons/flower.js":false,"./icons/focus.js":false,"./icons/fold-horizontal.js":false,"./icons/fold-vertical.js":false,"./icons/folder-archive.js":false,"./icons/folder-check.js":false,"./icons/folder-clock.js":false,"./icons/folder-closed.js":false,"./icons/folder-code.js":false,"./icons/folder-dot.js":false,"./icons/folder-down.js":false,"./icons/folder-git-2.js":false,"./icons/folder-git.js":false,"./icons/folder-heart.js":false,"./icons/folder-input.js":false,"./icons/folder-kanban.js":false,"./icons/folder-key.js":false,"./icons/folder-lock.js":false,"./icons/folder-minus.js":false,"./icons/folder-open-dot.js":false,"./icons/folder-open.js":false,"./icons/folder-output.js":false,"./icons/folder-plus.js":false,"./icons/folder-root.js":false,"./icons/folder-search-2.js":false,"./icons/folder-search.js":false,"./icons/folder-symlink.js":false,"./icons/folder-sync.js":false,"./icons/folder-tree.js":false,"./icons/folder-up.js":false,"./icons/folder-x.js":false,"./icons/folder.js":false,"./icons/folders.js":false,"./icons/footprints.js":false,"./icons/forklift.js":false,"./icons/forward.js":false,"./icons/frame.js":false,"./icons/framer.js":false,"./icons/frown.js":false,"./icons/fuel.js":false,"./icons/fullscreen.js":false,"./icons/gallery-horizontal-end.js":false,"./icons/gallery-horizontal.js":false,"./icons/gallery-thumbnails.js":false,"./icons/gallery-vertical-end.js":false,"./icons/gallery-vertical.js":false,"./icons/gamepad-2.js":false,"./icons/gamepad.js":false,"./icons/gauge.js":false,"./icons/gavel.js":false,"./icons/gem.js":false,"./icons/ghost.js":false,"./icons/gift.js":false,"./icons/git-branch-plus.js":false,"./icons/git-branch.js":false,"./icons/git-commit-vertical.js":false,"./icons/git-compare-arrows.js":false,"./icons/git-compare.js":false,"./icons/git-fork.js":false,"./icons/git-graph.js":false,"./icons/git-merge.js":false,"./icons/git-pull-request-arrow.js":false,"./icons/git-pull-request-closed.js":false,"./icons/git-pull-request-create-arrow.js":false,"./icons/git-pull-request-create.js":false,"./icons/git-pull-request-draft.js":false,"./icons/git-pull-request.js":false,"./icons/github.js":false,"./icons/glass-water.js":false,"./icons/gitlab.js":false,"./icons/glasses.js":false,"./icons/globe-lock.js":false,"./icons/globe.js":false,"./icons/goal.js":false,"./icons/grab.js":false,"./icons/graduation-cap.js":false,"./icons/grape.js":false,"./icons/grip-horizontal.js":false,"./icons/grip-vertical.js":false,"./icons/grip.js":false,"./icons/group.js":false,"./icons/guitar.js":false,"./icons/ham.js":false,"./icons/hammer.js":false,"./icons/hand-heart.js":false,"./icons/hand-coins.js":false,"./icons/hand-metal.js":false,"./icons/hand-platter.js":false,"./icons/hand.js":false,"./icons/handshake.js":false,"./icons/hard-drive-download.js":false,"./icons/hard-drive-upload.js":false,"./icons/hard-drive.js":false,"./icons/hard-hat.js":false,"./icons/hash.js":false,"./icons/hdmi-port.js":false,"./icons/haze.js":false,"./icons/heading-1.js":false,"./icons/heading-2.js":false,"./icons/heading-3.js":false,"./icons/heading-4.js":false,"./icons/heading-5.js":false,"./icons/heading-6.js":false,"./icons/heading.js":false,"./icons/headphone-off.js":false,"./icons/headphones.js":false,"./icons/headset.js":false,"./icons/heart-crack.js":false,"./icons/heart-handshake.js":false,"./icons/heart-off.js":false,"./icons/heart-pulse.js":false,"./icons/heart.js":false,"./icons/heater.js":false,"./icons/hexagon.js":false,"./icons/highlighter.js":false,"./icons/history.js":false,"./icons/hop-off.js":false,"./icons/hop.js":false,"./icons/hospital.js":false,"./icons/hotel.js":false,"./icons/hourglass.js":false,"./icons/house-plug.js":false,"./icons/house-plus.js":false,"./icons/house-wifi.js":false,"./icons/id-card.js":false,"./icons/image-down.js":false,"./icons/image-minus.js":false,"./icons/image-off.js":false,"./icons/image-play.js":false,"./icons/image-up.js":false,"./icons/image-plus.js":false,"./icons/image-upscale.js":false,"./icons/image.js":false,"./icons/images.js":false,"./icons/import.js":false,"./icons/inbox.js":false,"./icons/indian-rupee.js":false,"./icons/infinity.js":false,"./icons/info.js":false,"./icons/inspection-panel.js":false,"./icons/instagram.js":false,"./icons/italic.js":false,"./icons/iteration-ccw.js":false,"./icons/japanese-yen.js":false,"./icons/iteration-cw.js":false,"./icons/kanban.js":false,"./icons/joystick.js":false,"./icons/key-round.js":false,"./icons/key-square.js":false,"./icons/key.js":false,"./icons/keyboard-off.js":false,"./icons/keyboard.js":false,"./icons/keyboard-music.js":false,"./icons/lamp-ceiling.js":false,"./icons/lamp-desk.js":false,"./icons/lamp-floor.js":false,"./icons/lamp-wall-down.js":false,"./icons/lamp-wall-up.js":false,"./icons/lamp.js":false,"./icons/land-plot.js":false,"./icons/landmark.js":false,"./icons/laptop-minimal-check.js":false,"./icons/languages.js":false,"./icons/laptop.js":false,"./icons/lasso-select.js":false,"./icons/lasso.js":false,"./icons/laugh.js":false,"./icons/layers-2.js":false,"./icons/layout-dashboard.js":false,"./icons/layout-grid.js":false,"./icons/layout-list.js":false,"./icons/layout-panel-left.js":false,"./icons/layout-panel-top.js":false,"./icons/layout-template.js":false,"./icons/leaf.js":false,"./icons/leafy-green.js":false,"./icons/lectern.js":false,"./icons/letter-text.js":false,"./icons/library-big.js":false,"./icons/library.js":false,"./icons/ligature.js":false,"./icons/life-buoy.js":false,"./icons/lightbulb-off.js":false,"./icons/link-2-off.js":false,"./icons/lightbulb.js":false,"./icons/link-2.js":false,"./icons/link.js":false,"./icons/linkedin.js":false,"./icons/list-check.js":false,"./icons/list-checks.js":false,"./icons/list-collapse.js":false,"./icons/list-filter-plus.js":false,"./icons/list-end.js":false,"./icons/list-filter.js":false,"./icons/list-minus.js":false,"./icons/list-music.js":false,"./icons/list-ordered.js":false,"./icons/list-plus.js":false,"./icons/list-restart.js":false,"./icons/list-start.js":false,"./icons/list-todo.js":false,"./icons/list-tree.js":false,"./icons/list-video.js":false,"./icons/list-x.js":false,"./icons/list.js":false,"./icons/loader-pinwheel.js":false,"./icons/loader.js":false,"./icons/locate-fixed.js":false,"./icons/locate-off.js":false,"./icons/locate.js":false,"./icons/lock-keyhole.js":false,"./icons/lock.js":false,"./icons/log-in.js":false,"./icons/log-out.js":false,"./icons/logs.js":false,"./icons/lollipop.js":false,"./icons/luggage.js":false,"./icons/magnet.js":false,"./icons/mail-check.js":false,"./icons/mail-minus.js":false,"./icons/mail-open.js":false,"./icons/mail-plus.js":false,"./icons/mail-question.js":false,"./icons/mail-search.js":false,"./icons/mail-warning.js":false,"./icons/mail-x.js":false,"./icons/mail.js":false,"./icons/mailbox.js":false,"./icons/mails.js":false,"./icons/map-pin-check-inside.js":false,"./icons/map-pin-check.js":false,"./icons/map-pin-house.js":false,"./icons/map-pin-minus-inside.js":false,"./icons/map-pin-minus.js":false,"./icons/map-pin-off.js":false,"./icons/map-pin-plus-inside.js":false,"./icons/map-pin-plus.js":false,"./icons/map-pin-x-inside.js":false,"./icons/map-pin-x.js":false,"./icons/map-pin.js":false,"./icons/map-pinned.js":false,"./icons/map-plus.js":false,"./icons/map.js":false,"./icons/mars-stroke.js":false,"./icons/mars.js":false,"./icons/martini.js":false,"./icons/maximize.js":false,"./icons/maximize-2.js":false,"./icons/medal.js":false,"./icons/megaphone-off.js":false,"./icons/megaphone.js":false,"./icons/meh.js":false,"./icons/memory-stick.js":false,"./icons/menu.js":false,"./icons/merge.js":false,"./icons/message-circle-code.js":false,"./icons/message-circle-dashed.js":false,"./icons/message-circle-heart.js":false,"./icons/message-circle-more.js":false,"./icons/message-circle-off.js":false,"./icons/message-circle-plus.js":false,"./icons/message-circle-question.js":false,"./icons/message-circle-reply.js":false,"./icons/message-circle-warning.js":false,"./icons/message-circle-x.js":false,"./icons/message-circle.js":false,"./icons/message-square-code.js":false,"./icons/message-square-dashed.js":false,"./icons/message-square-diff.js":false,"./icons/message-square-heart.js":false,"./icons/message-square-dot.js":false,"./icons/message-square-lock.js":false,"./icons/message-square-more.js":false,"./icons/message-square-off.js":false,"./icons/message-square-plus.js":false,"./icons/message-square-quote.js":false,"./icons/message-square-reply.js":false,"./icons/message-square-text.js":false,"./icons/message-square-share.js":false,"./icons/message-square-warning.js":false,"./icons/message-square-x.js":false,"./icons/message-square.js":false,"./icons/messages-square.js":false,"./icons/mic-off.js":false,"./icons/mic.js":false,"./icons/microchip.js":false,"./icons/microscope.js":false,"./icons/microwave.js":false,"./icons/milestone.js":false,"./icons/milk-off.js":false,"./icons/milk.js":false,"./icons/minimize-2.js":false,"./icons/minimize.js":false,"./icons/minus.js":false,"./icons/monitor-check.js":false,"./icons/monitor-cog.js":false,"./icons/monitor-dot.js":false,"./icons/monitor-down.js":false,"./icons/monitor-off.js":false,"./icons/monitor-pause.js":false,"./icons/monitor-play.js":false,"./icons/monitor-smartphone.js":false,"./icons/monitor-speaker.js":false,"./icons/monitor-stop.js":false,"./icons/monitor-up.js":false,"./icons/monitor-x.js":false,"./icons/monitor.js":false,"./icons/moon-star.js":false,"./icons/moon.js":false,"./icons/mountain-snow.js":false,"./icons/mountain.js":false,"./icons/mouse-pointer-2.js":false,"./icons/mouse-off.js":false,"./icons/mouse-pointer-ban.js":false,"./icons/mouse-pointer-click.js":false,"./icons/mouse-pointer.js":false,"./icons/mouse.js":false,"./icons/move-diagonal-2.js":false,"./icons/move-diagonal.js":false,"./icons/move-down-left.js":false,"./icons/move-down-right.js":false,"./icons/move-horizontal.js":false,"./icons/move-down.js":false,"./icons/move-left.js":false,"./icons/move-right.js":false,"./icons/move-up-left.js":false,"./icons/move-up-right.js":false,"./icons/move-up.js":false,"./icons/move-vertical.js":false,"./icons/move.js":false,"./icons/music-2.js":false,"./icons/music-3.js":false,"./icons/music-4.js":false,"./icons/music.js":false,"./icons/navigation-2-off.js":false,"./icons/navigation-2.js":false,"./icons/navigation-off.js":false,"./icons/navigation.js":false,"./icons/network.js":false,"./icons/newspaper.js":false,"./icons/nfc.js":false,"./icons/non-binary.js":false,"./icons/notebook-pen.js":false,"./icons/notebook-tabs.js":false,"./icons/notebook-text.js":false,"./icons/notebook.js":false,"./icons/notepad-text-dashed.js":false,"./icons/notepad-text.js":false,"./icons/nut-off.js":false,"./icons/nut.js":false,"./icons/octagon-minus.js":false,"./icons/octagon.js":false,"./icons/omega.js":false,"./icons/option.js":false,"./icons/orbit.js":false,"./icons/origami.js":false,"./icons/package-2.js":false,"./icons/package-check.js":false,"./icons/package-minus.js":false,"./icons/package-open.js":false,"./icons/package-search.js":false,"./icons/package-plus.js":false,"./icons/package-x.js":false,"./icons/package.js":false,"./icons/paint-bucket.js":false,"./icons/paint-roller.js":false,"./icons/paintbrush.js":false,"./icons/palette.js":false,"./icons/panel-bottom-close.js":false,"./icons/panel-bottom-open.js":false,"./icons/panel-bottom.js":false,"./icons/panel-right-close.js":false,"./icons/panel-right-open.js":false,"./icons/panel-right.js":false,"./icons/panel-top-close.js":false,"./icons/panel-top-open.js":false,"./icons/panel-top.js":false,"./icons/panels-left-bottom.js":false,"./icons/panels-right-bottom.js":false,"./icons/paperclip.js":false,"./icons/parentheses.js":false,"./icons/parking-meter.js":false,"./icons/party-popper.js":false,"./icons/pause.js":false,"./icons/paw-print.js":false,"./icons/pc-case.js":false,"./icons/pen-off.js":false,"./icons/pen-tool.js":false,"./icons/pencil-line.js":false,"./icons/pencil-off.js":false,"./icons/pencil-ruler.js":false,"./icons/pencil.js":false,"./icons/pentagon.js":false,"./icons/percent.js":false,"./icons/person-standing.js":false,"./icons/philippine-peso.js":false,"./icons/phone-call.js":false,"./icons/phone-forwarded.js":false,"./icons/phone-incoming.js":false,"./icons/phone-missed.js":false,"./icons/phone-off.js":false,"./icons/phone-outgoing.js":false,"./icons/phone.js":false,"./icons/pi.js":false,"./icons/piano.js":false,"./icons/pickaxe.js":false,"./icons/picture-in-picture-2.js":false,"./icons/picture-in-picture.js":false,"./icons/piggy-bank.js":false,"./icons/pilcrow-left.js":false,"./icons/pilcrow-right.js":false,"./icons/pilcrow.js":false,"./icons/pill-bottle.js":false,"./icons/pin-off.js":false,"./icons/pill.js":false,"./icons/pin.js":false,"./icons/pipette.js":false,"./icons/plane-landing.js":false,"./icons/pizza.js":false,"./icons/plane-takeoff.js":false,"./icons/plane.js":false,"./icons/play.js":false,"./icons/plug-2.js":false,"./icons/plug.js":false,"./icons/plus.js":false,"./icons/pocket-knife.js":false,"./icons/pocket.js":false,"./icons/podcast.js":false,"./icons/pointer-off.js":false,"./icons/pointer.js":false,"./icons/popcorn.js":false,"./icons/popsicle.js":false,"./icons/pound-sterling.js":false,"./icons/power-off.js":false,"./icons/power.js":false,"./icons/presentation.js":false,"./icons/printer-check.js":false,"./icons/printer.js":false,"./icons/projector.js":false,"./icons/proportions.js":false,"./icons/puzzle.js":false,"./icons/pyramid.js":false,"./icons/qr-code.js":false,"./icons/quote.js":false,"./icons/rabbit.js":false,"./icons/radar.js":false,"./icons/radical.js":false,"./icons/radiation.js":false,"./icons/radio-receiver.js":false,"./icons/radio-tower.js":false,"./icons/radio.js":false,"./icons/radius.js":false,"./icons/rail-symbol.js":false,"./icons/rat.js":false,"./icons/rainbow.js":false,"./icons/ratio.js":false,"./icons/receipt-cent.js":false,"./icons/receipt-euro.js":false,"./icons/receipt-indian-rupee.js":false,"./icons/receipt-japanese-yen.js":false,"./icons/receipt-pound-sterling.js":false,"./icons/receipt-russian-ruble.js":false,"./icons/receipt-swiss-franc.js":false,"./icons/receipt-text.js":false,"./icons/receipt.js":false,"./icons/rectangle-horizontal.js":false,"./icons/rectangle-vertical.js":false,"./icons/recycle.js":false,"./icons/redo-2.js":false,"./icons/redo-dot.js":false,"./icons/redo.js":false,"./icons/refresh-ccw-dot.js":false,"./icons/refresh-ccw.js":false,"./icons/refresh-cw-off.js":false,"./icons/refresh-cw.js":false,"./icons/refrigerator.js":false,"./icons/regex.js":false,"./icons/remove-formatting.js":false,"./icons/repeat-1.js":false,"./icons/repeat-2.js":false,"./icons/repeat.js":false,"./icons/replace-all.js":false,"./icons/replace.js":false,"./icons/reply-all.js":false,"./icons/reply.js":false,"./icons/rewind.js":false,"./icons/ribbon.js":false,"./icons/rocket.js":false,"./icons/rocking-chair.js":false,"./icons/roller-coaster.js":false,"./icons/rotate-ccw-square.js":false,"./icons/rotate-ccw.js":false,"./icons/rotate-cw-square.js":false,"./icons/rotate-cw.js":false,"./icons/route-off.js":false,"./icons/route.js":false,"./icons/router.js":false,"./icons/rss.js":false,"./icons/rows-4.js":false,"./icons/ruler.js":false,"./icons/russian-ruble.js":false,"./icons/salad.js":false,"./icons/sandwich.js":false,"./icons/sailboat.js":false,"./icons/satellite-dish.js":false,"./icons/satellite.js":false,"./icons/saudi-riyal.js":false,"./icons/save.js":false,"./icons/save-off.js":false,"./icons/save-all.js":false,"./icons/scale.js":false,"./icons/scaling.js":false,"./icons/scan-barcode.js":false,"./icons/scan-eye.js":false,"./icons/scan-face.js":false,"./icons/scan-line.js":false,"./icons/scan-heart.js":false,"./icons/scan-qr-code.js":false,"./icons/scan-search.js":false,"./icons/scan-text.js":false,"./icons/scan.js":false,"./icons/scissors-line-dashed.js":false,"./icons/school.js":false,"./icons/scissors.js":false,"./icons/screen-share.js":false,"./icons/scroll-text.js":false,"./icons/screen-share-off.js":false,"./icons/scroll.js":false,"./icons/search-check.js":false,"./icons/search-code.js":false,"./icons/search-slash.js":false,"./icons/search-x.js":false,"./icons/search.js":false,"./icons/section.js":false,"./icons/send-to-back.js":false,"./icons/send.js":false,"./icons/separator-vertical.js":false,"./icons/separator-horizontal.js":false,"./icons/server-cog.js":false,"./icons/server-crash.js":false,"./icons/server-off.js":false,"./icons/server.js":false,"./icons/settings-2.js":false,"./icons/settings.js":false,"./icons/share-2.js":false,"./icons/shapes.js":false,"./icons/share.js":false,"./icons/sheet.js":false,"./icons/shell.js":false,"./icons/shield-alert.js":false,"./icons/shield-check.js":false,"./icons/shield-ban.js":false,"./icons/shield-half.js":false,"./icons/shield-minus.js":false,"./icons/shield-ellipsis.js":false,"./icons/shield-off.js":false,"./icons/shield-plus.js":false,"./icons/shield-question.js":false,"./icons/shield-user.js":false,"./icons/shield.js":false,"./icons/ship-wheel.js":false,"./icons/ship.js":false,"./icons/shirt.js":false,"./icons/shopping-bag.js":false,"./icons/shopping-basket.js":false,"./icons/shopping-cart.js":"f4pJ7","./icons/shovel.js":false,"./icons/shrimp.js":false,"./icons/shower-head.js":false,"./icons/shrink.js":false,"./icons/shrub.js":false,"./icons/shuffle.js":false,"./icons/sigma.js":false,"./icons/signal-low.js":false,"./icons/signal-high.js":false,"./icons/signal-medium.js":false,"./icons/signal-zero.js":false,"./icons/signal.js":false,"./icons/signature.js":false,"./icons/signpost-big.js":false,"./icons/signpost.js":false,"./icons/siren.js":false,"./icons/skip-back.js":false,"./icons/skip-forward.js":false,"./icons/skull.js":false,"./icons/slack.js":false,"./icons/slash.js":false,"./icons/slice.js":false,"./icons/sliders-horizontal.js":false,"./icons/smartphone-charging.js":false,"./icons/smartphone-nfc.js":false,"./icons/smartphone.js":false,"./icons/smile-plus.js":false,"./icons/smile.js":false,"./icons/snail.js":false,"./icons/snowflake.js":false,"./icons/sofa.js":false,"./icons/soup.js":false,"./icons/space.js":false,"./icons/spade.js":false,"./icons/sparkle.js":false,"./icons/speaker.js":false,"./icons/speech.js":false,"./icons/spell-check-2.js":false,"./icons/spell-check.js":false,"./icons/spline.js":false,"./icons/split.js":false,"./icons/spray-can.js":false,"./icons/sprout.js":false,"./icons/square-dashed-bottom-code.js":false,"./icons/square-dashed-bottom.js":false,"./icons/square-radical.js":false,"./icons/square-round-corner.js":false,"./icons/square-square.js":false,"./icons/square-stack.js":false,"./icons/square.js":false,"./icons/squircle.js":false,"./icons/squirrel.js":false,"./icons/stamp.js":false,"./icons/star-half.js":false,"./icons/star-off.js":false,"./icons/step-back.js":false,"./icons/star.js":false,"./icons/stethoscope.js":false,"./icons/step-forward.js":false,"./icons/sticker.js":false,"./icons/sticky-note.js":false,"./icons/stretch-horizontal.js":false,"./icons/store.js":false,"./icons/stretch-vertical.js":false,"./icons/strikethrough.js":false,"./icons/subscript.js":false,"./icons/sun-medium.js":false,"./icons/sun-dim.js":false,"./icons/sun-snow.js":false,"./icons/sun-moon.js":false,"./icons/sun.js":false,"./icons/sunset.js":false,"./icons/superscript.js":false,"./icons/sunrise.js":false,"./icons/swiss-franc.js":false,"./icons/swatch-book.js":false,"./icons/switch-camera.js":false,"./icons/sword.js":false,"./icons/swords.js":false,"./icons/table-2.js":false,"./icons/syringe.js":false,"./icons/table-cells-merge.js":false,"./icons/table-cells-split.js":false,"./icons/table-columns-split.js":false,"./icons/table-properties.js":false,"./icons/table-of-contents.js":false,"./icons/table.js":false,"./icons/table-rows-split.js":false,"./icons/tablet-smartphone.js":false,"./icons/tablets.js":false,"./icons/tablet.js":false,"./icons/tags.js":false,"./icons/tag.js":false,"./icons/tally-1.js":false,"./icons/tally-2.js":false,"./icons/tally-3.js":false,"./icons/tally-5.js":false,"./icons/tangent.js":false,"./icons/tally-4.js":false,"./icons/target.js":false,"./icons/telescope.js":false,"./icons/terminal.js":false,"./icons/tent-tree.js":false,"./icons/tent.js":false,"./icons/test-tube.js":false,"./icons/text-cursor-input.js":false,"./icons/test-tubes.js":false,"./icons/text-search.js":false,"./icons/text-cursor.js":false,"./icons/text-quote.js":false,"./icons/text.js":false,"./icons/theater.js":false,"./icons/thermometer-sun.js":false,"./icons/thermometer-snowflake.js":false,"./icons/thermometer.js":false,"./icons/thumbs-down.js":false,"./icons/thumbs-up.js":false,"./icons/ticket-check.js":false,"./icons/ticket-minus.js":false,"./icons/ticket-plus.js":false,"./icons/ticket-percent.js":false,"./icons/ticket-slash.js":false,"./icons/ticket-x.js":false,"./icons/ticket.js":false,"./icons/tickets-plane.js":false,"./icons/tickets.js":false,"./icons/timer-off.js":false,"./icons/timer-reset.js":false,"./icons/toggle-left.js":false,"./icons/timer.js":false,"./icons/toilet.js":false,"./icons/toggle-right.js":false,"./icons/tornado.js":false,"./icons/torus.js":false,"./icons/touchpad.js":false,"./icons/touchpad-off.js":false,"./icons/tower-control.js":false,"./icons/toy-brick.js":false,"./icons/tractor.js":false,"./icons/traffic-cone.js":false,"./icons/train-front-tunnel.js":false,"./icons/train-front.js":false,"./icons/train-track.js":false,"./icons/transgender.js":false,"./icons/trash-2.js":false,"./icons/trash.js":false,"./icons/tree-deciduous.js":false,"./icons/tree-pine.js":false,"./icons/trees.js":false,"./icons/trello.js":false,"./icons/trending-down.js":false,"./icons/trending-up.js":false,"./icons/trending-up-down.js":false,"./icons/triangle-dashed.js":false,"./icons/triangle-right.js":false,"./icons/triangle.js":false,"./icons/trophy.js":false,"./icons/truck.js":false,"./icons/turtle.js":false,"./icons/tv-minimal-play.js":false,"./icons/tv.js":false,"./icons/twitch.js":false,"./icons/twitter.js":false,"./icons/type-outline.js":false,"./icons/type.js":false,"./icons/umbrella-off.js":false,"./icons/umbrella.js":false,"./icons/underline.js":false,"./icons/undo-2.js":false,"./icons/undo.js":false,"./icons/undo-dot.js":false,"./icons/unfold-vertical.js":false,"./icons/ungroup.js":false,"./icons/unfold-horizontal.js":false,"./icons/unlink-2.js":false,"./icons/unlink.js":false,"./icons/unplug.js":false,"./icons/upload.js":false,"./icons/usb.js":false,"./icons/user-check.js":false,"./icons/user-cog.js":false,"./icons/user-minus.js":false,"./icons/user-pen.js":false,"./icons/user-plus.js":false,"./icons/user-round-search.js":false,"./icons/user-round-pen.js":false,"./icons/user-search.js":false,"./icons/user-x.js":false,"./icons/user.js":false,"./icons/users.js":false,"./icons/utility-pole.js":false,"./icons/variable.js":false,"./icons/vault.js":false,"./icons/vegan.js":false,"./icons/venetian-mask.js":false,"./icons/venus-and-mars.js":false,"./icons/vibrate-off.js":false,"./icons/vibrate.js":false,"./icons/venus.js":false,"./icons/video-off.js":false,"./icons/video.js":false,"./icons/videotape.js":false,"./icons/view.js":false,"./icons/voicemail.js":false,"./icons/volume-1.js":false,"./icons/volleyball.js":false,"./icons/volume-2.js":false,"./icons/volume-off.js":false,"./icons/volume-x.js":false,"./icons/volume.js":false,"./icons/vote.js":false,"./icons/wallet-cards.js":false,"./icons/wallet.js":false,"./icons/wallpaper.js":false,"./icons/wand.js":false,"./icons/warehouse.js":false,"./icons/washing-machine.js":false,"./icons/watch.js":false,"./icons/waves-ladder.js":false,"./icons/waves.js":false,"./icons/waypoints.js":false,"./icons/webcam.js":false,"./icons/webhook-off.js":false,"./icons/webhook.js":false,"./icons/weight.js":false,"./icons/wheat-off.js":false,"./icons/wheat.js":false,"./icons/whole-word.js":false,"./icons/wifi-high.js":false,"./icons/wifi-low.js":false,"./icons/wifi-off.js":false,"./icons/wifi-zero.js":false,"./icons/wifi.js":false,"./icons/wind.js":false,"./icons/wind-arrow-down.js":false,"./icons/wine-off.js":false,"./icons/wine.js":false,"./icons/worm.js":false,"./icons/workflow.js":false,"./icons/wrap-text.js":false,"./icons/wrench.js":false,"./icons/x.js":false,"./icons/zap-off.js":false,"./icons/youtube.js":false,"./icons/zap.js":false,"./icons/zoom-in.js":false,"./icons/zoom-out.js":false,"./icons/arrow-down-0-1.js":false,"./icons/arrow-down-1-0.js":false,"./icons/arrow-up-0-1.js":false,"./icons/arrow-up-1-0.js":false,"./createLucideIcon.js":false,"./Icon.js":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"f4pJ7":[function(require,module,exports,__globalThis) {
 /**
  * @license lucide-react v0.482.0 - ISC
  *
@@ -34860,28 +34895,37 @@ var _iconJsDefault = parcelHelpers.interopDefault(_iconJs);
  */ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "__iconNode", ()=>__iconNode);
-parcelHelpers.export(exports, "default", ()=>Search);
+parcelHelpers.export(exports, "default", ()=>ShoppingCart);
 var _createLucideIconJs = require("../createLucideIcon.js");
 var _createLucideIconJsDefault = parcelHelpers.interopDefault(_createLucideIconJs);
 const __iconNode = [
     [
         "circle",
         {
-            cx: "11",
-            cy: "11",
-            r: "8",
-            key: "4ej97u"
+            cx: "8",
+            cy: "21",
+            r: "1",
+            key: "jimo8o"
+        }
+    ],
+    [
+        "circle",
+        {
+            cx: "19",
+            cy: "21",
+            r: "1",
+            key: "13723u"
         }
     ],
     [
         "path",
         {
-            d: "m21 21-4.3-4.3",
-            key: "1qie3q"
+            d: "M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12",
+            key: "9zh506"
         }
     ]
 ];
-const Search = (0, _createLucideIconJsDefault.default)("Search", __iconNode);
+const ShoppingCart = (0, _createLucideIconJsDefault.default)("ShoppingCart", __iconNode);
 
 },{"../createLucideIcon.js":"gBwAg","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gBwAg":[function(require,module,exports,__globalThis) {
 /**
@@ -34974,48 +35018,7 @@ var defaultAttributes = {
     strokeLinejoin: "round"
 };
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"f4pJ7":[function(require,module,exports,__globalThis) {
-/**
- * @license lucide-react v0.482.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "__iconNode", ()=>__iconNode);
-parcelHelpers.export(exports, "default", ()=>ShoppingCart);
-var _createLucideIconJs = require("../createLucideIcon.js");
-var _createLucideIconJsDefault = parcelHelpers.interopDefault(_createLucideIconJs);
-const __iconNode = [
-    [
-        "circle",
-        {
-            cx: "8",
-            cy: "21",
-            r: "1",
-            key: "jimo8o"
-        }
-    ],
-    [
-        "circle",
-        {
-            cx: "19",
-            cy: "21",
-            r: "1",
-            key: "13723u"
-        }
-    ],
-    [
-        "path",
-        {
-            d: "M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12",
-            key: "9zh506"
-        }
-    ]
-];
-const ShoppingCart = (0, _createLucideIconJsDefault.default)("ShoppingCart", __iconNode);
-
-},{"../createLucideIcon.js":"gBwAg","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"62sf7":[function(require,module,exports,__globalThis) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"62sf7":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "Provider", ()=>Provider_default);
@@ -36018,7 +36021,825 @@ module.exports = require("374a059340689e89");
     "undefined" !== typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ && "function" === typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(Error());
 })();
 
-},{"8b38fc6c74f16e20":"21dqq"}],"8yaV8":[function(require,module,exports,__globalThis) {
+},{"8b38fc6c74f16e20":"21dqq"}],"hsmcH":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$5afe = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$5afe.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _reactRouterDom = require("react-router-dom");
+var _reactToastify = require("react-toastify");
+var _s = $RefreshSig$();
+const Login = ({ onLogin })=>{
+    _s();
+    const navigate = (0, _reactRouterDom.useNavigate)();
+    const handleLogIn = ()=>{
+        onLogin();
+        (0, _reactToastify.toast).success("\uD83C\uDF89 Welcome! You have successfully logged in.", {
+            position: "bottom-center",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            theme: "colored"
+        });
+        setTimeout(()=>{
+            navigate("/");
+        }, 2000);
+    };
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: " p-4 m-4 flex flex-col items-center",
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
+                className: "text-3xl font-bold py-4",
+                children: "Login Page"
+            }, void 0, false, {
+                fileName: "src/components/Login.js",
+                lineNumber: 26,
+                columnNumber: 9
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                className: "w-92 px-4 py-4 border border-gray-500",
+                type: "text",
+                placeholder: "UserName"
+            }, void 0, false, {
+                fileName: "src/components/Login.js",
+                lineNumber: 27,
+                columnNumber: 9
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                className: "border border-gray-400 bg-blue-600 px-40 m-6 py-3 rounded-2xl cursor-pointer",
+                onClick: handleLogIn,
+                children: "Login"
+            }, void 0, false, {
+                fileName: "src/components/Login.js",
+                lineNumber: 29,
+                columnNumber: 7
+            }, undefined)
+        ]
+    }, void 0, true, {
+        fileName: "src/components/Login.js",
+        lineNumber: 25,
+        columnNumber: 5
+    }, undefined);
+};
+_s(Login, "CzcTeTziyjMsSrAVmHuCCb6+Bfg=", false, function() {
+    return [
+        (0, _reactRouterDom.useNavigate)
+    ];
+});
+_c = Login;
+exports.default = Login;
+var _c;
+$RefreshReg$(_c, "Login");
+
+  $parcel$ReactRefreshHelpers$5afe.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react-router-dom":"9xmpe","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react-toastify":"lV1rO"}],"lV1rO":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "Bounce", ()=>lt);
+parcelHelpers.export(exports, "Flip", ()=>uo);
+parcelHelpers.export(exports, "Icons", ()=>W);
+parcelHelpers.export(exports, "Slide", ()=>mo);
+parcelHelpers.export(exports, "ToastContainer", ()=>Lt);
+parcelHelpers.export(exports, "Zoom", ()=>po);
+parcelHelpers.export(exports, "collapseToast", ()=>Z);
+parcelHelpers.export(exports, "cssTransition", ()=>$);
+parcelHelpers.export(exports, "toast", ()=>y);
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _clsx = require("clsx");
+var _clsxDefault = parcelHelpers.interopDefault(_clsx);
+"use client";
+function Mt(t) {
+    if (!t || typeof document == "undefined") return;
+    let o = document.head || document.getElementsByTagName("head")[0], e = document.createElement("style");
+    e.type = "text/css", o.firstChild ? o.insertBefore(e, o.firstChild) : o.appendChild(e), e.styleSheet ? e.styleSheet.cssText = t : e.appendChild(document.createTextNode(t));
+}
+Mt(`:root{--toastify-color-light: #fff;--toastify-color-dark: #121212;--toastify-color-info: #3498db;--toastify-color-success: #07bc0c;--toastify-color-warning: #f1c40f;--toastify-color-error: hsl(6, 78%, 57%);--toastify-color-transparent: rgba(255, 255, 255, .7);--toastify-icon-color-info: var(--toastify-color-info);--toastify-icon-color-success: var(--toastify-color-success);--toastify-icon-color-warning: var(--toastify-color-warning);--toastify-icon-color-error: var(--toastify-color-error);--toastify-container-width: fit-content;--toastify-toast-width: 320px;--toastify-toast-offset: 16px;--toastify-toast-top: max(var(--toastify-toast-offset), env(safe-area-inset-top));--toastify-toast-right: max(var(--toastify-toast-offset), env(safe-area-inset-right));--toastify-toast-left: max(var(--toastify-toast-offset), env(safe-area-inset-left));--toastify-toast-bottom: max(var(--toastify-toast-offset), env(safe-area-inset-bottom));--toastify-toast-background: #fff;--toastify-toast-padding: 14px;--toastify-toast-min-height: 64px;--toastify-toast-max-height: 800px;--toastify-toast-bd-radius: 6px;--toastify-toast-shadow: 0px 4px 12px rgba(0, 0, 0, .1);--toastify-font-family: sans-serif;--toastify-z-index: 9999;--toastify-text-color-light: #757575;--toastify-text-color-dark: #fff;--toastify-text-color-info: #fff;--toastify-text-color-success: #fff;--toastify-text-color-warning: #fff;--toastify-text-color-error: #fff;--toastify-spinner-color: #616161;--toastify-spinner-color-empty-area: #e0e0e0;--toastify-color-progress-light: linear-gradient(to right, #4cd964, #5ac8fa, #007aff, #34aadc, #5856d6, #ff2d55);--toastify-color-progress-dark: #bb86fc;--toastify-color-progress-info: var(--toastify-color-info);--toastify-color-progress-success: var(--toastify-color-success);--toastify-color-progress-warning: var(--toastify-color-warning);--toastify-color-progress-error: var(--toastify-color-error);--toastify-color-progress-bgo: .2}.Toastify__toast-container{z-index:var(--toastify-z-index);-webkit-transform:translate3d(0,0,var(--toastify-z-index));position:fixed;width:var(--toastify-container-width);box-sizing:border-box;color:#fff;display:flex;flex-direction:column}.Toastify__toast-container--top-left{top:var(--toastify-toast-top);left:var(--toastify-toast-left)}.Toastify__toast-container--top-center{top:var(--toastify-toast-top);left:50%;transform:translate(-50%);align-items:center}.Toastify__toast-container--top-right{top:var(--toastify-toast-top);right:var(--toastify-toast-right);align-items:end}.Toastify__toast-container--bottom-left{bottom:var(--toastify-toast-bottom);left:var(--toastify-toast-left)}.Toastify__toast-container--bottom-center{bottom:var(--toastify-toast-bottom);left:50%;transform:translate(-50%);align-items:center}.Toastify__toast-container--bottom-right{bottom:var(--toastify-toast-bottom);right:var(--toastify-toast-right);align-items:end}.Toastify__toast{--y: 0;position:relative;touch-action:none;width:var(--toastify-toast-width);min-height:var(--toastify-toast-min-height);box-sizing:border-box;margin-bottom:1rem;padding:var(--toastify-toast-padding);border-radius:var(--toastify-toast-bd-radius);box-shadow:var(--toastify-toast-shadow);max-height:var(--toastify-toast-max-height);font-family:var(--toastify-font-family);z-index:0;display:flex;flex:1 auto;align-items:center;word-break:break-word}@media only screen and (max-width: 480px){.Toastify__toast-container{width:100vw;left:env(safe-area-inset-left);margin:0}.Toastify__toast-container--top-left,.Toastify__toast-container--top-center,.Toastify__toast-container--top-right{top:env(safe-area-inset-top);transform:translate(0)}.Toastify__toast-container--bottom-left,.Toastify__toast-container--bottom-center,.Toastify__toast-container--bottom-right{bottom:env(safe-area-inset-bottom);transform:translate(0)}.Toastify__toast-container--rtl{right:env(safe-area-inset-right);left:initial}.Toastify__toast{--toastify-toast-width: 100%;margin-bottom:0;border-radius:0}}.Toastify__toast-container[data-stacked=true]{width:var(--toastify-toast-width)}.Toastify__toast--stacked{position:absolute;width:100%;transform:translate3d(0,var(--y),0) scale(var(--s));transition:transform .3s}.Toastify__toast--stacked[data-collapsed] .Toastify__toast-body,.Toastify__toast--stacked[data-collapsed] .Toastify__close-button{transition:opacity .1s}.Toastify__toast--stacked[data-collapsed=false]{overflow:visible}.Toastify__toast--stacked[data-collapsed=true]:not(:last-child)>*{opacity:0}.Toastify__toast--stacked:after{content:"";position:absolute;left:0;right:0;height:calc(var(--g) * 1px);bottom:100%}.Toastify__toast--stacked[data-pos=top]{top:0}.Toastify__toast--stacked[data-pos=bot]{bottom:0}.Toastify__toast--stacked[data-pos=bot].Toastify__toast--stacked:before{transform-origin:top}.Toastify__toast--stacked[data-pos=top].Toastify__toast--stacked:before{transform-origin:bottom}.Toastify__toast--stacked:before{content:"";position:absolute;left:0;right:0;bottom:0;height:100%;transform:scaleY(3);z-index:-1}.Toastify__toast--rtl{direction:rtl}.Toastify__toast--close-on-click{cursor:pointer}.Toastify__toast-icon{margin-inline-end:10px;width:22px;flex-shrink:0;display:flex}.Toastify--animate{animation-fill-mode:both;animation-duration:.5s}.Toastify--animate-icon{animation-fill-mode:both;animation-duration:.3s}.Toastify__toast-theme--dark{background:var(--toastify-color-dark);color:var(--toastify-text-color-dark)}.Toastify__toast-theme--light,.Toastify__toast-theme--colored.Toastify__toast--default{background:var(--toastify-color-light);color:var(--toastify-text-color-light)}.Toastify__toast-theme--colored.Toastify__toast--info{color:var(--toastify-text-color-info);background:var(--toastify-color-info)}.Toastify__toast-theme--colored.Toastify__toast--success{color:var(--toastify-text-color-success);background:var(--toastify-color-success)}.Toastify__toast-theme--colored.Toastify__toast--warning{color:var(--toastify-text-color-warning);background:var(--toastify-color-warning)}.Toastify__toast-theme--colored.Toastify__toast--error{color:var(--toastify-text-color-error);background:var(--toastify-color-error)}.Toastify__progress-bar-theme--light{background:var(--toastify-color-progress-light)}.Toastify__progress-bar-theme--dark{background:var(--toastify-color-progress-dark)}.Toastify__progress-bar--info{background:var(--toastify-color-progress-info)}.Toastify__progress-bar--success{background:var(--toastify-color-progress-success)}.Toastify__progress-bar--warning{background:var(--toastify-color-progress-warning)}.Toastify__progress-bar--error{background:var(--toastify-color-progress-error)}.Toastify__progress-bar-theme--colored.Toastify__progress-bar--info,.Toastify__progress-bar-theme--colored.Toastify__progress-bar--success,.Toastify__progress-bar-theme--colored.Toastify__progress-bar--warning,.Toastify__progress-bar-theme--colored.Toastify__progress-bar--error{background:var(--toastify-color-transparent)}.Toastify__close-button{color:#fff;position:absolute;top:6px;right:6px;background:transparent;outline:none;border:none;padding:0;cursor:pointer;opacity:.7;transition:.3s ease;z-index:1}.Toastify__toast--rtl .Toastify__close-button{left:6px;right:unset}.Toastify__close-button--light{color:#000;opacity:.3}.Toastify__close-button>svg{fill:currentColor;height:16px;width:14px}.Toastify__close-button:hover,.Toastify__close-button:focus{opacity:1}@keyframes Toastify__trackProgress{0%{transform:scaleX(1)}to{transform:scaleX(0)}}.Toastify__progress-bar{position:absolute;bottom:0;left:0;width:100%;height:100%;z-index:1;opacity:.7;transform-origin:left}.Toastify__progress-bar--animated{animation:Toastify__trackProgress linear 1 forwards}.Toastify__progress-bar--controlled{transition:transform .2s}.Toastify__progress-bar--rtl{right:0;left:initial;transform-origin:right;border-bottom-left-radius:initial}.Toastify__progress-bar--wrp{position:absolute;overflow:hidden;bottom:0;left:0;width:100%;height:5px;border-bottom-left-radius:var(--toastify-toast-bd-radius);border-bottom-right-radius:var(--toastify-toast-bd-radius)}.Toastify__progress-bar--wrp[data-hidden=true]{opacity:0}.Toastify__progress-bar--bg{opacity:var(--toastify-color-progress-bgo);width:100%;height:100%}.Toastify__spinner{width:20px;height:20px;box-sizing:border-box;border:2px solid;border-radius:100%;border-color:var(--toastify-spinner-color-empty-area);border-right-color:var(--toastify-spinner-color);animation:Toastify__spin .65s linear infinite}@keyframes Toastify__bounceInRight{0%,60%,75%,90%,to{animation-timing-function:cubic-bezier(.215,.61,.355,1)}0%{opacity:0;transform:translate3d(3000px,0,0)}60%{opacity:1;transform:translate3d(-25px,0,0)}75%{transform:translate3d(10px,0,0)}90%{transform:translate3d(-5px,0,0)}to{transform:none}}@keyframes Toastify__bounceOutRight{20%{opacity:1;transform:translate3d(-20px,var(--y),0)}to{opacity:0;transform:translate3d(2000px,var(--y),0)}}@keyframes Toastify__bounceInLeft{0%,60%,75%,90%,to{animation-timing-function:cubic-bezier(.215,.61,.355,1)}0%{opacity:0;transform:translate3d(-3000px,0,0)}60%{opacity:1;transform:translate3d(25px,0,0)}75%{transform:translate3d(-10px,0,0)}90%{transform:translate3d(5px,0,0)}to{transform:none}}@keyframes Toastify__bounceOutLeft{20%{opacity:1;transform:translate3d(20px,var(--y),0)}to{opacity:0;transform:translate3d(-2000px,var(--y),0)}}@keyframes Toastify__bounceInUp{0%,60%,75%,90%,to{animation-timing-function:cubic-bezier(.215,.61,.355,1)}0%{opacity:0;transform:translate3d(0,3000px,0)}60%{opacity:1;transform:translate3d(0,-20px,0)}75%{transform:translate3d(0,10px,0)}90%{transform:translate3d(0,-5px,0)}to{transform:translateZ(0)}}@keyframes Toastify__bounceOutUp{20%{transform:translate3d(0,calc(var(--y) - 10px),0)}40%,45%{opacity:1;transform:translate3d(0,calc(var(--y) + 20px),0)}to{opacity:0;transform:translate3d(0,-2000px,0)}}@keyframes Toastify__bounceInDown{0%,60%,75%,90%,to{animation-timing-function:cubic-bezier(.215,.61,.355,1)}0%{opacity:0;transform:translate3d(0,-3000px,0)}60%{opacity:1;transform:translate3d(0,25px,0)}75%{transform:translate3d(0,-10px,0)}90%{transform:translate3d(0,5px,0)}to{transform:none}}@keyframes Toastify__bounceOutDown{20%{transform:translate3d(0,calc(var(--y) - 10px),0)}40%,45%{opacity:1;transform:translate3d(0,calc(var(--y) + 20px),0)}to{opacity:0;transform:translate3d(0,2000px,0)}}.Toastify__bounce-enter--top-left,.Toastify__bounce-enter--bottom-left{animation-name:Toastify__bounceInLeft}.Toastify__bounce-enter--top-right,.Toastify__bounce-enter--bottom-right{animation-name:Toastify__bounceInRight}.Toastify__bounce-enter--top-center{animation-name:Toastify__bounceInDown}.Toastify__bounce-enter--bottom-center{animation-name:Toastify__bounceInUp}.Toastify__bounce-exit--top-left,.Toastify__bounce-exit--bottom-left{animation-name:Toastify__bounceOutLeft}.Toastify__bounce-exit--top-right,.Toastify__bounce-exit--bottom-right{animation-name:Toastify__bounceOutRight}.Toastify__bounce-exit--top-center{animation-name:Toastify__bounceOutUp}.Toastify__bounce-exit--bottom-center{animation-name:Toastify__bounceOutDown}@keyframes Toastify__zoomIn{0%{opacity:0;transform:scale3d(.3,.3,.3)}50%{opacity:1}}@keyframes Toastify__zoomOut{0%{opacity:1}50%{opacity:0;transform:translate3d(0,var(--y),0) scale3d(.3,.3,.3)}to{opacity:0}}.Toastify__zoom-enter{animation-name:Toastify__zoomIn}.Toastify__zoom-exit{animation-name:Toastify__zoomOut}@keyframes Toastify__flipIn{0%{transform:perspective(400px) rotateX(90deg);animation-timing-function:ease-in;opacity:0}40%{transform:perspective(400px) rotateX(-20deg);animation-timing-function:ease-in}60%{transform:perspective(400px) rotateX(10deg);opacity:1}80%{transform:perspective(400px) rotateX(-5deg)}to{transform:perspective(400px)}}@keyframes Toastify__flipOut{0%{transform:translate3d(0,var(--y),0) perspective(400px)}30%{transform:translate3d(0,var(--y),0) perspective(400px) rotateX(-20deg);opacity:1}to{transform:translate3d(0,var(--y),0) perspective(400px) rotateX(90deg);opacity:0}}.Toastify__flip-enter{animation-name:Toastify__flipIn}.Toastify__flip-exit{animation-name:Toastify__flipOut}@keyframes Toastify__slideInRight{0%{transform:translate3d(110%,0,0);visibility:visible}to{transform:translate3d(0,var(--y),0)}}@keyframes Toastify__slideInLeft{0%{transform:translate3d(-110%,0,0);visibility:visible}to{transform:translate3d(0,var(--y),0)}}@keyframes Toastify__slideInUp{0%{transform:translate3d(0,110%,0);visibility:visible}to{transform:translate3d(0,var(--y),0)}}@keyframes Toastify__slideInDown{0%{transform:translate3d(0,-110%,0);visibility:visible}to{transform:translate3d(0,var(--y),0)}}@keyframes Toastify__slideOutRight{0%{transform:translate3d(0,var(--y),0)}to{visibility:hidden;transform:translate3d(110%,var(--y),0)}}@keyframes Toastify__slideOutLeft{0%{transform:translate3d(0,var(--y),0)}to{visibility:hidden;transform:translate3d(-110%,var(--y),0)}}@keyframes Toastify__slideOutDown{0%{transform:translate3d(0,var(--y),0)}to{visibility:hidden;transform:translate3d(0,500px,0)}}@keyframes Toastify__slideOutUp{0%{transform:translate3d(0,var(--y),0)}to{visibility:hidden;transform:translate3d(0,-500px,0)}}.Toastify__slide-enter--top-left,.Toastify__slide-enter--bottom-left{animation-name:Toastify__slideInLeft}.Toastify__slide-enter--top-right,.Toastify__slide-enter--bottom-right{animation-name:Toastify__slideInRight}.Toastify__slide-enter--top-center{animation-name:Toastify__slideInDown}.Toastify__slide-enter--bottom-center{animation-name:Toastify__slideInUp}.Toastify__slide-exit--top-left,.Toastify__slide-exit--bottom-left{animation-name:Toastify__slideOutLeft;animation-timing-function:ease-in;animation-duration:.3s}.Toastify__slide-exit--top-right,.Toastify__slide-exit--bottom-right{animation-name:Toastify__slideOutRight;animation-timing-function:ease-in;animation-duration:.3s}.Toastify__slide-exit--top-center{animation-name:Toastify__slideOutUp;animation-timing-function:ease-in;animation-duration:.3s}.Toastify__slide-exit--bottom-center{animation-name:Toastify__slideOutDown;animation-timing-function:ease-in;animation-duration:.3s}@keyframes Toastify__spin{0%{transform:rotate(0)}to{transform:rotate(360deg)}}
+`);
+var L = (t)=>typeof t == "number" && !isNaN(t), N = (t)=>typeof t == "string", P = (t)=>typeof t == "function", mt = (t)=>N(t) || L(t), B = (t)=>N(t) || P(t) ? t : null, pt = (t, o)=>t === !1 || L(t) && t > 0 ? t : o, z = (t)=>(0, _react.isValidElement)(t) || N(t) || P(t) || L(t);
+function Z(t, o, e = 300) {
+    let { scrollHeight: r, style: s } = t;
+    requestAnimationFrame(()=>{
+        s.minHeight = "initial", s.height = r + "px", s.transition = `all ${e}ms`, requestAnimationFrame(()=>{
+            s.height = "0", s.padding = "0", s.margin = "0", setTimeout(o, e);
+        });
+    });
+}
+function $({ enter: t, exit: o, appendPosition: e = !1, collapse: r = !0, collapseDuration: s = 300 }) {
+    return function({ children: a, position: d, preventExitTransition: c, done: T, nodeRef: g, isIn: v, playToast: x }) {
+        let C = e ? `${t}--${d}` : t, S = e ? `${o}--${d}` : o, E = (0, _react.useRef)(0);
+        return (0, _react.useLayoutEffect)(()=>{
+            let f = g.current, p = C.split(" "), b = (n)=>{
+                n.target === g.current && (x(), f.removeEventListener("animationend", b), f.removeEventListener("animationcancel", b), E.current === 0 && n.type !== "animationcancel" && f.classList.remove(...p));
+            };
+            (()=>{
+                f.classList.add(...p), f.addEventListener("animationend", b), f.addEventListener("animationcancel", b);
+            })();
+        }, []), (0, _react.useEffect)(()=>{
+            let f = g.current, p = ()=>{
+                f.removeEventListener("animationend", p), r ? Z(f, T, s) : T();
+            };
+            v || (c ? p() : (()=>{
+                E.current = 1, f.className += ` ${S}`, f.addEventListener("animationend", p);
+            })());
+        }, [
+            v
+        ]), (0, _reactDefault.default).createElement((0, _reactDefault.default).Fragment, null, a);
+    };
+}
+function J(t, o) {
+    return {
+        content: tt(t.content, t.props),
+        containerId: t.props.containerId,
+        id: t.props.toastId,
+        theme: t.props.theme,
+        type: t.props.type,
+        data: t.props.data || {},
+        isLoading: t.props.isLoading,
+        icon: t.props.icon,
+        reason: t.removalReason,
+        status: o
+    };
+}
+function tt(t, o, e = !1) {
+    return (0, _react.isValidElement)(t) && !N(t.type) ? (0, _react.cloneElement)(t, {
+        closeToast: o.closeToast,
+        toastProps: o,
+        data: o.data,
+        isPaused: e
+    }) : P(t) ? t({
+        closeToast: o.closeToast,
+        toastProps: o,
+        data: o.data,
+        isPaused: e
+    }) : t;
+}
+function yt({ closeToast: t, theme: o, ariaLabel: e = "close" }) {
+    return (0, _reactDefault.default).createElement("button", {
+        className: `Toastify__close-button Toastify__close-button--${o}`,
+        type: "button",
+        onClick: (r)=>{
+            r.stopPropagation(), t(!0);
+        },
+        "aria-label": e
+    }, (0, _reactDefault.default).createElement("svg", {
+        "aria-hidden": "true",
+        viewBox: "0 0 14 16"
+    }, (0, _reactDefault.default).createElement("path", {
+        fillRule: "evenodd",
+        d: "M7.71 8.23l3.75 3.75-1.48 1.48-3.75-3.75-3.75 3.75L1 11.98l3.75-3.75L1 4.48 2.48 3l3.75 3.75L9.98 3l1.48 1.48-3.75 3.75z"
+    })));
+}
+function gt({ delay: t, isRunning: o, closeToast: e, type: r = "default", hide: s, className: l, controlledProgress: a, progress: d, rtl: c, isIn: T, theme: g }) {
+    let v = s || a && d === 0, x = {
+        animationDuration: `${t}ms`,
+        animationPlayState: o ? "running" : "paused"
+    };
+    a && (x.transform = `scaleX(${d})`);
+    let C = (0, _clsxDefault.default)("Toastify__progress-bar", a ? "Toastify__progress-bar--controlled" : "Toastify__progress-bar--animated", `Toastify__progress-bar-theme--${g}`, `Toastify__progress-bar--${r}`, {
+        ["Toastify__progress-bar--rtl"]: c
+    }), S = P(l) ? l({
+        rtl: c,
+        type: r,
+        defaultClassName: C
+    }) : (0, _clsxDefault.default)(C, l), E = {
+        [a && d >= 1 ? "onTransitionEnd" : "onAnimationEnd"]: a && d < 1 ? null : ()=>{
+            T && e();
+        }
+    };
+    return (0, _reactDefault.default).createElement("div", {
+        className: "Toastify__progress-bar--wrp",
+        "data-hidden": v
+    }, (0, _reactDefault.default).createElement("div", {
+        className: `Toastify__progress-bar--bg Toastify__progress-bar-theme--${g} Toastify__progress-bar--${r}`
+    }), (0, _reactDefault.default).createElement("div", {
+        role: "progressbar",
+        "aria-hidden": v ? "true" : "false",
+        "aria-label": "notification timer",
+        className: S,
+        style: x,
+        ...E
+    }));
+}
+var Xt = 1, at = ()=>`${Xt++}`;
+function _t(t, o, e) {
+    let r = 1, s = 0, l = [], a = [], d = o, c = new Map, T = new Set, g = (i)=>(T.add(i), ()=>T.delete(i)), v = ()=>{
+        a = Array.from(c.values()), T.forEach((i)=>i());
+    }, x = ({ containerId: i, toastId: n, updateId: u })=>{
+        let h = i ? i !== t : t !== 1, m = c.has(n) && u == null;
+        return h || m;
+    }, C = (i, n)=>{
+        c.forEach((u)=>{
+            var h;
+            (n == null || n === u.props.toastId) && ((h = u.toggle) == null || h.call(u, i));
+        });
+    }, S = (i)=>{
+        var n, u;
+        (u = (n = i.props) == null ? void 0 : n.onClose) == null || u.call(n, i.removalReason), i.isActive = !1;
+    }, E = (i)=>{
+        if (i == null) c.forEach(S);
+        else {
+            let n = c.get(i);
+            n && S(n);
+        }
+        v();
+    }, f = ()=>{
+        s -= l.length, l = [];
+    }, p = (i)=>{
+        var m, _;
+        let { toastId: n, updateId: u } = i.props, h = u == null;
+        i.staleId && c.delete(i.staleId), i.isActive = !0, c.set(n, i), v(), e(J(i, h ? "added" : "updated")), h && ((_ = (m = i.props).onOpen) == null || _.call(m));
+    };
+    return {
+        id: t,
+        props: d,
+        observe: g,
+        toggle: C,
+        removeToast: E,
+        toasts: c,
+        clearQueue: f,
+        buildToast: (i, n)=>{
+            if (x(n)) return;
+            let { toastId: u, updateId: h, data: m, staleId: _, delay: k } = n, M = h == null;
+            M && s++;
+            let A = {
+                ...d,
+                style: d.toastStyle,
+                key: r++,
+                ...Object.fromEntries(Object.entries(n).filter(([D, Y])=>Y != null)),
+                toastId: u,
+                updateId: h,
+                data: m,
+                isIn: !1,
+                className: B(n.className || d.toastClassName),
+                progressClassName: B(n.progressClassName || d.progressClassName),
+                autoClose: n.isLoading ? !1 : pt(n.autoClose, d.autoClose),
+                closeToast (D) {
+                    c.get(u).removalReason = D, E(u);
+                },
+                deleteToast () {
+                    let D = c.get(u);
+                    if (D != null) {
+                        if (e(J(D, "removed")), c.delete(u), s--, s < 0 && (s = 0), l.length > 0) {
+                            p(l.shift());
+                            return;
+                        }
+                        v();
+                    }
+                }
+            };
+            A.closeButton = d.closeButton, n.closeButton === !1 || z(n.closeButton) ? A.closeButton = n.closeButton : n.closeButton === !0 && (A.closeButton = z(d.closeButton) ? d.closeButton : !0);
+            let R = {
+                content: i,
+                props: A,
+                staleId: _
+            };
+            d.limit && d.limit > 0 && s > d.limit && M ? l.push(R) : L(k) ? setTimeout(()=>{
+                p(R);
+            }, k) : p(R);
+        },
+        setProps (i) {
+            d = i;
+        },
+        setToggle: (i, n)=>{
+            let u = c.get(i);
+            u && (u.toggle = n);
+        },
+        isToastActive: (i)=>{
+            var n;
+            return (n = c.get(i)) == null ? void 0 : n.isActive;
+        },
+        getSnapshot: ()=>a
+    };
+}
+var I = new Map, F = [], st = new Set, Vt = (t)=>st.forEach((o)=>o(t)), bt = ()=>I.size > 0;
+function Qt() {
+    F.forEach((t)=>nt(t.content, t.options)), F = [];
+}
+var vt = (t, { containerId: o })=>{
+    var e;
+    return (e = I.get(o || 1)) == null ? void 0 : e.toasts.get(t);
+};
+function X(t, o) {
+    var r;
+    if (o) return !!((r = I.get(o)) != null && r.isToastActive(t));
+    let e = !1;
+    return I.forEach((s)=>{
+        s.isToastActive(t) && (e = !0);
+    }), e;
+}
+function ht(t) {
+    if (!bt()) {
+        F = F.filter((o)=>t != null && o.options.toastId !== t);
+        return;
+    }
+    if (t == null || mt(t)) I.forEach((o)=>{
+        o.removeToast(t);
+    });
+    else if (t && ("containerId" in t || "id" in t)) {
+        let o = I.get(t.containerId);
+        o ? o.removeToast(t.id) : I.forEach((e)=>{
+            e.removeToast(t.id);
+        });
+    }
+}
+var Ct = (t = {})=>{
+    I.forEach((o)=>{
+        o.props.limit && (!t.containerId || o.id === t.containerId) && o.clearQueue();
+    });
+};
+function nt(t, o) {
+    z(t) && (bt() || F.push({
+        content: t,
+        options: o
+    }), I.forEach((e)=>{
+        e.buildToast(t, o);
+    }));
+}
+function xt(t) {
+    var o;
+    (o = I.get(t.containerId || 1)) == null || o.setToggle(t.id, t.fn);
+}
+function rt(t, o) {
+    I.forEach((e)=>{
+        (o == null || !(o != null && o.containerId) || (o == null ? void 0 : o.containerId) === e.id) && e.toggle(t, o == null ? void 0 : o.id);
+    });
+}
+function Et(t) {
+    let o = t.containerId || 1;
+    return {
+        subscribe (e) {
+            let r = _t(o, t, Vt);
+            I.set(o, r);
+            let s = r.observe(e);
+            return Qt(), ()=>{
+                s(), I.delete(o);
+            };
+        },
+        setProps (e) {
+            var r;
+            (r = I.get(o)) == null || r.setProps(e);
+        },
+        getSnapshot () {
+            var e;
+            return (e = I.get(o)) == null ? void 0 : e.getSnapshot();
+        }
+    };
+}
+function Pt(t) {
+    return st.add(t), ()=>{
+        st.delete(t);
+    };
+}
+function Wt(t) {
+    return t && (N(t.toastId) || L(t.toastId)) ? t.toastId : at();
+}
+function U(t, o) {
+    return nt(t, o), o.toastId;
+}
+function V(t, o) {
+    return {
+        ...o,
+        type: o && o.type || t,
+        toastId: Wt(o)
+    };
+}
+function Q(t) {
+    return (o, e)=>U(o, V(t, e));
+}
+function y(t, o) {
+    return U(t, V("default", o));
+}
+y.loading = (t, o)=>U(t, V("default", {
+        isLoading: !0,
+        autoClose: !1,
+        closeOnClick: !1,
+        closeButton: !1,
+        draggable: !1,
+        ...o
+    }));
+function Gt(t, { pending: o, error: e, success: r }, s) {
+    let l;
+    o && (l = N(o) ? y.loading(o, s) : y.loading(o.render, {
+        ...s,
+        ...o
+    }));
+    let a = {
+        isLoading: null,
+        autoClose: null,
+        closeOnClick: null,
+        closeButton: null,
+        draggable: null
+    }, d = (T, g, v)=>{
+        if (g == null) {
+            y.dismiss(l);
+            return;
+        }
+        let x = {
+            type: T,
+            ...a,
+            ...s,
+            data: v
+        }, C = N(g) ? {
+            render: g
+        } : g;
+        return l ? y.update(l, {
+            ...x,
+            ...C
+        }) : y(C.render, {
+            ...x,
+            ...C
+        }), v;
+    }, c = P(t) ? t() : t;
+    return c.then((T)=>d("success", r, T)).catch((T)=>d("error", e, T)), c;
+}
+y.promise = Gt;
+y.success = Q("success");
+y.info = Q("info");
+y.error = Q("error");
+y.warning = Q("warning");
+y.warn = y.warning;
+y.dark = (t, o)=>U(t, V("default", {
+        theme: "dark",
+        ...o
+    }));
+function qt(t) {
+    ht(t);
+}
+y.dismiss = qt;
+y.clearWaitingQueue = Ct;
+y.isActive = X;
+y.update = (t, o = {})=>{
+    let e = vt(t, o);
+    if (e) {
+        let { props: r, content: s } = e, l = {
+            delay: 100,
+            ...r,
+            ...o,
+            toastId: o.toastId || t,
+            updateId: at()
+        };
+        l.toastId !== t && (l.staleId = t);
+        let a = l.render || s;
+        delete l.render, U(a, l);
+    }
+};
+y.done = (t)=>{
+    y.update(t, {
+        progress: 1
+    });
+};
+y.onChange = Pt;
+y.play = (t)=>rt(!0, t);
+y.pause = (t)=>rt(!1, t);
+function It(t) {
+    var a;
+    let { subscribe: o, getSnapshot: e, setProps: r } = (0, _react.useRef)(Et(t)).current;
+    r(t);
+    let s = (a = (0, _react.useSyncExternalStore)(o, e, e)) == null ? void 0 : a.slice();
+    function l(d) {
+        if (!s) return [];
+        let c = new Map;
+        return t.newestOnTop && s.reverse(), s.forEach((T)=>{
+            let { position: g } = T.props;
+            c.has(g) || c.set(g, []), c.get(g).push(T);
+        }), Array.from(c, (T)=>d(T[0], T[1]));
+    }
+    return {
+        getToastToRender: l,
+        isToastActive: X,
+        count: s == null ? void 0 : s.length
+    };
+}
+function At(t) {
+    let [o, e] = (0, _react.useState)(!1), [r, s] = (0, _react.useState)(!1), l = (0, _react.useRef)(null), a = (0, _react.useRef)({
+        start: 0,
+        delta: 0,
+        removalDistance: 0,
+        canCloseOnClick: !0,
+        canDrag: !1,
+        didMove: !1
+    }).current, { autoClose: d, pauseOnHover: c, closeToast: T, onClick: g, closeOnClick: v } = t;
+    xt({
+        id: t.toastId,
+        containerId: t.containerId,
+        fn: e
+    }), (0, _react.useEffect)(()=>{
+        if (t.pauseOnFocusLoss) return x(), ()=>{
+            C();
+        };
+    }, [
+        t.pauseOnFocusLoss
+    ]);
+    function x() {
+        document.hasFocus() || p(), window.addEventListener("focus", f), window.addEventListener("blur", p);
+    }
+    function C() {
+        window.removeEventListener("focus", f), window.removeEventListener("blur", p);
+    }
+    function S(m) {
+        if (t.draggable === !0 || t.draggable === m.pointerType) {
+            b();
+            let _ = l.current;
+            a.canCloseOnClick = !0, a.canDrag = !0, _.style.transition = "none", t.draggableDirection === "x" ? (a.start = m.clientX, a.removalDistance = _.offsetWidth * (t.draggablePercent / 100)) : (a.start = m.clientY, a.removalDistance = _.offsetHeight * (t.draggablePercent === 80 ? t.draggablePercent * 1.5 : t.draggablePercent) / 100);
+        }
+    }
+    function E(m) {
+        let { top: _, bottom: k, left: M, right: A } = l.current.getBoundingClientRect();
+        m.nativeEvent.type !== "touchend" && t.pauseOnHover && m.clientX >= M && m.clientX <= A && m.clientY >= _ && m.clientY <= k ? p() : f();
+    }
+    function f() {
+        e(!0);
+    }
+    function p() {
+        e(!1);
+    }
+    function b() {
+        a.didMove = !1, document.addEventListener("pointermove", n), document.addEventListener("pointerup", u);
+    }
+    function i() {
+        document.removeEventListener("pointermove", n), document.removeEventListener("pointerup", u);
+    }
+    function n(m) {
+        let _ = l.current;
+        if (a.canDrag && _) {
+            a.didMove = !0, o && p(), t.draggableDirection === "x" ? a.delta = m.clientX - a.start : a.delta = m.clientY - a.start, a.start !== m.clientX && (a.canCloseOnClick = !1);
+            let k = t.draggableDirection === "x" ? `${a.delta}px, var(--y)` : `0, calc(${a.delta}px + var(--y))`;
+            _.style.transform = `translate3d(${k},0)`, _.style.opacity = `${1 - Math.abs(a.delta / a.removalDistance)}`;
+        }
+    }
+    function u() {
+        i();
+        let m = l.current;
+        if (a.canDrag && a.didMove && m) {
+            if (a.canDrag = !1, Math.abs(a.delta) > a.removalDistance) {
+                s(!0), t.closeToast(!0), t.collapseAll();
+                return;
+            }
+            m.style.transition = "transform 0.2s, opacity 0.2s", m.style.removeProperty("transform"), m.style.removeProperty("opacity");
+        }
+    }
+    let h = {
+        onPointerDown: S,
+        onPointerUp: E
+    };
+    return d && c && (h.onMouseEnter = p, t.stacked || (h.onMouseLeave = f)), v && (h.onClick = (m)=>{
+        g && g(m), a.canCloseOnClick && T(!0);
+    }), {
+        playToast: f,
+        pauseToast: p,
+        isRunning: o,
+        preventExitTransition: r,
+        toastRef: l,
+        eventHandlers: h
+    };
+}
+var Ot = typeof window != "undefined" ? (0, _react.useLayoutEffect) : (0, _react.useEffect);
+var G = ({ theme: t, type: o, isLoading: e, ...r })=>(0, _reactDefault.default).createElement("svg", {
+        viewBox: "0 0 24 24",
+        width: "100%",
+        height: "100%",
+        fill: t === "colored" ? "currentColor" : `var(--toastify-icon-color-${o})`,
+        ...r
+    });
+function ao(t) {
+    return (0, _reactDefault.default).createElement(G, {
+        ...t
+    }, (0, _reactDefault.default).createElement("path", {
+        d: "M23.32 17.191L15.438 2.184C14.728.833 13.416 0 11.996 0c-1.42 0-2.733.833-3.443 2.184L.533 17.448a4.744 4.744 0 000 4.368C1.243 23.167 2.555 24 3.975 24h16.05C22.22 24 24 22.044 24 19.632c0-.904-.251-1.746-.68-2.44zm-9.622 1.46c0 1.033-.724 1.823-1.698 1.823s-1.698-.79-1.698-1.822v-.043c0-1.028.724-1.822 1.698-1.822s1.698.79 1.698 1.822v.043zm.039-12.285l-.84 8.06c-.057.581-.408.943-.897.943-.49 0-.84-.367-.896-.942l-.84-8.065c-.057-.624.25-1.095.779-1.095h1.91c.528.005.84.476.784 1.1z"
+    }));
+}
+function so(t) {
+    return (0, _reactDefault.default).createElement(G, {
+        ...t
+    }, (0, _reactDefault.default).createElement("path", {
+        d: "M12 0a12 12 0 1012 12A12.013 12.013 0 0012 0zm.25 5a1.5 1.5 0 11-1.5 1.5 1.5 1.5 0 011.5-1.5zm2.25 13.5h-4a1 1 0 010-2h.75a.25.25 0 00.25-.25v-4.5a.25.25 0 00-.25-.25h-.75a1 1 0 010-2h1a2 2 0 012 2v4.75a.25.25 0 00.25.25h.75a1 1 0 110 2z"
+    }));
+}
+function no(t) {
+    return (0, _reactDefault.default).createElement(G, {
+        ...t
+    }, (0, _reactDefault.default).createElement("path", {
+        d: "M12 0a12 12 0 1012 12A12.014 12.014 0 0012 0zm6.927 8.2l-6.845 9.289a1.011 1.011 0 01-1.43.188l-4.888-3.908a1 1 0 111.25-1.562l4.076 3.261 6.227-8.451a1 1 0 111.61 1.183z"
+    }));
+}
+function ro(t) {
+    return (0, _reactDefault.default).createElement(G, {
+        ...t
+    }, (0, _reactDefault.default).createElement("path", {
+        d: "M11.983 0a12.206 12.206 0 00-8.51 3.653A11.8 11.8 0 000 12.207 11.779 11.779 0 0011.8 24h.214A12.111 12.111 0 0024 11.791 11.766 11.766 0 0011.983 0zM10.5 16.542a1.476 1.476 0 011.449-1.53h.027a1.527 1.527 0 011.523 1.47 1.475 1.475 0 01-1.449 1.53h-.027a1.529 1.529 0 01-1.523-1.47zM11 12.5v-6a1 1 0 012 0v6a1 1 0 11-2 0z"
+    }));
+}
+function io() {
+    return (0, _reactDefault.default).createElement("div", {
+        className: "Toastify__spinner"
+    });
+}
+var W = {
+    info: so,
+    warning: ao,
+    success: no,
+    error: ro,
+    spinner: io
+}, lo = (t)=>t in W;
+function Nt({ theme: t, type: o, isLoading: e, icon: r }) {
+    let s = null, l = {
+        theme: t,
+        type: o
+    };
+    return r === !1 || (P(r) ? s = r({
+        ...l,
+        isLoading: e
+    }) : (0, _react.isValidElement)(r) ? s = (0, _react.cloneElement)(r, l) : e ? s = W.spinner() : lo(o) && (s = W[o](l))), s;
+}
+var wt = (t)=>{
+    let { isRunning: o, preventExitTransition: e, toastRef: r, eventHandlers: s, playToast: l } = At(t), { closeButton: a, children: d, autoClose: c, onClick: T, type: g, hideProgressBar: v, closeToast: x, transition: C, position: S, className: E, style: f, progressClassName: p, updateId: b, role: i, progress: n, rtl: u, toastId: h, deleteToast: m, isIn: _, isLoading: k, closeOnClick: M, theme: A, ariaLabel: R } = t, D = (0, _clsxDefault.default)("Toastify__toast", `Toastify__toast-theme--${A}`, `Toastify__toast--${g}`, {
+        ["Toastify__toast--rtl"]: u
+    }, {
+        ["Toastify__toast--close-on-click"]: M
+    }), Y = P(E) ? E({
+        rtl: u,
+        position: S,
+        type: g,
+        defaultClassName: D
+    }) : (0, _clsxDefault.default)(D, E), ft = Nt(t), dt = !!n || !c, j = {
+        closeToast: x,
+        type: g,
+        theme: A
+    }, H = null;
+    return a === !1 || (P(a) ? H = a(j) : (0, _react.isValidElement)(a) ? H = (0, _react.cloneElement)(a, j) : H = yt(j)), (0, _reactDefault.default).createElement(C, {
+        isIn: _,
+        done: m,
+        position: S,
+        preventExitTransition: e,
+        nodeRef: r,
+        playToast: l
+    }, (0, _reactDefault.default).createElement("div", {
+        id: h,
+        tabIndex: 0,
+        onClick: T,
+        "data-in": _,
+        className: Y,
+        ...s,
+        style: f,
+        ref: r,
+        ..._ && {
+            role: i,
+            "aria-label": R
+        }
+    }, ft != null && (0, _reactDefault.default).createElement("div", {
+        className: (0, _clsxDefault.default)("Toastify__toast-icon", {
+            ["Toastify--animate-icon Toastify__zoom-enter"]: !k
+        })
+    }, ft), tt(d, t, !o), H, !t.customProgressBar && (0, _reactDefault.default).createElement(gt, {
+        ...b && !dt ? {
+            key: `p-${b}`
+        } : {},
+        rtl: u,
+        theme: A,
+        delay: c,
+        isRunning: o,
+        isIn: _,
+        closeToast: x,
+        hide: v,
+        type: g,
+        className: p,
+        controlledProgress: dt,
+        progress: n || 0
+    })));
+};
+var K = (t, o = !1)=>({
+        enter: `Toastify--animate Toastify__${t}-enter`,
+        exit: `Toastify--animate Toastify__${t}-exit`,
+        appendPosition: o
+    }), lt = $(K("bounce", !0)), mo = $(K("slide", !0)), po = $(K("zoom")), uo = $(K("flip"));
+var _o = {
+    position: "top-right",
+    transition: lt,
+    autoClose: 5e3,
+    closeButton: !0,
+    pauseOnHover: !0,
+    pauseOnFocusLoss: !0,
+    draggable: "touch",
+    draggablePercent: 80,
+    draggableDirection: "x",
+    role: "alert",
+    theme: "light",
+    "aria-label": "Notifications Alt+T",
+    hotKeys: (t)=>t.altKey && t.code === "KeyT"
+};
+function Lt(t) {
+    let o = {
+        ..._o,
+        ...t
+    }, e = t.stacked, [r, s] = (0, _react.useState)(!0), l = (0, _react.useRef)(null), { getToastToRender: a, isToastActive: d, count: c } = It(o), { className: T, style: g, rtl: v, containerId: x, hotKeys: C } = o;
+    function S(f) {
+        let p = (0, _clsxDefault.default)("Toastify__toast-container", `Toastify__toast-container--${f}`, {
+            ["Toastify__toast-container--rtl"]: v
+        });
+        return P(T) ? T({
+            position: f,
+            rtl: v,
+            defaultClassName: p
+        }) : (0, _clsxDefault.default)(p, B(T));
+    }
+    function E() {
+        e && (s(!0), y.play());
+    }
+    return Ot(()=>{
+        var f;
+        if (e) {
+            let p = l.current.querySelectorAll('[data-in="true"]'), b = 12, i = (f = o.position) == null ? void 0 : f.includes("top"), n = 0, u = 0;
+            Array.from(p).reverse().forEach((h, m)=>{
+                let _ = h;
+                _.classList.add("Toastify__toast--stacked"), m > 0 && (_.dataset.collapsed = `${r}`), _.dataset.pos || (_.dataset.pos = i ? "top" : "bot");
+                let k = n * (r ? .2 : 1) + (r ? 0 : b * m);
+                _.style.setProperty("--y", `${i ? k : k * -1}px`), _.style.setProperty("--g", `${b}`), _.style.setProperty("--s", `${1 - (r ? u : 0)}`), n += _.offsetHeight, u += .025;
+            });
+        }
+    }, [
+        r,
+        c,
+        e
+    ]), (0, _react.useEffect)(()=>{
+        function f(p) {
+            var i;
+            let b = l.current;
+            C(p) && ((i = b.querySelector('[tabIndex="0"]')) == null || i.focus(), s(!1), y.pause()), p.key === "Escape" && (document.activeElement === b || b != null && b.contains(document.activeElement)) && (s(!0), y.play());
+        }
+        return document.addEventListener("keydown", f), ()=>{
+            document.removeEventListener("keydown", f);
+        };
+    }, [
+        C
+    ]), (0, _reactDefault.default).createElement("section", {
+        ref: l,
+        className: "Toastify",
+        id: x,
+        onMouseEnter: ()=>{
+            e && (s(!1), y.pause());
+        },
+        onMouseLeave: E,
+        "aria-live": "polite",
+        "aria-atomic": "false",
+        "aria-relevant": "additions text",
+        "aria-label": o["aria-label"]
+    }, a((f, p)=>{
+        let b = p.length ? {
+            ...g
+        } : {
+            ...g,
+            pointerEvents: "none"
+        };
+        return (0, _reactDefault.default).createElement("div", {
+            tabIndex: -1,
+            className: S(f),
+            "data-stacked": e,
+            style: b,
+            key: `c-${f}`
+        }, p.map(({ content: i, props: n })=>(0, _reactDefault.default).createElement(wt, {
+                ...n,
+                stacked: e,
+                collapseAll: E,
+                isIn: d(n.toastId, n.containerId),
+                key: `t-${n.key}`
+            }, i)));
+    }));
+}
+
+},{"react":"21dqq","clsx":"gocd3","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gocd3":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "clsx", ()=>clsx);
+function r(e) {
+    var t, f, n = "";
+    if ("string" == typeof e || "number" == typeof e) n += e;
+    else if ("object" == typeof e) {
+        if (Array.isArray(e)) {
+            var o = e.length;
+            for(t = 0; t < o; t++)e[t] && (f = r(e[t])) && (n && (n += " "), n += f);
+        } else for(f in e)e[f] && (n && (n += " "), n += f);
+    }
+    return n;
+}
+function clsx() {
+    for(var e, t, f = 0, n = "", o = arguments.length; f < o; f++)(e = arguments[f]) && (t = r(e)) && (n && (n += " "), n += t);
+    return n;
+}
+exports.default = clsx;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"8yaV8":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$0606 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -36040,28 +36861,27 @@ var _userContext = require("../utils/UserContext");
 var _userContextDefault = parcelHelpers.interopDefault(_userContext);
 var _useAppMenu = require("../utils/useAppMenu");
 var _useAppMenuDefault = parcelHelpers.interopDefault(_useAppMenu);
-var _lucideReact = require("lucide-react");
 var _filters = require("./Filters");
 var _filtersDefault = parcelHelpers.interopDefault(_filters);
 var _s = $RefreshSig$();
 const Body = ()=>{
     _s();
     const [searchButton, setSearchButton] = (0, _react.useState)("");
-    const { LoggedInUser, setUserName } = (0, _react.useContext)((0, _userContextDefault.default));
     const RestaurantPromoted = (0, _restaurantCard.withPromotedLabel)((0, _restaurantCardDefault.default));
     const { listOfResto, filteredResto, setFilteredResto } = (0, _useAppMenuDefault.default)();
+    const [selectedFilter, setSelectedFilter] = (0, _react.useState)("Filters");
     const [filterOpen, setFilterOpen] = (0, _react.useState)(false);
     const onlineStatus = (0, _useOnlineStatusDefault.default)();
     if (onlineStatus === false) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
         children: "Looks like you are offline!!! Check the internet connectivity"
     }, void 0, false, {
         fileName: "src/components/Body.js",
-        lineNumber: 31,
+        lineNumber: 32,
         columnNumber: 7
     }, undefined);
     if (listOfResto.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _shimmerDefault.default), {}, void 0, false, {
         fileName: "src/components/Body.js",
-        lineNumber: 35,
+        lineNumber: 36,
         columnNumber: 12
     }, undefined);
     const handleClick = ()=>{
@@ -36070,135 +36890,113 @@ const Body = ()=>{
         });
         filteredSearch.length > 0 ? setFilteredResto(filteredSearch) : alert("Item not found");
     };
-    const handleFilter = ()=>{
-        setFilterOpen(!filterOpen);
+    const dataFilter = (filteredName, filteredData)=>{
+        setFilteredResto(filteredData);
+        setSelectedFilter(filteredName);
+        setFilterOpen(false);
     };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "relative m-3",
+        className: " m-3",
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: " relative flex ",
+                className: "m-6",
                 children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: " left-4 w-6/12 p-6 text-gray-500 ",
-                        children: [
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _lucideReact.Search), {
-                                className: "absolute m-5 w-4 text-gray-500"
-                            }, void 0, false, {
-                                fileName: "src/components/Body.js",
-                                lineNumber: 55,
-                                columnNumber: 9
-                            }, undefined),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                type: "text",
-                                className: " pl-12 pr-10 py-5 w-full text-gray-800 bg-gray-100 border border-gray-300 rounded-full shadow-md focus:ring-2 focus:ring-black-500 focus:bg-white outline-none transition-all duration-300",
-                                placeholder: "Search restaurant",
-                                value: searchButton,
-                                onChange: (e)=>setSearchButton(e.target.value),
-                                onKeyDown: (e)=>e.key === "Enter" && handleClick()
-                            }, void 0, false, {
-                                fileName: "src/components/Body.js",
-                                lineNumber: 56,
-                                columnNumber: 7
-                            }, undefined)
-                        ]
-                    }, void 0, true, {
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                        type: "text",
+                        className: " pl-12 pr-10 py-5 w-5/12 text-gray-800 bg-gray-100 border border-gray-300 rounded-l-full shadow-md  focus:bg-white outline-none transition-all duration-300",
+                        placeholder: "Search restaurant",
+                        value: searchButton,
+                        onChange: (e)=>{
+                            const searchText = e.target.value.toLowerCase();
+                            setSearchButton(searchText);
+                            if (searchText.trim() === "") setFilteredResto(listOfResto);
+                            else {
+                                const filteredSearch = listOfResto.filter((resto)=>resto.card.card.info.name.toLowerCase().includes(searchText) || resto.card.card.info.cuisines.some((cuisine)=>cuisine.toLowerCase().includes(searchText)));
+                                setFilteredResto(filteredSearch);
+                            }
+                        },
+                        onKeyDown: (e)=>e.key === "Enter" && handleClick()
+                    }, void 0, false, {
                         fileName: "src/components/Body.js",
-                        lineNumber: 54,
+                        lineNumber: 63,
                         columnNumber: 7
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                        className: "absolute right-187 px-4 py-1 my-9 border  border-s-black cursor-pointer rounded-lg bg-black text-white",
+                        className: " border border-gray-400 cursor-pointer p-5 rounded-r-full bg-gray-300 text-black",
                         onClick: handleClick,
-                        children: "Search"
+                        children: "\uD83D\uDD0D"
                     }, void 0, false, {
                         fileName: "src/components/Body.js",
-                        lineNumber: 66,
+                        lineNumber: 89,
                         columnNumber: 11
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/Body.js",
-                lineNumber: 53,
-                columnNumber: 7
+                lineNumber: 62,
+                columnNumber: 6
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "w-3/12 ml-8 bg-gray-200 p-2 my-3 shadow-lg cursor-pointer",
-                onClick: handleFilter,
                 children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "flex justify-between",
-                        children: [
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                className: "m-1 px-5 text-gray-500",
-                                children: "Filters"
-                            }, void 0, false, {
-                                fileName: "src/components/Body.js",
-                                lineNumber: 76,
-                                columnNumber: 9
-                            }, undefined),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                children: " \u2304 "
-                            }, void 0, false, {
-                                fileName: "src/components/Body.js",
-                                lineNumber: 77,
-                                columnNumber: 9
-                            }, undefined)
-                        ]
-                    }, void 0, true, {
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                        className: "p-3 my-1 mx-5 font-bold rounded-full cursor-pointer bg-gray-200 w-3/12",
+                        onClick: ()=>setFilterOpen(!filterOpen),
+                        children: selectedFilter
+                    }, void 0, false, {
                         fileName: "src/components/Body.js",
-                        lineNumber: 75,
-                        columnNumber: 7
+                        lineNumber: 97,
+                        columnNumber: 8
                     }, undefined),
                     filterOpen && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _filtersDefault.default), {
                         listOfResto: listOfResto,
-                        setFilteredResto: setFilteredResto
+                        setFilteredResto: setFilteredResto,
+                        dataFilter: dataFilter
                     }, void 0, false, {
                         fileName: "src/components/Body.js",
-                        lineNumber: 80,
-                        columnNumber: 24
+                        lineNumber: 99,
+                        columnNumber: 23
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/Body.js",
-                lineNumber: 74,
+                lineNumber: 96,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "flex flex-wrap mx-10 p-6 border border-s-black",
+                className: "flex flex-wrap mx-10 px-15 border border-s-black",
                 children: filteredResto.map((resto)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
                         to: "/restaurant/" + resto.card.card.info.id,
                         children: resto.card.card.info.promoted ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(RestaurantPromoted, {
                             resData: resto
                         }, void 0, false, {
                             fileName: "src/components/Body.js",
-                            lineNumber: 90,
+                            lineNumber: 115,
                             columnNumber: 15
                         }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _restaurantCardDefault.default), {
                             resData: resto
                         }, void 0, false, {
                             fileName: "src/components/Body.js",
-                            lineNumber: 92,
+                            lineNumber: 117,
                             columnNumber: 15
                         }, undefined)
                     }, resto.card.card.info.id, false, {
                         fileName: "src/components/Body.js",
-                        lineNumber: 85,
+                        lineNumber: 110,
                         columnNumber: 11
                     }, undefined))
             }, void 0, false, {
                 fileName: "src/components/Body.js",
-                lineNumber: 83,
+                lineNumber: 108,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/Body.js",
-        lineNumber: 51,
+        lineNumber: 60,
         columnNumber: 5
     }, undefined);
 };
-_s(Body, "xxEVIpTDftZqvScsi7ZGlsY3Beg=", false, function() {
+_s(Body, "152PavdLYABuYpzbGkfeG3Dqx1k=", false, function() {
     return [
         (0, _useAppMenuDefault.default),
         (0, _useOnlineStatusDefault.default)
@@ -36214,7 +37012,7 @@ $RefreshReg$(_c, "Body");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","./RestaurantCard":"bMboU","react":"21dqq","./Shimmer":"g6ZGj","react-router-dom":"9xmpe","../utils/useOnlineStatus":"181Ji","../utils/UserContext":"c5vgB","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../utils/useAppMenu":"cDpJm","lucide-react":"8oTgY","./Filters":"kYM5Z"}],"bMboU":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"iTorj","./RestaurantCard":"bMboU","react":"21dqq","./Shimmer":"g6ZGj","react-router-dom":"9xmpe","../utils/useOnlineStatus":"181Ji","../utils/UserContext":"c5vgB","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../utils/useAppMenu":"cDpJm","./Filters":"kYM5Z"}],"bMboU":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$ffb1 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -36233,7 +37031,7 @@ const RestaurantCard = (props)=>{
     const { resData } = props;
     const { cloudinaryImageId, name, cuisines, costForTwoMessage, avgRating } = resData?.card.card.info;
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: " mx-8 my-4 p-4 w-64 h-[400px] bg-gray-100 rounded-4xl hover:bg-gray-200 z-10",
+        className: " mx-5 my-4 p-4 w-64 h-[400px] bg-gray-100 rounded-4xl hover:bg-gray-200 z-10",
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
                 className: "w-[100%] h-44 rounded-4xl",
@@ -36516,118 +37314,91 @@ try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _useAppMenu = require("../utils/useAppMenu");
-var _useAppMenuDefault = parcelHelpers.interopDefault(_useAppMenu);
-const Filters = ({ listOfResto, setFilteredResto })=>{
+const Filters = ({ listOfResto, dataFilter })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "bg-white p-2 m-2 rounded-2xl",
+        className: " bg-white px-3 mx-2 rounded-2xl cursor-pointer w-3/12",
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "p-2 my-2 rounded-2xl bg-gray-100",
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                    onClick: ()=>{
-                        const filteredList = listOfResto.filter((res)=>res.card.card.info.avgRating > 4);
-                        setFilteredResto(filteredList);
-                    },
-                    children: "Top rated restaurants"
-                }, void 0, false, {
-                    fileName: "src/components/Filters.js",
-                    lineNumber: 7,
-                    columnNumber: 9
-                }, undefined)
+                className: "p-2 my-1 rounded-full bg-gray-100",
+                onClick: ()=>{
+                    dataFilter("Show All", listOfResto);
+                },
+                children: "Show All"
             }, void 0, false, {
                 fileName: "src/components/Filters.js",
                 lineNumber: 6,
-                columnNumber: 7
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "p-2 my-2 rounded-2xl bg-gray-100",
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                    onClick: ()=>{
-                        const filteredSouthIndian = listOfResto.filter((res)=>res?.card?.card?.info?.cuisines.includes("South Indian"));
-                        setFilteredResto(filteredSouthIndian);
-                    },
-                    children: " Only South Indian"
-                }, void 0, false, {
-                    fileName: "src/components/Filters.js",
-                    lineNumber: 19,
-                    columnNumber: 9
-                }, undefined)
-            }, void 0, false, {
-                fileName: "src/components/Filters.js",
-                lineNumber: 18,
                 columnNumber: 9
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "p-2 my-2 rounded-2xl bg-gray-100",
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                    onClick: ()=>{
-                        const filteredSouthIndian = listOfResto.filter((res)=>res?.card?.card?.info?.cuisines.includes("North Indian"));
-                        setFilteredResto(filteredSouthIndian);
-                    },
-                    children: " Only North Indian"
-                }, void 0, false, {
-                    fileName: "src/components/Filters.js",
-                    lineNumber: 29,
-                    columnNumber: 9
-                }, undefined)
+                className: "p-2 my-1 rounded-full bg-gray-100",
+                onClick: ()=>{
+                    const filteredList = listOfResto.filter((res)=>res.card.card.info.avgRating > 4);
+                    dataFilter("Top rated Restaurants", filteredList);
+                },
+                children: "Top rated restaurants"
             }, void 0, false, {
                 fileName: "src/components/Filters.js",
-                lineNumber: 28,
+                lineNumber: 14,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "p-2 my-1 rounded-full bg-gray-100",
+                onClick: ()=>{
+                    const filteredList = listOfResto.filter((res)=>res?.card?.card?.info?.cuisines.includes("South Indian"));
+                    dataFilter("Only South Indian", filteredList);
+                },
+                children: "Only South Indian"
+            }, void 0, false, {
+                fileName: "src/components/Filters.js",
+                lineNumber: 23,
+                columnNumber: 9
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "p-2 my-1 rounded-full bg-gray-100",
+                onClick: ()=>{
+                    const filteredList = listOfResto.filter((res)=>res?.card?.card?.info?.cuisines.includes("North Indian"));
+                    dataFilter("Only North Indian", filteredList);
+                },
+                children: "Only North Indian"
+            }, void 0, false, {
+                fileName: "src/components/Filters.js",
+                lineNumber: 31,
                 columnNumber: 4
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "p-2 my-2 rounded-2xl bg-gray-100",
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                    onClick: ()=>{
-                        const filteredSouthIndian = listOfResto.filter((res)=>res?.card?.card?.info?.cuisines.includes("Sweets"));
-                        setFilteredResto(filteredSouthIndian);
-                    },
-                    children: " Sweets"
-                }, void 0, false, {
-                    fileName: "src/components/Filters.js",
-                    lineNumber: 39,
-                    columnNumber: 9
-                }, undefined)
+                className: "p-2 my-1 rounded-full bg-gray-100",
+                onClick: ()=>{
+                    const filteredList = listOfResto.filter((res)=>res?.card?.card?.info?.cuisines.includes("Sweets"));
+                    dataFilter("Sweets", filteredList);
+                },
+                children: "Sweets"
             }, void 0, false, {
                 fileName: "src/components/Filters.js",
-                lineNumber: 38,
+                lineNumber: 39,
                 columnNumber: 4
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "p-2 my-2 rounded-2xl bg-gray-100",
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                    onClick: ()=>{
-                        const filteredSouthIndian = listOfResto.filter((res)=>res?.card?.card?.info?.cuisines.includes("Desserts"));
-                        setFilteredResto(filteredSouthIndian);
-                    },
-                    children: " Desserts"
-                }, void 0, false, {
-                    fileName: "src/components/Filters.js",
-                    lineNumber: 49,
-                    columnNumber: 9
-                }, undefined)
+                className: "p-2 my-1 rounded-full bg-gray-100",
+                onClick: ()=>{
+                    const filteredList = listOfResto.filter((res)=>res?.card?.card?.info?.cuisines.includes("Desserts"));
+                    dataFilter("Desserts", filteredList);
+                },
+                children: "Desserts"
             }, void 0, false, {
                 fileName: "src/components/Filters.js",
-                lineNumber: 48,
+                lineNumber: 47,
                 columnNumber: 4
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "p-2 my-2 rounded-2xl bg-gray-100",
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                    onClick: ()=>{
-                        const filteredSouthIndian = listOfResto.filter((res)=>res?.card?.card?.info?.cuisines.includes("Barbecue"));
-                        setFilteredResto(filteredSouthIndian);
-                    },
-                    children: "Barbecue"
-                }, void 0, false, {
-                    fileName: "src/components/Filters.js",
-                    lineNumber: 59,
-                    columnNumber: 9
-                }, undefined)
+                className: "p-2 my-1 rounded-full bg-gray-100",
+                onClick: ()=>{
+                    const filteredList = listOfResto.filter((res)=>res?.card?.card?.info?.cuisines.includes("Barbecue"));
+                    dataFilter("Barbecue", filteredList);
+                },
+                children: "Barbecue"
             }, void 0, false, {
                 fileName: "src/components/Filters.js",
-                lineNumber: 58,
+                lineNumber: 55,
                 columnNumber: 4
             }, undefined)
         ]
@@ -36638,7 +37409,7 @@ const Filters = ({ listOfResto, setFilteredResto })=>{
     }, undefined);
 };
 _c = Filters;
-exports.default = Filters; // resData?.card.card.info
+exports.default = Filters;
 var _c;
 $RefreshReg$(_c, "Filters");
 
@@ -36647,7 +37418,7 @@ $RefreshReg$(_c, "Filters");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","../utils/useAppMenu":"cDpJm","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"9R1Eu":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"9R1Eu":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$5b98 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -37230,9 +38001,9 @@ var _s = $RefreshSig$();
 const ItemsList = ({ items })=>{
     _s();
     const dispatch = (0, _reactRedux.useDispatch)();
-    const handleAddItems = (items)=>{
-        dispatch((0, _cartSlice.addItems)(items));
-    };
+    // const handleAddItems=(items)=>{
+    //   dispatch(addItems(items));
+    // }
     return items.map((items)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
             className: "flex justify-between p-4 my-4 shadow-lg bg-white ",
             children: [
@@ -37245,12 +38016,12 @@ const ItemsList = ({ items })=>{
                                     children: items?.card?.info?.name
                                 }, void 0, false, {
                                     fileName: "src/components/ItemsList.js",
-                                    lineNumber: 18,
+                                    lineNumber: 20,
                                     columnNumber: 11
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                                     fileName: "src/components/ItemsList.js",
-                                    lineNumber: 19,
+                                    lineNumber: 21,
                                     columnNumber: 11
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -37263,13 +38034,13 @@ const ItemsList = ({ items })=>{
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/components/ItemsList.js",
-                                    lineNumber: 20,
+                                    lineNumber: 22,
                                     columnNumber: 11
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/ItemsList.js",
-                            lineNumber: 17,
+                            lineNumber: 19,
                             columnNumber: 9
                         }, undefined),
                         items?.card?.info?.ratings?.aggregatedRating?.rating ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -37280,13 +38051,13 @@ const ItemsList = ({ items })=>{
                             ]
                         }, void 0, true, {
                             fileName: "src/components/ItemsList.js",
-                            lineNumber: 28,
+                            lineNumber: 30,
                             columnNumber: 12
                         }, undefined) : null
                     ]
                 }, void 0, true, {
                     fileName: "src/components/ItemsList.js",
-                    lineNumber: 16,
+                    lineNumber: 18,
                     columnNumber: 7
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -37297,40 +38068,57 @@ const ItemsList = ({ items })=>{
                             alt: "Item Image"
                         }, void 0, false, {
                             fileName: "src/components/ItemsList.js",
-                            lineNumber: 37,
+                            lineNumber: 39,
                             columnNumber: 3
                         }, undefined) : null,
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                                className: "bg-black text-white rounded-lg p-2 m-1 px-6 cursor-pointer",
-                                onClick: ()=>{
-                                    handleAddItems(items);
-                                    (0, _reactToastify.toast).success("Item added to the cart", {
-                                        position: "top-right",
-                                        autoClose: 2000
-                                    });
-                                },
-                                children: "Add+"
-                            }, void 0, false, {
-                                fileName: "src/components/ItemsList.js",
-                                lineNumber: 44,
-                                columnNumber: 9
-                            }, undefined)
-                        }, void 0, false, {
+                            className: "bg-g-50  m-2 border border-gray-400 rounded-2xl ",
+                            children: [
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                    className: "text-red-600 font-bold px-2 py-1  cursor-pointer ",
+                                    onClick: ()=>dispatch((0, _cartSlice.removeItems)(items.card.info.id)),
+                                    children: "-"
+                                }, void 0, false, {
+                                    fileName: "src/components/ItemsList.js",
+                                    lineNumber: 48,
+                                    columnNumber: 9
+                                }, undefined),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                    className: "p-2 font-bold ",
+                                    children: [
+                                        " ",
+                                        items.quantity
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/components/ItemsList.js",
+                                    lineNumber: 54,
+                                    columnNumber: 11
+                                }, undefined),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                    className: "text-green-500 font-bold px-2 py-1  cursor-pointer",
+                                    onClick: ()=>dispatch((0, _cartSlice.addItems)(items)),
+                                    children: "+"
+                                }, void 0, false, {
+                                    fileName: "src/components/ItemsList.js",
+                                    lineNumber: 56,
+                                    columnNumber: 8
+                                }, undefined)
+                            ]
+                        }, void 0, true, {
                             fileName: "src/components/ItemsList.js",
-                            lineNumber: 43,
+                            lineNumber: 46,
                             columnNumber: 9
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/ItemsList.js",
-                    lineNumber: 35,
+                    lineNumber: 37,
                     columnNumber: 7
                 }, undefined)
             ]
         }, items?.card?.info?.id, true, {
             fileName: "src/components/ItemsList.js",
-            lineNumber: 15,
+            lineNumber: 17,
             columnNumber: 5
         }, undefined));
 };
@@ -37356,6 +38144,8 @@ parcelHelpers.export(exports, "addItems", ()=>addItems);
 parcelHelpers.export(exports, "removeItems", ()=>removeItems);
 parcelHelpers.export(exports, "clearItems", ()=>clearItems);
 var _toolkit = require("@reduxjs/toolkit");
+var _reactToastify = require("react-toastify");
+var _reactToastifyCss = require("react-toastify/dist/ReactToastify.css");
 const cartSlice = (0, _toolkit.createSlice)({
     name: 'cart',
     initialState: {
@@ -37363,10 +38153,43 @@ const cartSlice = (0, _toolkit.createSlice)({
     },
     reducers: {
         addItems: (state, action)=>{
-            state.items.push(action.payload);
+            const item = action.payload;
+            const ExistingItem = state.items.find((cartItem)=>cartItem.card.info.id === item.card.info.id);
+            if (ExistingItem) {
+                ExistingItem.quantity += 1;
+                (0, _reactToastify.toast).info(`${ExistingItem.card.info.name} quantity increased`, {
+                    position: "top-right",
+                    autoClose: 2000
+                });
+            } else {
+                state.items.push({
+                    ...item,
+                    quantity: 1
+                });
+                (0, _reactToastify.toast).success(`${item.card.info.name} added to the cart`, {
+                    position: "top-right",
+                    autoClose: 2000
+                });
+            }
         },
         removeItems: (state, action)=>{
-            state.items.pop();
+            const ItemID = action.payload;
+            const ExistingItem = state.items.find((cartItem)=>cartItem.card.info.id === ItemID);
+            if (ExistingItem) {
+                if (ExistingItem.quantity > 1) {
+                    ExistingItem.quantity -= 1;
+                    (0, _reactToastify.toast).info(`Reduced the quantity of ${ExistingItem.card.info.name}`, {
+                        position: "top-right",
+                        autoClose: 2000
+                    });
+                } else {
+                    state.items = state.items.filter((cartItem)=>cartItem.card.info.id != ItemID);
+                    (0, _reactToastify.toast).warn(`${ExistingItem.card.info.name} removed from the cart`, {
+                        position: "top-right",
+                        autoClose: 2000
+                    });
+                }
+            }
         },
         clearItems: (state)=>{
             state.items.length = 0;
@@ -37376,7 +38199,7 @@ const cartSlice = (0, _toolkit.createSlice)({
 const { addItems, removeItems, clearItems } = cartSlice.actions;
 exports.default = cartSlice.reducer;
 
-},{"@reduxjs/toolkit":"fuua8","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fuua8":[function(require,module,exports,__globalThis) {
+},{"@reduxjs/toolkit":"fuua8","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","react-toastify":"lV1rO","react-toastify/dist/ReactToastify.css":"gJP2Y"}],"fuua8":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "ReducerType", ()=>ReducerType);
@@ -41327,743 +42150,7 @@ function createThunkMiddleware(extraArgument) {
 var thunk = createThunkMiddleware();
 var withExtraArgument = createThunkMiddleware;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"lV1rO":[function(require,module,exports,__globalThis) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "Bounce", ()=>lt);
-parcelHelpers.export(exports, "Flip", ()=>uo);
-parcelHelpers.export(exports, "Icons", ()=>W);
-parcelHelpers.export(exports, "Slide", ()=>mo);
-parcelHelpers.export(exports, "ToastContainer", ()=>Lt);
-parcelHelpers.export(exports, "Zoom", ()=>po);
-parcelHelpers.export(exports, "collapseToast", ()=>Z);
-parcelHelpers.export(exports, "cssTransition", ()=>$);
-parcelHelpers.export(exports, "toast", ()=>y);
-var _react = require("react");
-var _reactDefault = parcelHelpers.interopDefault(_react);
-var _clsx = require("clsx");
-var _clsxDefault = parcelHelpers.interopDefault(_clsx);
-"use client";
-function Mt(t) {
-    if (!t || typeof document == "undefined") return;
-    let o = document.head || document.getElementsByTagName("head")[0], e = document.createElement("style");
-    e.type = "text/css", o.firstChild ? o.insertBefore(e, o.firstChild) : o.appendChild(e), e.styleSheet ? e.styleSheet.cssText = t : e.appendChild(document.createTextNode(t));
-}
-Mt(`:root{--toastify-color-light: #fff;--toastify-color-dark: #121212;--toastify-color-info: #3498db;--toastify-color-success: #07bc0c;--toastify-color-warning: #f1c40f;--toastify-color-error: hsl(6, 78%, 57%);--toastify-color-transparent: rgba(255, 255, 255, .7);--toastify-icon-color-info: var(--toastify-color-info);--toastify-icon-color-success: var(--toastify-color-success);--toastify-icon-color-warning: var(--toastify-color-warning);--toastify-icon-color-error: var(--toastify-color-error);--toastify-container-width: fit-content;--toastify-toast-width: 320px;--toastify-toast-offset: 16px;--toastify-toast-top: max(var(--toastify-toast-offset), env(safe-area-inset-top));--toastify-toast-right: max(var(--toastify-toast-offset), env(safe-area-inset-right));--toastify-toast-left: max(var(--toastify-toast-offset), env(safe-area-inset-left));--toastify-toast-bottom: max(var(--toastify-toast-offset), env(safe-area-inset-bottom));--toastify-toast-background: #fff;--toastify-toast-padding: 14px;--toastify-toast-min-height: 64px;--toastify-toast-max-height: 800px;--toastify-toast-bd-radius: 6px;--toastify-toast-shadow: 0px 4px 12px rgba(0, 0, 0, .1);--toastify-font-family: sans-serif;--toastify-z-index: 9999;--toastify-text-color-light: #757575;--toastify-text-color-dark: #fff;--toastify-text-color-info: #fff;--toastify-text-color-success: #fff;--toastify-text-color-warning: #fff;--toastify-text-color-error: #fff;--toastify-spinner-color: #616161;--toastify-spinner-color-empty-area: #e0e0e0;--toastify-color-progress-light: linear-gradient(to right, #4cd964, #5ac8fa, #007aff, #34aadc, #5856d6, #ff2d55);--toastify-color-progress-dark: #bb86fc;--toastify-color-progress-info: var(--toastify-color-info);--toastify-color-progress-success: var(--toastify-color-success);--toastify-color-progress-warning: var(--toastify-color-warning);--toastify-color-progress-error: var(--toastify-color-error);--toastify-color-progress-bgo: .2}.Toastify__toast-container{z-index:var(--toastify-z-index);-webkit-transform:translate3d(0,0,var(--toastify-z-index));position:fixed;width:var(--toastify-container-width);box-sizing:border-box;color:#fff;display:flex;flex-direction:column}.Toastify__toast-container--top-left{top:var(--toastify-toast-top);left:var(--toastify-toast-left)}.Toastify__toast-container--top-center{top:var(--toastify-toast-top);left:50%;transform:translate(-50%);align-items:center}.Toastify__toast-container--top-right{top:var(--toastify-toast-top);right:var(--toastify-toast-right);align-items:end}.Toastify__toast-container--bottom-left{bottom:var(--toastify-toast-bottom);left:var(--toastify-toast-left)}.Toastify__toast-container--bottom-center{bottom:var(--toastify-toast-bottom);left:50%;transform:translate(-50%);align-items:center}.Toastify__toast-container--bottom-right{bottom:var(--toastify-toast-bottom);right:var(--toastify-toast-right);align-items:end}.Toastify__toast{--y: 0;position:relative;touch-action:none;width:var(--toastify-toast-width);min-height:var(--toastify-toast-min-height);box-sizing:border-box;margin-bottom:1rem;padding:var(--toastify-toast-padding);border-radius:var(--toastify-toast-bd-radius);box-shadow:var(--toastify-toast-shadow);max-height:var(--toastify-toast-max-height);font-family:var(--toastify-font-family);z-index:0;display:flex;flex:1 auto;align-items:center;word-break:break-word}@media only screen and (max-width: 480px){.Toastify__toast-container{width:100vw;left:env(safe-area-inset-left);margin:0}.Toastify__toast-container--top-left,.Toastify__toast-container--top-center,.Toastify__toast-container--top-right{top:env(safe-area-inset-top);transform:translate(0)}.Toastify__toast-container--bottom-left,.Toastify__toast-container--bottom-center,.Toastify__toast-container--bottom-right{bottom:env(safe-area-inset-bottom);transform:translate(0)}.Toastify__toast-container--rtl{right:env(safe-area-inset-right);left:initial}.Toastify__toast{--toastify-toast-width: 100%;margin-bottom:0;border-radius:0}}.Toastify__toast-container[data-stacked=true]{width:var(--toastify-toast-width)}.Toastify__toast--stacked{position:absolute;width:100%;transform:translate3d(0,var(--y),0) scale(var(--s));transition:transform .3s}.Toastify__toast--stacked[data-collapsed] .Toastify__toast-body,.Toastify__toast--stacked[data-collapsed] .Toastify__close-button{transition:opacity .1s}.Toastify__toast--stacked[data-collapsed=false]{overflow:visible}.Toastify__toast--stacked[data-collapsed=true]:not(:last-child)>*{opacity:0}.Toastify__toast--stacked:after{content:"";position:absolute;left:0;right:0;height:calc(var(--g) * 1px);bottom:100%}.Toastify__toast--stacked[data-pos=top]{top:0}.Toastify__toast--stacked[data-pos=bot]{bottom:0}.Toastify__toast--stacked[data-pos=bot].Toastify__toast--stacked:before{transform-origin:top}.Toastify__toast--stacked[data-pos=top].Toastify__toast--stacked:before{transform-origin:bottom}.Toastify__toast--stacked:before{content:"";position:absolute;left:0;right:0;bottom:0;height:100%;transform:scaleY(3);z-index:-1}.Toastify__toast--rtl{direction:rtl}.Toastify__toast--close-on-click{cursor:pointer}.Toastify__toast-icon{margin-inline-end:10px;width:22px;flex-shrink:0;display:flex}.Toastify--animate{animation-fill-mode:both;animation-duration:.5s}.Toastify--animate-icon{animation-fill-mode:both;animation-duration:.3s}.Toastify__toast-theme--dark{background:var(--toastify-color-dark);color:var(--toastify-text-color-dark)}.Toastify__toast-theme--light,.Toastify__toast-theme--colored.Toastify__toast--default{background:var(--toastify-color-light);color:var(--toastify-text-color-light)}.Toastify__toast-theme--colored.Toastify__toast--info{color:var(--toastify-text-color-info);background:var(--toastify-color-info)}.Toastify__toast-theme--colored.Toastify__toast--success{color:var(--toastify-text-color-success);background:var(--toastify-color-success)}.Toastify__toast-theme--colored.Toastify__toast--warning{color:var(--toastify-text-color-warning);background:var(--toastify-color-warning)}.Toastify__toast-theme--colored.Toastify__toast--error{color:var(--toastify-text-color-error);background:var(--toastify-color-error)}.Toastify__progress-bar-theme--light{background:var(--toastify-color-progress-light)}.Toastify__progress-bar-theme--dark{background:var(--toastify-color-progress-dark)}.Toastify__progress-bar--info{background:var(--toastify-color-progress-info)}.Toastify__progress-bar--success{background:var(--toastify-color-progress-success)}.Toastify__progress-bar--warning{background:var(--toastify-color-progress-warning)}.Toastify__progress-bar--error{background:var(--toastify-color-progress-error)}.Toastify__progress-bar-theme--colored.Toastify__progress-bar--info,.Toastify__progress-bar-theme--colored.Toastify__progress-bar--success,.Toastify__progress-bar-theme--colored.Toastify__progress-bar--warning,.Toastify__progress-bar-theme--colored.Toastify__progress-bar--error{background:var(--toastify-color-transparent)}.Toastify__close-button{color:#fff;position:absolute;top:6px;right:6px;background:transparent;outline:none;border:none;padding:0;cursor:pointer;opacity:.7;transition:.3s ease;z-index:1}.Toastify__toast--rtl .Toastify__close-button{left:6px;right:unset}.Toastify__close-button--light{color:#000;opacity:.3}.Toastify__close-button>svg{fill:currentColor;height:16px;width:14px}.Toastify__close-button:hover,.Toastify__close-button:focus{opacity:1}@keyframes Toastify__trackProgress{0%{transform:scaleX(1)}to{transform:scaleX(0)}}.Toastify__progress-bar{position:absolute;bottom:0;left:0;width:100%;height:100%;z-index:1;opacity:.7;transform-origin:left}.Toastify__progress-bar--animated{animation:Toastify__trackProgress linear 1 forwards}.Toastify__progress-bar--controlled{transition:transform .2s}.Toastify__progress-bar--rtl{right:0;left:initial;transform-origin:right;border-bottom-left-radius:initial}.Toastify__progress-bar--wrp{position:absolute;overflow:hidden;bottom:0;left:0;width:100%;height:5px;border-bottom-left-radius:var(--toastify-toast-bd-radius);border-bottom-right-radius:var(--toastify-toast-bd-radius)}.Toastify__progress-bar--wrp[data-hidden=true]{opacity:0}.Toastify__progress-bar--bg{opacity:var(--toastify-color-progress-bgo);width:100%;height:100%}.Toastify__spinner{width:20px;height:20px;box-sizing:border-box;border:2px solid;border-radius:100%;border-color:var(--toastify-spinner-color-empty-area);border-right-color:var(--toastify-spinner-color);animation:Toastify__spin .65s linear infinite}@keyframes Toastify__bounceInRight{0%,60%,75%,90%,to{animation-timing-function:cubic-bezier(.215,.61,.355,1)}0%{opacity:0;transform:translate3d(3000px,0,0)}60%{opacity:1;transform:translate3d(-25px,0,0)}75%{transform:translate3d(10px,0,0)}90%{transform:translate3d(-5px,0,0)}to{transform:none}}@keyframes Toastify__bounceOutRight{20%{opacity:1;transform:translate3d(-20px,var(--y),0)}to{opacity:0;transform:translate3d(2000px,var(--y),0)}}@keyframes Toastify__bounceInLeft{0%,60%,75%,90%,to{animation-timing-function:cubic-bezier(.215,.61,.355,1)}0%{opacity:0;transform:translate3d(-3000px,0,0)}60%{opacity:1;transform:translate3d(25px,0,0)}75%{transform:translate3d(-10px,0,0)}90%{transform:translate3d(5px,0,0)}to{transform:none}}@keyframes Toastify__bounceOutLeft{20%{opacity:1;transform:translate3d(20px,var(--y),0)}to{opacity:0;transform:translate3d(-2000px,var(--y),0)}}@keyframes Toastify__bounceInUp{0%,60%,75%,90%,to{animation-timing-function:cubic-bezier(.215,.61,.355,1)}0%{opacity:0;transform:translate3d(0,3000px,0)}60%{opacity:1;transform:translate3d(0,-20px,0)}75%{transform:translate3d(0,10px,0)}90%{transform:translate3d(0,-5px,0)}to{transform:translateZ(0)}}@keyframes Toastify__bounceOutUp{20%{transform:translate3d(0,calc(var(--y) - 10px),0)}40%,45%{opacity:1;transform:translate3d(0,calc(var(--y) + 20px),0)}to{opacity:0;transform:translate3d(0,-2000px,0)}}@keyframes Toastify__bounceInDown{0%,60%,75%,90%,to{animation-timing-function:cubic-bezier(.215,.61,.355,1)}0%{opacity:0;transform:translate3d(0,-3000px,0)}60%{opacity:1;transform:translate3d(0,25px,0)}75%{transform:translate3d(0,-10px,0)}90%{transform:translate3d(0,5px,0)}to{transform:none}}@keyframes Toastify__bounceOutDown{20%{transform:translate3d(0,calc(var(--y) - 10px),0)}40%,45%{opacity:1;transform:translate3d(0,calc(var(--y) + 20px),0)}to{opacity:0;transform:translate3d(0,2000px,0)}}.Toastify__bounce-enter--top-left,.Toastify__bounce-enter--bottom-left{animation-name:Toastify__bounceInLeft}.Toastify__bounce-enter--top-right,.Toastify__bounce-enter--bottom-right{animation-name:Toastify__bounceInRight}.Toastify__bounce-enter--top-center{animation-name:Toastify__bounceInDown}.Toastify__bounce-enter--bottom-center{animation-name:Toastify__bounceInUp}.Toastify__bounce-exit--top-left,.Toastify__bounce-exit--bottom-left{animation-name:Toastify__bounceOutLeft}.Toastify__bounce-exit--top-right,.Toastify__bounce-exit--bottom-right{animation-name:Toastify__bounceOutRight}.Toastify__bounce-exit--top-center{animation-name:Toastify__bounceOutUp}.Toastify__bounce-exit--bottom-center{animation-name:Toastify__bounceOutDown}@keyframes Toastify__zoomIn{0%{opacity:0;transform:scale3d(.3,.3,.3)}50%{opacity:1}}@keyframes Toastify__zoomOut{0%{opacity:1}50%{opacity:0;transform:translate3d(0,var(--y),0) scale3d(.3,.3,.3)}to{opacity:0}}.Toastify__zoom-enter{animation-name:Toastify__zoomIn}.Toastify__zoom-exit{animation-name:Toastify__zoomOut}@keyframes Toastify__flipIn{0%{transform:perspective(400px) rotateX(90deg);animation-timing-function:ease-in;opacity:0}40%{transform:perspective(400px) rotateX(-20deg);animation-timing-function:ease-in}60%{transform:perspective(400px) rotateX(10deg);opacity:1}80%{transform:perspective(400px) rotateX(-5deg)}to{transform:perspective(400px)}}@keyframes Toastify__flipOut{0%{transform:translate3d(0,var(--y),0) perspective(400px)}30%{transform:translate3d(0,var(--y),0) perspective(400px) rotateX(-20deg);opacity:1}to{transform:translate3d(0,var(--y),0) perspective(400px) rotateX(90deg);opacity:0}}.Toastify__flip-enter{animation-name:Toastify__flipIn}.Toastify__flip-exit{animation-name:Toastify__flipOut}@keyframes Toastify__slideInRight{0%{transform:translate3d(110%,0,0);visibility:visible}to{transform:translate3d(0,var(--y),0)}}@keyframes Toastify__slideInLeft{0%{transform:translate3d(-110%,0,0);visibility:visible}to{transform:translate3d(0,var(--y),0)}}@keyframes Toastify__slideInUp{0%{transform:translate3d(0,110%,0);visibility:visible}to{transform:translate3d(0,var(--y),0)}}@keyframes Toastify__slideInDown{0%{transform:translate3d(0,-110%,0);visibility:visible}to{transform:translate3d(0,var(--y),0)}}@keyframes Toastify__slideOutRight{0%{transform:translate3d(0,var(--y),0)}to{visibility:hidden;transform:translate3d(110%,var(--y),0)}}@keyframes Toastify__slideOutLeft{0%{transform:translate3d(0,var(--y),0)}to{visibility:hidden;transform:translate3d(-110%,var(--y),0)}}@keyframes Toastify__slideOutDown{0%{transform:translate3d(0,var(--y),0)}to{visibility:hidden;transform:translate3d(0,500px,0)}}@keyframes Toastify__slideOutUp{0%{transform:translate3d(0,var(--y),0)}to{visibility:hidden;transform:translate3d(0,-500px,0)}}.Toastify__slide-enter--top-left,.Toastify__slide-enter--bottom-left{animation-name:Toastify__slideInLeft}.Toastify__slide-enter--top-right,.Toastify__slide-enter--bottom-right{animation-name:Toastify__slideInRight}.Toastify__slide-enter--top-center{animation-name:Toastify__slideInDown}.Toastify__slide-enter--bottom-center{animation-name:Toastify__slideInUp}.Toastify__slide-exit--top-left,.Toastify__slide-exit--bottom-left{animation-name:Toastify__slideOutLeft;animation-timing-function:ease-in;animation-duration:.3s}.Toastify__slide-exit--top-right,.Toastify__slide-exit--bottom-right{animation-name:Toastify__slideOutRight;animation-timing-function:ease-in;animation-duration:.3s}.Toastify__slide-exit--top-center{animation-name:Toastify__slideOutUp;animation-timing-function:ease-in;animation-duration:.3s}.Toastify__slide-exit--bottom-center{animation-name:Toastify__slideOutDown;animation-timing-function:ease-in;animation-duration:.3s}@keyframes Toastify__spin{0%{transform:rotate(0)}to{transform:rotate(360deg)}}
-`);
-var L = (t)=>typeof t == "number" && !isNaN(t), N = (t)=>typeof t == "string", P = (t)=>typeof t == "function", mt = (t)=>N(t) || L(t), B = (t)=>N(t) || P(t) ? t : null, pt = (t, o)=>t === !1 || L(t) && t > 0 ? t : o, z = (t)=>(0, _react.isValidElement)(t) || N(t) || P(t) || L(t);
-function Z(t, o, e = 300) {
-    let { scrollHeight: r, style: s } = t;
-    requestAnimationFrame(()=>{
-        s.minHeight = "initial", s.height = r + "px", s.transition = `all ${e}ms`, requestAnimationFrame(()=>{
-            s.height = "0", s.padding = "0", s.margin = "0", setTimeout(o, e);
-        });
-    });
-}
-function $({ enter: t, exit: o, appendPosition: e = !1, collapse: r = !0, collapseDuration: s = 300 }) {
-    return function({ children: a, position: d, preventExitTransition: c, done: T, nodeRef: g, isIn: v, playToast: x }) {
-        let C = e ? `${t}--${d}` : t, S = e ? `${o}--${d}` : o, E = (0, _react.useRef)(0);
-        return (0, _react.useLayoutEffect)(()=>{
-            let f = g.current, p = C.split(" "), b = (n)=>{
-                n.target === g.current && (x(), f.removeEventListener("animationend", b), f.removeEventListener("animationcancel", b), E.current === 0 && n.type !== "animationcancel" && f.classList.remove(...p));
-            };
-            (()=>{
-                f.classList.add(...p), f.addEventListener("animationend", b), f.addEventListener("animationcancel", b);
-            })();
-        }, []), (0, _react.useEffect)(()=>{
-            let f = g.current, p = ()=>{
-                f.removeEventListener("animationend", p), r ? Z(f, T, s) : T();
-            };
-            v || (c ? p() : (()=>{
-                E.current = 1, f.className += ` ${S}`, f.addEventListener("animationend", p);
-            })());
-        }, [
-            v
-        ]), (0, _reactDefault.default).createElement((0, _reactDefault.default).Fragment, null, a);
-    };
-}
-function J(t, o) {
-    return {
-        content: tt(t.content, t.props),
-        containerId: t.props.containerId,
-        id: t.props.toastId,
-        theme: t.props.theme,
-        type: t.props.type,
-        data: t.props.data || {},
-        isLoading: t.props.isLoading,
-        icon: t.props.icon,
-        reason: t.removalReason,
-        status: o
-    };
-}
-function tt(t, o, e = !1) {
-    return (0, _react.isValidElement)(t) && !N(t.type) ? (0, _react.cloneElement)(t, {
-        closeToast: o.closeToast,
-        toastProps: o,
-        data: o.data,
-        isPaused: e
-    }) : P(t) ? t({
-        closeToast: o.closeToast,
-        toastProps: o,
-        data: o.data,
-        isPaused: e
-    }) : t;
-}
-function yt({ closeToast: t, theme: o, ariaLabel: e = "close" }) {
-    return (0, _reactDefault.default).createElement("button", {
-        className: `Toastify__close-button Toastify__close-button--${o}`,
-        type: "button",
-        onClick: (r)=>{
-            r.stopPropagation(), t(!0);
-        },
-        "aria-label": e
-    }, (0, _reactDefault.default).createElement("svg", {
-        "aria-hidden": "true",
-        viewBox: "0 0 14 16"
-    }, (0, _reactDefault.default).createElement("path", {
-        fillRule: "evenodd",
-        d: "M7.71 8.23l3.75 3.75-1.48 1.48-3.75-3.75-3.75 3.75L1 11.98l3.75-3.75L1 4.48 2.48 3l3.75 3.75L9.98 3l1.48 1.48-3.75 3.75z"
-    })));
-}
-function gt({ delay: t, isRunning: o, closeToast: e, type: r = "default", hide: s, className: l, controlledProgress: a, progress: d, rtl: c, isIn: T, theme: g }) {
-    let v = s || a && d === 0, x = {
-        animationDuration: `${t}ms`,
-        animationPlayState: o ? "running" : "paused"
-    };
-    a && (x.transform = `scaleX(${d})`);
-    let C = (0, _clsxDefault.default)("Toastify__progress-bar", a ? "Toastify__progress-bar--controlled" : "Toastify__progress-bar--animated", `Toastify__progress-bar-theme--${g}`, `Toastify__progress-bar--${r}`, {
-        ["Toastify__progress-bar--rtl"]: c
-    }), S = P(l) ? l({
-        rtl: c,
-        type: r,
-        defaultClassName: C
-    }) : (0, _clsxDefault.default)(C, l), E = {
-        [a && d >= 1 ? "onTransitionEnd" : "onAnimationEnd"]: a && d < 1 ? null : ()=>{
-            T && e();
-        }
-    };
-    return (0, _reactDefault.default).createElement("div", {
-        className: "Toastify__progress-bar--wrp",
-        "data-hidden": v
-    }, (0, _reactDefault.default).createElement("div", {
-        className: `Toastify__progress-bar--bg Toastify__progress-bar-theme--${g} Toastify__progress-bar--${r}`
-    }), (0, _reactDefault.default).createElement("div", {
-        role: "progressbar",
-        "aria-hidden": v ? "true" : "false",
-        "aria-label": "notification timer",
-        className: S,
-        style: x,
-        ...E
-    }));
-}
-var Xt = 1, at = ()=>`${Xt++}`;
-function _t(t, o, e) {
-    let r = 1, s = 0, l = [], a = [], d = o, c = new Map, T = new Set, g = (i)=>(T.add(i), ()=>T.delete(i)), v = ()=>{
-        a = Array.from(c.values()), T.forEach((i)=>i());
-    }, x = ({ containerId: i, toastId: n, updateId: u })=>{
-        let h = i ? i !== t : t !== 1, m = c.has(n) && u == null;
-        return h || m;
-    }, C = (i, n)=>{
-        c.forEach((u)=>{
-            var h;
-            (n == null || n === u.props.toastId) && ((h = u.toggle) == null || h.call(u, i));
-        });
-    }, S = (i)=>{
-        var n, u;
-        (u = (n = i.props) == null ? void 0 : n.onClose) == null || u.call(n, i.removalReason), i.isActive = !1;
-    }, E = (i)=>{
-        if (i == null) c.forEach(S);
-        else {
-            let n = c.get(i);
-            n && S(n);
-        }
-        v();
-    }, f = ()=>{
-        s -= l.length, l = [];
-    }, p = (i)=>{
-        var m, _;
-        let { toastId: n, updateId: u } = i.props, h = u == null;
-        i.staleId && c.delete(i.staleId), i.isActive = !0, c.set(n, i), v(), e(J(i, h ? "added" : "updated")), h && ((_ = (m = i.props).onOpen) == null || _.call(m));
-    };
-    return {
-        id: t,
-        props: d,
-        observe: g,
-        toggle: C,
-        removeToast: E,
-        toasts: c,
-        clearQueue: f,
-        buildToast: (i, n)=>{
-            if (x(n)) return;
-            let { toastId: u, updateId: h, data: m, staleId: _, delay: k } = n, M = h == null;
-            M && s++;
-            let A = {
-                ...d,
-                style: d.toastStyle,
-                key: r++,
-                ...Object.fromEntries(Object.entries(n).filter(([D, Y])=>Y != null)),
-                toastId: u,
-                updateId: h,
-                data: m,
-                isIn: !1,
-                className: B(n.className || d.toastClassName),
-                progressClassName: B(n.progressClassName || d.progressClassName),
-                autoClose: n.isLoading ? !1 : pt(n.autoClose, d.autoClose),
-                closeToast (D) {
-                    c.get(u).removalReason = D, E(u);
-                },
-                deleteToast () {
-                    let D = c.get(u);
-                    if (D != null) {
-                        if (e(J(D, "removed")), c.delete(u), s--, s < 0 && (s = 0), l.length > 0) {
-                            p(l.shift());
-                            return;
-                        }
-                        v();
-                    }
-                }
-            };
-            A.closeButton = d.closeButton, n.closeButton === !1 || z(n.closeButton) ? A.closeButton = n.closeButton : n.closeButton === !0 && (A.closeButton = z(d.closeButton) ? d.closeButton : !0);
-            let R = {
-                content: i,
-                props: A,
-                staleId: _
-            };
-            d.limit && d.limit > 0 && s > d.limit && M ? l.push(R) : L(k) ? setTimeout(()=>{
-                p(R);
-            }, k) : p(R);
-        },
-        setProps (i) {
-            d = i;
-        },
-        setToggle: (i, n)=>{
-            let u = c.get(i);
-            u && (u.toggle = n);
-        },
-        isToastActive: (i)=>{
-            var n;
-            return (n = c.get(i)) == null ? void 0 : n.isActive;
-        },
-        getSnapshot: ()=>a
-    };
-}
-var I = new Map, F = [], st = new Set, Vt = (t)=>st.forEach((o)=>o(t)), bt = ()=>I.size > 0;
-function Qt() {
-    F.forEach((t)=>nt(t.content, t.options)), F = [];
-}
-var vt = (t, { containerId: o })=>{
-    var e;
-    return (e = I.get(o || 1)) == null ? void 0 : e.toasts.get(t);
-};
-function X(t, o) {
-    var r;
-    if (o) return !!((r = I.get(o)) != null && r.isToastActive(t));
-    let e = !1;
-    return I.forEach((s)=>{
-        s.isToastActive(t) && (e = !0);
-    }), e;
-}
-function ht(t) {
-    if (!bt()) {
-        F = F.filter((o)=>t != null && o.options.toastId !== t);
-        return;
-    }
-    if (t == null || mt(t)) I.forEach((o)=>{
-        o.removeToast(t);
-    });
-    else if (t && ("containerId" in t || "id" in t)) {
-        let o = I.get(t.containerId);
-        o ? o.removeToast(t.id) : I.forEach((e)=>{
-            e.removeToast(t.id);
-        });
-    }
-}
-var Ct = (t = {})=>{
-    I.forEach((o)=>{
-        o.props.limit && (!t.containerId || o.id === t.containerId) && o.clearQueue();
-    });
-};
-function nt(t, o) {
-    z(t) && (bt() || F.push({
-        content: t,
-        options: o
-    }), I.forEach((e)=>{
-        e.buildToast(t, o);
-    }));
-}
-function xt(t) {
-    var o;
-    (o = I.get(t.containerId || 1)) == null || o.setToggle(t.id, t.fn);
-}
-function rt(t, o) {
-    I.forEach((e)=>{
-        (o == null || !(o != null && o.containerId) || (o == null ? void 0 : o.containerId) === e.id) && e.toggle(t, o == null ? void 0 : o.id);
-    });
-}
-function Et(t) {
-    let o = t.containerId || 1;
-    return {
-        subscribe (e) {
-            let r = _t(o, t, Vt);
-            I.set(o, r);
-            let s = r.observe(e);
-            return Qt(), ()=>{
-                s(), I.delete(o);
-            };
-        },
-        setProps (e) {
-            var r;
-            (r = I.get(o)) == null || r.setProps(e);
-        },
-        getSnapshot () {
-            var e;
-            return (e = I.get(o)) == null ? void 0 : e.getSnapshot();
-        }
-    };
-}
-function Pt(t) {
-    return st.add(t), ()=>{
-        st.delete(t);
-    };
-}
-function Wt(t) {
-    return t && (N(t.toastId) || L(t.toastId)) ? t.toastId : at();
-}
-function U(t, o) {
-    return nt(t, o), o.toastId;
-}
-function V(t, o) {
-    return {
-        ...o,
-        type: o && o.type || t,
-        toastId: Wt(o)
-    };
-}
-function Q(t) {
-    return (o, e)=>U(o, V(t, e));
-}
-function y(t, o) {
-    return U(t, V("default", o));
-}
-y.loading = (t, o)=>U(t, V("default", {
-        isLoading: !0,
-        autoClose: !1,
-        closeOnClick: !1,
-        closeButton: !1,
-        draggable: !1,
-        ...o
-    }));
-function Gt(t, { pending: o, error: e, success: r }, s) {
-    let l;
-    o && (l = N(o) ? y.loading(o, s) : y.loading(o.render, {
-        ...s,
-        ...o
-    }));
-    let a = {
-        isLoading: null,
-        autoClose: null,
-        closeOnClick: null,
-        closeButton: null,
-        draggable: null
-    }, d = (T, g, v)=>{
-        if (g == null) {
-            y.dismiss(l);
-            return;
-        }
-        let x = {
-            type: T,
-            ...a,
-            ...s,
-            data: v
-        }, C = N(g) ? {
-            render: g
-        } : g;
-        return l ? y.update(l, {
-            ...x,
-            ...C
-        }) : y(C.render, {
-            ...x,
-            ...C
-        }), v;
-    }, c = P(t) ? t() : t;
-    return c.then((T)=>d("success", r, T)).catch((T)=>d("error", e, T)), c;
-}
-y.promise = Gt;
-y.success = Q("success");
-y.info = Q("info");
-y.error = Q("error");
-y.warning = Q("warning");
-y.warn = y.warning;
-y.dark = (t, o)=>U(t, V("default", {
-        theme: "dark",
-        ...o
-    }));
-function qt(t) {
-    ht(t);
-}
-y.dismiss = qt;
-y.clearWaitingQueue = Ct;
-y.isActive = X;
-y.update = (t, o = {})=>{
-    let e = vt(t, o);
-    if (e) {
-        let { props: r, content: s } = e, l = {
-            delay: 100,
-            ...r,
-            ...o,
-            toastId: o.toastId || t,
-            updateId: at()
-        };
-        l.toastId !== t && (l.staleId = t);
-        let a = l.render || s;
-        delete l.render, U(a, l);
-    }
-};
-y.done = (t)=>{
-    y.update(t, {
-        progress: 1
-    });
-};
-y.onChange = Pt;
-y.play = (t)=>rt(!0, t);
-y.pause = (t)=>rt(!1, t);
-function It(t) {
-    var a;
-    let { subscribe: o, getSnapshot: e, setProps: r } = (0, _react.useRef)(Et(t)).current;
-    r(t);
-    let s = (a = (0, _react.useSyncExternalStore)(o, e, e)) == null ? void 0 : a.slice();
-    function l(d) {
-        if (!s) return [];
-        let c = new Map;
-        return t.newestOnTop && s.reverse(), s.forEach((T)=>{
-            let { position: g } = T.props;
-            c.has(g) || c.set(g, []), c.get(g).push(T);
-        }), Array.from(c, (T)=>d(T[0], T[1]));
-    }
-    return {
-        getToastToRender: l,
-        isToastActive: X,
-        count: s == null ? void 0 : s.length
-    };
-}
-function At(t) {
-    let [o, e] = (0, _react.useState)(!1), [r, s] = (0, _react.useState)(!1), l = (0, _react.useRef)(null), a = (0, _react.useRef)({
-        start: 0,
-        delta: 0,
-        removalDistance: 0,
-        canCloseOnClick: !0,
-        canDrag: !1,
-        didMove: !1
-    }).current, { autoClose: d, pauseOnHover: c, closeToast: T, onClick: g, closeOnClick: v } = t;
-    xt({
-        id: t.toastId,
-        containerId: t.containerId,
-        fn: e
-    }), (0, _react.useEffect)(()=>{
-        if (t.pauseOnFocusLoss) return x(), ()=>{
-            C();
-        };
-    }, [
-        t.pauseOnFocusLoss
-    ]);
-    function x() {
-        document.hasFocus() || p(), window.addEventListener("focus", f), window.addEventListener("blur", p);
-    }
-    function C() {
-        window.removeEventListener("focus", f), window.removeEventListener("blur", p);
-    }
-    function S(m) {
-        if (t.draggable === !0 || t.draggable === m.pointerType) {
-            b();
-            let _ = l.current;
-            a.canCloseOnClick = !0, a.canDrag = !0, _.style.transition = "none", t.draggableDirection === "x" ? (a.start = m.clientX, a.removalDistance = _.offsetWidth * (t.draggablePercent / 100)) : (a.start = m.clientY, a.removalDistance = _.offsetHeight * (t.draggablePercent === 80 ? t.draggablePercent * 1.5 : t.draggablePercent) / 100);
-        }
-    }
-    function E(m) {
-        let { top: _, bottom: k, left: M, right: A } = l.current.getBoundingClientRect();
-        m.nativeEvent.type !== "touchend" && t.pauseOnHover && m.clientX >= M && m.clientX <= A && m.clientY >= _ && m.clientY <= k ? p() : f();
-    }
-    function f() {
-        e(!0);
-    }
-    function p() {
-        e(!1);
-    }
-    function b() {
-        a.didMove = !1, document.addEventListener("pointermove", n), document.addEventListener("pointerup", u);
-    }
-    function i() {
-        document.removeEventListener("pointermove", n), document.removeEventListener("pointerup", u);
-    }
-    function n(m) {
-        let _ = l.current;
-        if (a.canDrag && _) {
-            a.didMove = !0, o && p(), t.draggableDirection === "x" ? a.delta = m.clientX - a.start : a.delta = m.clientY - a.start, a.start !== m.clientX && (a.canCloseOnClick = !1);
-            let k = t.draggableDirection === "x" ? `${a.delta}px, var(--y)` : `0, calc(${a.delta}px + var(--y))`;
-            _.style.transform = `translate3d(${k},0)`, _.style.opacity = `${1 - Math.abs(a.delta / a.removalDistance)}`;
-        }
-    }
-    function u() {
-        i();
-        let m = l.current;
-        if (a.canDrag && a.didMove && m) {
-            if (a.canDrag = !1, Math.abs(a.delta) > a.removalDistance) {
-                s(!0), t.closeToast(!0), t.collapseAll();
-                return;
-            }
-            m.style.transition = "transform 0.2s, opacity 0.2s", m.style.removeProperty("transform"), m.style.removeProperty("opacity");
-        }
-    }
-    let h = {
-        onPointerDown: S,
-        onPointerUp: E
-    };
-    return d && c && (h.onMouseEnter = p, t.stacked || (h.onMouseLeave = f)), v && (h.onClick = (m)=>{
-        g && g(m), a.canCloseOnClick && T(!0);
-    }), {
-        playToast: f,
-        pauseToast: p,
-        isRunning: o,
-        preventExitTransition: r,
-        toastRef: l,
-        eventHandlers: h
-    };
-}
-var Ot = typeof window != "undefined" ? (0, _react.useLayoutEffect) : (0, _react.useEffect);
-var G = ({ theme: t, type: o, isLoading: e, ...r })=>(0, _reactDefault.default).createElement("svg", {
-        viewBox: "0 0 24 24",
-        width: "100%",
-        height: "100%",
-        fill: t === "colored" ? "currentColor" : `var(--toastify-icon-color-${o})`,
-        ...r
-    });
-function ao(t) {
-    return (0, _reactDefault.default).createElement(G, {
-        ...t
-    }, (0, _reactDefault.default).createElement("path", {
-        d: "M23.32 17.191L15.438 2.184C14.728.833 13.416 0 11.996 0c-1.42 0-2.733.833-3.443 2.184L.533 17.448a4.744 4.744 0 000 4.368C1.243 23.167 2.555 24 3.975 24h16.05C22.22 24 24 22.044 24 19.632c0-.904-.251-1.746-.68-2.44zm-9.622 1.46c0 1.033-.724 1.823-1.698 1.823s-1.698-.79-1.698-1.822v-.043c0-1.028.724-1.822 1.698-1.822s1.698.79 1.698 1.822v.043zm.039-12.285l-.84 8.06c-.057.581-.408.943-.897.943-.49 0-.84-.367-.896-.942l-.84-8.065c-.057-.624.25-1.095.779-1.095h1.91c.528.005.84.476.784 1.1z"
-    }));
-}
-function so(t) {
-    return (0, _reactDefault.default).createElement(G, {
-        ...t
-    }, (0, _reactDefault.default).createElement("path", {
-        d: "M12 0a12 12 0 1012 12A12.013 12.013 0 0012 0zm.25 5a1.5 1.5 0 11-1.5 1.5 1.5 1.5 0 011.5-1.5zm2.25 13.5h-4a1 1 0 010-2h.75a.25.25 0 00.25-.25v-4.5a.25.25 0 00-.25-.25h-.75a1 1 0 010-2h1a2 2 0 012 2v4.75a.25.25 0 00.25.25h.75a1 1 0 110 2z"
-    }));
-}
-function no(t) {
-    return (0, _reactDefault.default).createElement(G, {
-        ...t
-    }, (0, _reactDefault.default).createElement("path", {
-        d: "M12 0a12 12 0 1012 12A12.014 12.014 0 0012 0zm6.927 8.2l-6.845 9.289a1.011 1.011 0 01-1.43.188l-4.888-3.908a1 1 0 111.25-1.562l4.076 3.261 6.227-8.451a1 1 0 111.61 1.183z"
-    }));
-}
-function ro(t) {
-    return (0, _reactDefault.default).createElement(G, {
-        ...t
-    }, (0, _reactDefault.default).createElement("path", {
-        d: "M11.983 0a12.206 12.206 0 00-8.51 3.653A11.8 11.8 0 000 12.207 11.779 11.779 0 0011.8 24h.214A12.111 12.111 0 0024 11.791 11.766 11.766 0 0011.983 0zM10.5 16.542a1.476 1.476 0 011.449-1.53h.027a1.527 1.527 0 011.523 1.47 1.475 1.475 0 01-1.449 1.53h-.027a1.529 1.529 0 01-1.523-1.47zM11 12.5v-6a1 1 0 012 0v6a1 1 0 11-2 0z"
-    }));
-}
-function io() {
-    return (0, _reactDefault.default).createElement("div", {
-        className: "Toastify__spinner"
-    });
-}
-var W = {
-    info: so,
-    warning: ao,
-    success: no,
-    error: ro,
-    spinner: io
-}, lo = (t)=>t in W;
-function Nt({ theme: t, type: o, isLoading: e, icon: r }) {
-    let s = null, l = {
-        theme: t,
-        type: o
-    };
-    return r === !1 || (P(r) ? s = r({
-        ...l,
-        isLoading: e
-    }) : (0, _react.isValidElement)(r) ? s = (0, _react.cloneElement)(r, l) : e ? s = W.spinner() : lo(o) && (s = W[o](l))), s;
-}
-var wt = (t)=>{
-    let { isRunning: o, preventExitTransition: e, toastRef: r, eventHandlers: s, playToast: l } = At(t), { closeButton: a, children: d, autoClose: c, onClick: T, type: g, hideProgressBar: v, closeToast: x, transition: C, position: S, className: E, style: f, progressClassName: p, updateId: b, role: i, progress: n, rtl: u, toastId: h, deleteToast: m, isIn: _, isLoading: k, closeOnClick: M, theme: A, ariaLabel: R } = t, D = (0, _clsxDefault.default)("Toastify__toast", `Toastify__toast-theme--${A}`, `Toastify__toast--${g}`, {
-        ["Toastify__toast--rtl"]: u
-    }, {
-        ["Toastify__toast--close-on-click"]: M
-    }), Y = P(E) ? E({
-        rtl: u,
-        position: S,
-        type: g,
-        defaultClassName: D
-    }) : (0, _clsxDefault.default)(D, E), ft = Nt(t), dt = !!n || !c, j = {
-        closeToast: x,
-        type: g,
-        theme: A
-    }, H = null;
-    return a === !1 || (P(a) ? H = a(j) : (0, _react.isValidElement)(a) ? H = (0, _react.cloneElement)(a, j) : H = yt(j)), (0, _reactDefault.default).createElement(C, {
-        isIn: _,
-        done: m,
-        position: S,
-        preventExitTransition: e,
-        nodeRef: r,
-        playToast: l
-    }, (0, _reactDefault.default).createElement("div", {
-        id: h,
-        tabIndex: 0,
-        onClick: T,
-        "data-in": _,
-        className: Y,
-        ...s,
-        style: f,
-        ref: r,
-        ..._ && {
-            role: i,
-            "aria-label": R
-        }
-    }, ft != null && (0, _reactDefault.default).createElement("div", {
-        className: (0, _clsxDefault.default)("Toastify__toast-icon", {
-            ["Toastify--animate-icon Toastify__zoom-enter"]: !k
-        })
-    }, ft), tt(d, t, !o), H, !t.customProgressBar && (0, _reactDefault.default).createElement(gt, {
-        ...b && !dt ? {
-            key: `p-${b}`
-        } : {},
-        rtl: u,
-        theme: A,
-        delay: c,
-        isRunning: o,
-        isIn: _,
-        closeToast: x,
-        hide: v,
-        type: g,
-        className: p,
-        controlledProgress: dt,
-        progress: n || 0
-    })));
-};
-var K = (t, o = !1)=>({
-        enter: `Toastify--animate Toastify__${t}-enter`,
-        exit: `Toastify--animate Toastify__${t}-exit`,
-        appendPosition: o
-    }), lt = $(K("bounce", !0)), mo = $(K("slide", !0)), po = $(K("zoom")), uo = $(K("flip"));
-var _o = {
-    position: "top-right",
-    transition: lt,
-    autoClose: 5e3,
-    closeButton: !0,
-    pauseOnHover: !0,
-    pauseOnFocusLoss: !0,
-    draggable: "touch",
-    draggablePercent: 80,
-    draggableDirection: "x",
-    role: "alert",
-    theme: "light",
-    "aria-label": "Notifications Alt+T",
-    hotKeys: (t)=>t.altKey && t.code === "KeyT"
-};
-function Lt(t) {
-    let o = {
-        ..._o,
-        ...t
-    }, e = t.stacked, [r, s] = (0, _react.useState)(!0), l = (0, _react.useRef)(null), { getToastToRender: a, isToastActive: d, count: c } = It(o), { className: T, style: g, rtl: v, containerId: x, hotKeys: C } = o;
-    function S(f) {
-        let p = (0, _clsxDefault.default)("Toastify__toast-container", `Toastify__toast-container--${f}`, {
-            ["Toastify__toast-container--rtl"]: v
-        });
-        return P(T) ? T({
-            position: f,
-            rtl: v,
-            defaultClassName: p
-        }) : (0, _clsxDefault.default)(p, B(T));
-    }
-    function E() {
-        e && (s(!0), y.play());
-    }
-    return Ot(()=>{
-        var f;
-        if (e) {
-            let p = l.current.querySelectorAll('[data-in="true"]'), b = 12, i = (f = o.position) == null ? void 0 : f.includes("top"), n = 0, u = 0;
-            Array.from(p).reverse().forEach((h, m)=>{
-                let _ = h;
-                _.classList.add("Toastify__toast--stacked"), m > 0 && (_.dataset.collapsed = `${r}`), _.dataset.pos || (_.dataset.pos = i ? "top" : "bot");
-                let k = n * (r ? .2 : 1) + (r ? 0 : b * m);
-                _.style.setProperty("--y", `${i ? k : k * -1}px`), _.style.setProperty("--g", `${b}`), _.style.setProperty("--s", `${1 - (r ? u : 0)}`), n += _.offsetHeight, u += .025;
-            });
-        }
-    }, [
-        r,
-        c,
-        e
-    ]), (0, _react.useEffect)(()=>{
-        function f(p) {
-            var i;
-            let b = l.current;
-            C(p) && ((i = b.querySelector('[tabIndex="0"]')) == null || i.focus(), s(!1), y.pause()), p.key === "Escape" && (document.activeElement === b || b != null && b.contains(document.activeElement)) && (s(!0), y.play());
-        }
-        return document.addEventListener("keydown", f), ()=>{
-            document.removeEventListener("keydown", f);
-        };
-    }, [
-        C
-    ]), (0, _reactDefault.default).createElement("section", {
-        ref: l,
-        className: "Toastify",
-        id: x,
-        onMouseEnter: ()=>{
-            e && (s(!1), y.pause());
-        },
-        onMouseLeave: E,
-        "aria-live": "polite",
-        "aria-atomic": "false",
-        "aria-relevant": "additions text",
-        "aria-label": o["aria-label"]
-    }, a((f, p)=>{
-        let b = p.length ? {
-            ...g
-        } : {
-            ...g,
-            pointerEvents: "none"
-        };
-        return (0, _reactDefault.default).createElement("div", {
-            tabIndex: -1,
-            className: S(f),
-            "data-stacked": e,
-            style: b,
-            key: `c-${f}`
-        }, p.map(({ content: i, props: n })=>(0, _reactDefault.default).createElement(wt, {
-                ...n,
-                stacked: e,
-                collapseAll: E,
-                isIn: d(n.toastId, n.containerId),
-                key: `t-${n.key}`
-            }, i)));
-    }));
-}
-
-},{"react":"21dqq","clsx":"gocd3","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gocd3":[function(require,module,exports,__globalThis) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "clsx", ()=>clsx);
-function r(e) {
-    var t, f, n = "";
-    if ("string" == typeof e || "number" == typeof e) n += e;
-    else if ("object" == typeof e) {
-        if (Array.isArray(e)) {
-            var o = e.length;
-            for(t = 0; t < o; t++)e[t] && (f = r(e[t])) && (n && (n += " "), n += f);
-        } else for(f in e)e[f] && (n && (n += " "), n += f);
-    }
-    return n;
-}
-function clsx() {
-    for(var e, t, f = 0, n = "", o = arguments.length; f < o; f++)(e = arguments[f]) && (t = r(e)) && (n && (n += " "), n += t);
-    return n;
-}
-exports.default = clsx;
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gJP2Y":[function() {},{}],"cPWnh":[function(require,module,exports,__globalThis) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gJP2Y":[function() {},{}],"gJP2Y":[function() {},{}],"cPWnh":[function(require,module,exports,__globalThis) {
 module.exports = require("b1e0dcc0bb8f357c")(require("5e13115a7b27e55d").getBundleURL('lPpKD') + "Grocery.c52c2ad2.js").catch((err)=>{
     delete module.bundle.cache[module.id];
     throw err;
@@ -42201,13 +42288,7 @@ const Cart = ()=>{
     const handleClearCart = ()=>{
         dispatch((0, _cartSlice.clearItems)());
     };
-    //   const totalAmount=items?.card?.info?.price.reduce((acc,curr)=>{
-    //     acc=acc+curr 
-    //     return acc/100
-    //   },0)
-    const totalAmount = cartItems.map((item)=>item?.card?.info?.price / 100 || item?.card?.info?.defaultPrice / 100) // Extract prices safely
-    .reduce((acc, curr)=>acc + curr, 0) // Sum and convert to proper currency format
-    ;
+    const totalAmount = cartItems.map((item)=>(item?.card?.info?.price / 100 || item?.card?.info?.defaultPrice / 100) * item.quantity).reduce((acc, curr)=>acc + curr, 0);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "m-4 p-4 text-center",
         children: [
@@ -42216,7 +42297,7 @@ const Cart = ()=>{
                 children: "Cart"
             }, void 0, false, {
                 fileName: "src/components/Cart.js",
-                lineNumber: 27,
+                lineNumber: 24,
                 columnNumber: 13
             }, undefined),
             cartItems.length === 0 ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -42228,14 +42309,14 @@ const Cart = ()=>{
                             "Cart is empty ",
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                                 fileName: "src/components/Cart.js",
-                                lineNumber: 28,
+                                lineNumber: 25,
                                 columnNumber: 80
                             }, undefined),
                             "Add items to the cart!!!!"
                         ]
                     }, void 0, true, {
                         fileName: "src/components/Cart.js",
-                        lineNumber: 28,
+                        lineNumber: 25,
                         columnNumber: 42
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
@@ -42243,13 +42324,13 @@ const Cart = ()=>{
                         src: "https://mir-s3-cdn-cf.behance.net/projects/404/54b13147340145.Y3JvcCw0MDUsMzE3LDAsNDI.png"
                     }, void 0, false, {
                         fileName: "src/components/Cart.js",
-                        lineNumber: 29,
+                        lineNumber: 26,
                         columnNumber: 13
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/Cart.js",
-                lineNumber: 28,
+                lineNumber: 25,
                 columnNumber: 36
             }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                 className: "p-2 m-2 bg-black text-white rounded-2xl",
@@ -42257,7 +42338,7 @@ const Cart = ()=>{
                 children: " Clear Cart"
             }, void 0, false, {
                 fileName: "src/components/Cart.js",
-                lineNumber: 30,
+                lineNumber: 27,
                 columnNumber: 14
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -42266,12 +42347,12 @@ const Cart = ()=>{
                     items: cartItems
                 }, void 0, false, {
                     fileName: "src/components/Cart.js",
-                    lineNumber: 34,
+                    lineNumber: 31,
                     columnNumber: 13
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/Cart.js",
-                lineNumber: 33,
+                lineNumber: 30,
                 columnNumber: 12
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -42284,18 +42365,18 @@ const Cart = ()=>{
                     ]
                 }, void 0, true, {
                     fileName: "src/components/Cart.js",
-                    lineNumber: 38,
+                    lineNumber: 35,
                     columnNumber: 12
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/Cart.js",
-                lineNumber: 37,
+                lineNumber: 34,
                 columnNumber: 12
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/Cart.js",
-        lineNumber: 25,
+        lineNumber: 22,
         columnNumber: 9
     }, undefined);
 };
