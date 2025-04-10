@@ -26045,6 +26045,7 @@ var _s = $RefreshSig$();
 const Header = ({ isLoggedIn, onLogin, onLogout })=>{
     _s();
     const [btnName, setBtnName] = (0, _react.useState)("Login");
+    const [menuOpen, setMenuOpen] = (0, _react.useState)(false);
     const onlineStatus = (0, _useOnlineStatusDefault.default)();
     const display = onlineStatus ? "\u2705" : "\uD83D\uDD34";
     const { LoggedInUser } = (0, _react.useContext)((0, _userContextDefault.default));
@@ -26060,12 +26061,12 @@ const Header = ({ isLoggedIn, onLogin, onLogout })=>{
                     src: (0, _constants.LOGO_URL)
                 }, void 0, false, {
                     fileName: "src/components/Header.js",
-                    lineNumber: 26,
+                    lineNumber: 28,
                     columnNumber: 9
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/Header.js",
-                lineNumber: 25,
+                lineNumber: 27,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("nav", {
@@ -26082,7 +26083,7 @@ const Header = ({ isLoggedIn, onLogin, onLogout })=>{
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/Header.js",
-                                lineNumber: 31,
+                                lineNumber: 36,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
@@ -26092,12 +26093,12 @@ const Header = ({ isLoggedIn, onLogin, onLogout })=>{
                                     children: "Grocery"
                                 }, void 0, false, {
                                     fileName: "src/components/Header.js",
-                                    lineNumber: 33,
+                                    lineNumber: 38,
                                     columnNumber: 13
                                 }, undefined)
                             }, void 0, false, {
                                 fileName: "src/components/Header.js",
-                                lineNumber: 32,
+                                lineNumber: 37,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
@@ -26107,12 +26108,12 @@ const Header = ({ isLoggedIn, onLogin, onLogout })=>{
                                     children: "Home"
                                 }, void 0, false, {
                                     fileName: "src/components/Header.js",
-                                    lineNumber: 36,
+                                    lineNumber: 41,
                                     columnNumber: 13
                                 }, undefined)
                             }, void 0, false, {
                                 fileName: "src/components/Header.js",
-                                lineNumber: 35,
+                                lineNumber: 40,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
@@ -26122,12 +26123,12 @@ const Header = ({ isLoggedIn, onLogin, onLogout })=>{
                                     children: "About Us"
                                 }, void 0, false, {
                                     fileName: "src/components/Header.js",
-                                    lineNumber: 39,
+                                    lineNumber: 44,
                                     columnNumber: 13
                                 }, undefined)
                             }, void 0, false, {
                                 fileName: "src/components/Header.js",
-                                lineNumber: 38,
+                                lineNumber: 43,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
@@ -26137,12 +26138,12 @@ const Header = ({ isLoggedIn, onLogin, onLogout })=>{
                                     children: "Contact Us"
                                 }, void 0, false, {
                                     fileName: "src/components/Header.js",
-                                    lineNumber: 42,
+                                    lineNumber: 47,
                                     columnNumber: 13
                                 }, undefined)
                             }, void 0, false, {
                                 fileName: "src/components/Header.js",
-                                lineNumber: 41,
+                                lineNumber: 46,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
@@ -26156,7 +26157,7 @@ const Header = ({ isLoggedIn, onLogin, onLogout })=>{
                                                 className: "w-6 h-6 text-white"
                                             }, void 0, false, {
                                                 fileName: "src/components/Header.js",
-                                                lineNumber: 47,
+                                                lineNumber: 52,
                                                 columnNumber: 13
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -26168,23 +26169,23 @@ const Header = ({ isLoggedIn, onLogin, onLogout })=>{
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "src/components/Header.js",
-                                                lineNumber: 48,
+                                                lineNumber: 53,
                                                 columnNumber: 13
                                             }, undefined)
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/components/Header.js",
-                                        lineNumber: 46,
+                                        lineNumber: 51,
                                         columnNumber: 31
                                     }, undefined)
                                 }, void 0, false, {
                                     fileName: "src/components/Header.js",
-                                    lineNumber: 46,
+                                    lineNumber: 51,
                                     columnNumber: 13
                                 }, undefined)
                             }, void 0, false, {
                                 fileName: "src/components/Header.js",
-                                lineNumber: 45,
+                                lineNumber: 50,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
@@ -26195,7 +26196,7 @@ const Header = ({ isLoggedIn, onLogin, onLogout })=>{
                                     children: "Logout"
                                 }, void 0, false, {
                                     fileName: "src/components/Header.js",
-                                    lineNumber: 53,
+                                    lineNumber: 58,
                                     columnNumber: 15
                                 }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
                                     to: "/login",
@@ -26204,43 +26205,43 @@ const Header = ({ isLoggedIn, onLogin, onLogout })=>{
                                         children: "Login"
                                     }, void 0, false, {
                                         fileName: "src/components/Header.js",
-                                        lineNumber: 58,
+                                        lineNumber: 63,
                                         columnNumber: 17
                                     }, undefined)
                                 }, void 0, false, {
                                     fileName: "src/components/Header.js",
-                                    lineNumber: 57,
+                                    lineNumber: 62,
                                     columnNumber: 15
                                 }, undefined)
                             }, void 0, false, {
                                 fileName: "src/components/Header.js",
-                                lineNumber: 51,
+                                lineNumber: 56,
                                 columnNumber: 10
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/Header.js",
-                        lineNumber: 30,
+                        lineNumber: 35,
                         columnNumber: 9
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/components/Header.js",
-                    lineNumber: 29,
+                    lineNumber: 34,
                     columnNumber: 7
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/Header.js",
-                lineNumber: 28,
+                lineNumber: 33,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/Header.js",
-        lineNumber: 21,
+        lineNumber: 23,
         columnNumber: 5
     }, undefined);
 };
-_s(Header, "CT0KQ8Unoirs7u7qgU83wdljLvY=", false, function() {
+_s(Header, "YnMHBIrsV81YYN9dG4CNhDF18LQ=", false, function() {
     return [
         (0, _useOnlineStatusDefault.default),
         (0, _reactRedux.useSelector)
