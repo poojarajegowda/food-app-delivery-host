@@ -26052,12 +26052,12 @@ const Header = ({ isLoggedIn, onLogin, onLogout })=>{
     const cartItems = (0, _reactRedux.useSelector)((store)=>store.cart.items);
     console.log(cartItems);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "flex justify-between p-3.5 bg-black text-white cursor-pointer font-bold text-xl sticky top-0 z-50",
+        className: "flex justify-between p-3.5 bg-gray-400 text-black cursor-pointer font-bold text-xl sticky top-0 z-50",
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 className: "image_container",
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                    className: "w-36",
+                    className: "w-40 rounded-full object-cover ",
                     src: (0, _constants.LOGO_URL)
                 }, void 0, false, {
                     fileName: "src/components/Header.js",
@@ -26071,7 +26071,7 @@ const Header = ({ isLoggedIn, onLogin, onLogout })=>{
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("nav", {
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                    className: "flex items-center py-12",
+                    className: "flex py-9",
                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
                         className: "flex",
                         children: [
@@ -26154,14 +26154,14 @@ const Header = ({ isLoggedIn, onLogin, onLogout })=>{
                                         className: "flex flex-wrap",
                                         children: [
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _lucideReact.ShoppingCart), {
-                                                className: "w-6 h-6 text-white"
+                                                className: "w-6 h-6 text-black"
                                             }, void 0, false, {
                                                 fileName: "src/components/Header.js",
                                                 lineNumber: 52,
                                                 columnNumber: 13
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                                className: "text-white",
+                                                className: "text-black",
                                                 children: [
                                                     " [",
                                                     " " + cartItems.length + " ",
@@ -26264,7 +26264,8 @@ parcelHelpers.export(exports, "LOGO_URL", ()=>LOGO_URL);
 parcelHelpers.export(exports, "CDN_URL", ()=>CDN_URL);
 parcelHelpers.export(exports, "ERROR_URL", ()=>ERROR_URL);
 parcelHelpers.export(exports, "MENU_URL", ()=>MENU_URL);
-const LOGO_URL = "https://img.freepik.com/premium-vector/food-logo-vector-silhouette-black-color-illustration-3_554682-6453.jpg";
+const LOGO_URL = // "https://img.freepik.com/premium-vector/food-logo-vector-silhouette-black-color-illustration-3_554682-6453.jpg"
+"https://static.vecteezy.com/system/resources/previews/009/291/628/non_2x/restaurant-logo-design-vector.jpg";
 const CDN_URL = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/";
 const ERROR_URL = "https://c8.alamy.com/comp/2B9F3YX/404-error-cat-logo-and-icon-vector-isolated-image-2B9F3YX.jpg";
 const MENU_URL = "https://proxyserver-amcq.onrender.com/api/swiggy/details/";
